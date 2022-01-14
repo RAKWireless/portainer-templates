@@ -3,7 +3,7 @@
   "templates": [ 
     {
       "categories": ["LoRaWAN"],
-      "description": "The ChirpStack open-source LoRaWAN Network Server stack provides open-source components for LoRaWAN networks.",
+      "description": "This project deploys a LoRaWAN gateway with Basic™ Station Packet Forward protocol using docker.",
       "env": [
         {
           "default": "SX1301",
@@ -58,7 +58,7 @@
         },
         {
           "default": "change this to your geteway EUI",
-          "label": "GW_ID",
+          "label": "GW_EUI",
           "name": "GW_ID",
           "description": "TTN Gateway EUI"
         },
