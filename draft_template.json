@@ -85,6 +85,16 @@
       "description": "Node-RED is a flow-based development tool for visual programming.",
       "env": [
         {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
           "default": "Europe/London",
           "label": "Time Zone",
           "name": "TZ"
@@ -106,6 +116,77 @@
       ],
       "network":"host",
       "hostname":"NodeRed"
+    },
+    {
+      "categories": ["LoRaWAN_Chirpstack"],
+      "description": "The ChirpStack open-source LoRaWAN Network Server stack provides open-source components for LoRaWAN networks.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        },
+        {
+          "default": "EU868",
+          "label": "Network Server Band",
+          "name": "NETWORK_SERVER__BAND__NAME",
+          "description":"Frequency channels used by Chirpstack for uplink transmissions, valid values are AU915, EU868, US915 ... "
+        }
+      ],
+      "logo":"data:image/png;base64,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",
+      "name": "ChirpStack_Network_Server",
+      "platform": "linux",
+      "repository": {
+        "stackfile": "docker-compose-template.yml",
+        "url": "https://github.com.cnpmjs.org/Sheng-IoT/chirpstack-docker.git"
+      },
+      "title": "ChirpStack_Network_Server",
+      "type": 3
+    },
+    {
+      "categories": ["LoRaWAN"],
+      "description": "The Things Stack LNS establishes a data connection between a LoRa Basics™ Station gateway and a Network Server (in this case, The Things Stack).",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        },
+        {
+          "label": "TTS DOMAIN",
+          "name": "TTS_DOMAIN",
+          "description":"set this to the IP or domain name of the host you will be using to access the stack "
+        }
+      ],
+      "logo":"data:image/png;base64,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",
+      "name": "The Things Stack LNS",
+      "platform": "linux",
+      "repository": {
+        "stackfile": "docker-compose-template.yml",
+        "url": "https://github.com.cnpmjs.org/Sheng-IoT/the-things-stack-docker.git"
+      },
+      "title": "The Things Stack LNS",
+      "type": 3
     }
   ]
 }
