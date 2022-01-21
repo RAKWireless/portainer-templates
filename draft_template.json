@@ -234,6 +234,11 @@
           "name": "PGID"
         },
         {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        },
+        {
           "name": "RAK_Concentrator_Model",
           "label": "RAK Concentrator Model",
           "select": [
