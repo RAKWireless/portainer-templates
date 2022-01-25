@@ -75,7 +75,7 @@
           "description": "Unique TTN Gateway Key used for TTS Community Edition pasted from TTN console"
         }
       ],
-      "image": "xoseperez/basicstation:latest", 
+      "image": "xoseperez/basicstation:aarch64-latest",
       "logo": "https://avatars.githubusercontent.com/u/706487?v=4",
       "name": "BasicStation_Packet_Forwarder",
       "platform": "linux",
@@ -224,74 +224,212 @@
       "description": "Dockerize the rak_common_for_gateway project, which aim to help users to use the RAK Raspberry Pi Developer Gateway more easily.",
       "env": [
         {
-          "default": "1000",
-          "label": "PUID",
-          "name": "PUID"
-        },
-        {
-          "default": "100",
-          "label": "PGID",
-          "name": "PGID"
-        },
-        {
-          "default": "Europe/London",
-          "label": "Time Zone",
-          "name": "TZ"
-        },
-        {
-          "name": "RAK_Concentrator_Model",
-          "label": "RAK Concentrator Model",
+          "name": "MODEL",
+          "label": "RAK gateway model",
           "select": [
             {
+              "text": "RAK7243/RAK7244(no LTE)",
+              "value": "RAK7244"
+            },
+            {
+              "text": "RAK7243C/RAK7244C(with LTE)",
+              "value": "RAK7244C"
+            },
+            {
+              "text": "RAK7246",
+              "value": "RAK7246"
+            },
+            {
+              "text": "RAK7246G",
+              "value": "RAK7246G"
+            },
+            {
+              "text": "RAK7248(no LTE)",
+              "value": "RAK7248"
+            },
+            {
+              "text": "RAK7248C(with LTE)",
+              "value": "RAK7248C"
+            },
+            {
+              "text": "RAK7271",
+              "value": "RAK7271"
+            },
+            {
+              "text": "RAK7371",
+              "value": "RAK7371"
+            }
+          ],
+          "description": "RAKwireless Developer gateway model. Once defined, we take care of all the concentrator configurations and you can skip to option <Interface for gateway EUI>"
+        },
+        {
+          "name": "MODEL",
+          "label": "RAK WisLink LPWAN module",
+          "select": [
+            {
+              "text": "RAK831(SPI only)",
+              "value": "RAK831"
+            },
+            {
+              "text": "RAK2245(SPI only)",
+              "value": "RAK2245"
+            },
+            {
               "text": "RAK2247(USB)",
-              "value": "4"
+              "value": "RAK2247_USB"
             },
             {
               "text": "RAK2247(SPI)",
-              "value": "5"
+              "value": "RAK2247_SPI"
             },
             {
-              "text": "RAK7248(SPI) no LTE (RAK2287(SPI) + raspberry pi)",
-              "value": "7"
+              "text": "RAK833(USB)",
+              "value": "RAK833_USB"
             },
             {
-              "text": "RAK7248(SPI) with LTE (RAK2287(SPI) + LTE + raspberry pi)",
-              "value": "8"
+              "text": "RAK833(SPI)",
+              "value": "RAK833_SPI"
             },
             {
-              "text": "RAK2287(USB)",
-              "value": "9"
+              "text": "RAK2246(SPI only)",
+              "value": "RAK2246"
             },
             {
-              "text": "RAK5146(USB)",
-              "value": "10"
+              "text": "RAK2287(SPI/USB)",
+              "value": "RAK2287"
             },
             {
-              "text": "RAK5146(SPI)",
-              "value": "11"
-            },
-            {
-              "text": "RAK5146(SPI) with LTE",
-              "value": "12"
+              "text": "RAK5146(SPI/USB)",
+              "value": "RAK5146"
             }
           ],
-          "description": "Please select your concentrator/gateway model"
+          "description": "If RAK gateway model is not defined, you can define either <RAKwireless WisLink LPWAN module> or <Semtech concentrator>. Once defined this virable, also need to specify other features of the module, for example, <Concentrator interface>,<HAS GPS>,<HAS LTE>."
         },
         {
-          "name": "GATEWAY_RESET_GPIO",
+          "name": "CONCENTRATOR",
+          "label": "Semtech concentrator",
+          "select": [
+            {
+              "text": "SX1301",
+              "value": "SX1301"
+            },
+            {
+              "text": "SX1302",
+              "value": "SX1302"
+            },
+            {
+              "text": "SX1303",
+              "value": "SX1303"
+            },
+            {
+              "text": "SX1308",
+              "value": "SX1308"
+            }
+          ],
+          "description": "If RAK gateway model is not defined, you can define either <RAKwireless WisLink LPWAN module> or <Semtech concentrator>. Once defined this virable, also need to specify other features of the module, for example, <Concentrator interface>,<HAS GPS>,<HAS LTE>."
+        },
+        {
+          "name": "INTERFACE",
+          "label": "Concentrator interface",
+          "default": "SPI",
+          "select": [
+            {
+              "text": "SPI",
+              "value": "SPI"
+            },
+            {
+              "text": "USB",
+              "value": "USB"
+            }
+          ],
+          "description": "If MODEL is defined it will get the interface type from it, otherwise defaults to SPI"
+        },
+        {
+          "name": "HAS_GPS",
+          "label": "Has GPS",
+          "default": "1",
+          "select": [
+            {
+              "text": "True",
+              "value": "1"
+            },
+            {
+              "text": "False",
+              "value": "0"
+            }
+          ],
+          "description": "If MODEL is defined it will get this from it, otherwise defaults to 1 (with GPS)"
+        },
+        {
+          "name": "HAS_LTE",
+          "label": "Has LTE",
+          "default": "0",
+          "select": [
+            {
+              "text": "True",
+              "value": "1"
+            },
+            {
+              "text": "False",
+              "value": "0"
+            }
+          ],
+          "description": "If MODEL id defined it will get this from it, otherwise defaults to 0 (without LTE)"
+        },
+        {
+          "name": "RESET_GPIO",
           "default": "17",
           "label": "GATEWAY RESET GPIO",
-          "description": "GPIO number that resets (Broadcom pin number)"
+          "description": "GPIO number that resets (Broadcom pin number, if not defined, it's calculated based on the RESET_PIN)"
         },
         {
-          "name": "Server_Address",
-          "label": "Server Address",
-          "default": "nam1.cloud.thethings.network",
-          "description": "If using TTN, server address can be eu1.cloud.thethings.network, nam1.cloud.thethings.network, and au1.cloud.thethings.network; or you can use enter your own server address"
+          "name": "POWER_EN_GPIO",
+          "default": "0",
+          "label": "the GPIO enables power",
+          "description": "GPIO number that enables power (by pulling HIGH) to the concentrator (Broadcom pin number). 0 means not required"
         },
         {
-          "name": "TTN_Frequency_Plan",
+          "name": "RADIO_DEV",
+          "label": "Where the concentrator is connected to",
+          "description": "/dev/spidev0.0 for SPI concentrators, /dev/ttyACM0 for USB concentrators.Don't set it if you don't know what this means"
+        },
+        {
+          "name": "GPS_DEV",
+          "label": "Where the GPS is connected to",
+          "description": "/dev/ttyAMA0 except when HAS_LTE is 1, in this case it will default to /dev/i2c-1. Don't set it if you don't know what this means"
+        },
+        {
+          "name": "GATEWAY_EUI_NIC",
+          "label": "Interface for gateway EUI",
+          "default": "eth0",
+          "description": "Interface to use when generating the EUI, default to eth0"
+        },
+        {
+          "name": "GATEWAY_EUI",
+          "label": "Gateway EUI",
+          "description": "Autogenerated from GATEWAY_EUI_NIC if defined or the any of these: eth0, wlan0, usb0"
+        },
+        {
+          "name": "TTN_REGION",
+          "label": "TTN region",
+          "default": "eu1",
+          "description": "If using a TTN server, region of the TTN server to use. Can be eu1, nam1, and au1"
+        },
+        {
+          "name": "SERVER_HOST",
+          "label": "Host Server URL",
+          "description": "If TTN_REGION is defined it will build the right address for the TTN server"
+        },
+        {
+          "name": "SERVER_PORT",
+          "label": "Server port",
+          "default": "1700",
+          "description": "Port the server is listening to"
+        },
+        {
+          "name": "BAND",
           "label": "TTN Frequency Plan",
+          "default": "eu_863_870",
           "select": [
             {
               "text": "as_915_921",
@@ -342,17 +480,25 @@
               "value": "us_902_928"
             }
           ],
-          "description": "Please select the frequency plan. Check LoRaWAN regional parameters document for more details"
+          "description": "Regional parameters identifier"
         },
         {
-          "name": "USB_Port",
-          "default": "ttyACM0",
-          "label": "USB Port",
-          "description": "If you are using a USB concentrator module, you can change this to the USB port, for example, ttyUSB0 and ttyUSB1"
+          "name": "GPS_LATITUDE",
+          "label": "GPS LATITUDE",
+          "description": "Report this latitude for the gateway"
+        },
+        {
+          "name": "GPS_LONGITUDE",
+          "label": "GPS LONGITUDE",
+          "description": "Report this longitude for the gateway"
+        },
+        {
+          "name": "GPS_ALTITUDE",
+          "label": "GPS ALTITUDE",
+          "description": "Report this altitude for the gateway"
         }
       ],
-      "image": "sheng2216/udp_packet_forwarder:0.2",
-      "logo": "data:image/png;base64,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",
+      "image": "sheng2216/udp_packet_forwarder:xose0.2",
       "name": "UDP_Packet_Forwarder",
       "platform": "linux",
       "restart_policy": "unless-stopped",
