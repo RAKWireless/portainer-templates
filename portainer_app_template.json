@@ -75,7 +75,7 @@
           "description": "Unique TTN Gateway Key used for TTS Community Edition pasted from TTN console"
         }
       ],
-      "image": "xoseperez/basicstation:aarch64-latest",
+      "image": "xoseperez/basicstation:latest",
       "logo": "https://avatars.githubusercontent.com/u/706487?v=4",
       "name": "BasicStation_Packet_Forwarder",
       "platform": "linux",
