@@ -76,7 +76,7 @@
         }
       ],
       "image": "xoseperez/basicstation:v2",
-      "logo": "https://avatars.githubusercontent.com/u/706487?v=4",
+      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/main/gateway_icon.png?raw=true",
       "name": "BasicStation_Packet_Forwarder",
       "platform": "linux",
       "restart_policy": "unless-stopped",
@@ -175,7 +175,7 @@
       "platform": "linux",
       "repository": {
         "stackfile": "docker-compose-template.yml",
-        "url": "https://github.com.cnpmjs.org/Sheng-IoT/chirpstack-docker.git"
+        "url": "https://github.com/Sheng-IoT/chirpstack-docker.git"
       },
       "title": "ChirpStack_Network_Server",
       "type": 3
@@ -499,6 +499,7 @@
         }
       ],
       "image": "sheng2216/udp_packet_forwarder:xose0.2",
+      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/main/gateway_icon.png?raw=true",
       "name": "UDP_Packet_Forwarder",
       "platform": "linux",
       "restart_policy": "unless-stopped",
