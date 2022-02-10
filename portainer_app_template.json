@@ -76,7 +76,7 @@
           "default": "eu1",
           "label": "TTN REGION",
           "name": "TTN_REGION",
-          "description": "Region of the TTN server to use, possible values: eu1, nam1, au1; when using TTNv2, possible values are eu, us, in, and au"
+          "description": "Region of the TTN server to use, possible values: eu1, nam1, au1"
         },
         {
           "default": "change this to your own TC key from TTN",
@@ -187,7 +187,7 @@
         "stackfile": "docker-compose-template.yml",
         "url": "https://github.com/Sheng-IoT/chirpstack-docker.git"
       },
-      "title": "ChirpStack_Network_Server",
+      "title": "ChirpStack Network Server",
       "type": 3
     },
     {
