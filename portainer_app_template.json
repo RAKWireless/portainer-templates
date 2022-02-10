@@ -75,7 +75,7 @@
           "description": "Unique TTN Gateway Key used for TTS Community Edition pasted from TTN console"
         }
       ],
-      "image": "xoseperez/basicstation:v2",
+      "image": "xoseperez/basicstation:latest",
       "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/main/gateway_icon.png?raw=true",
       "name": "BasicStation_Packet_Forwarder",
       "platform": "linux",
@@ -498,7 +498,7 @@
           "description": "Report this altitude for the gateway"
         }
       ],
-      "image": "sheng2216/udp_packet_forwarder:xose0.2",
+      "image": "rakwireless/udp-packet-forwarder:latest",
       "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/main/gateway_icon.png?raw=true",
       "name": "UDP_Packet_Forwarder",
       "platform": "linux",
