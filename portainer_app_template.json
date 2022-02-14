@@ -220,7 +220,6 @@
       "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/main/tts_logo.jpg?raw=true",
       "name": "The Things Stack LNS",
       "platform": "linux",
-      "restart_policy": "unless-stopped",
       "repository": {
         "stackfile": "docker-compose-template.yml",
         "url": "https://github.com/Sheng-IoT/the-things-stack-docker.git"
