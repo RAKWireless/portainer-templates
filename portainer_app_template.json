@@ -734,7 +734,7 @@
       "platform": "linux",
       "repository": {
         "stackfile": "thingsboard-docker-compose-template.yml",
-        "url": "https://github.com/Sheng-IoT/Portainer_Templates/tree/main"
+        "url": "https://github.com/Sheng-IoT/Portainer_Templates"
       },
       "title": "ThingsBoard",
       "type": 3
