@@ -620,6 +620,295 @@
           "container": "/var/lib/grafana"
         }
       ]
-    } 
+    },
+    {
+      "categories": ["Other"],
+      "description": "Eclipse Mosquitto is an open source implementation of a server for versions 5, 3.1.1, and 3.1 of the MQTT protocol.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        }
+      ],
+      "image": "eclipse-mosquitto",
+      "logo": "https://raw.githubusercontent.com/eclipse/mosquitto/3cbe805e71ac41a2a20cc9b2ea6b3b619f49554a/logo/mosquitto-text-below.svg",
+      "name": "Eclipse-Mosquitto",
+      "platform": "linux",
+      "ports": [
+        "1883:1883/tcp",
+        "9001:9001/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Eclipse Mosquitto",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "mosquitto_data",
+          "container": "/mosquitto/data"
+        },
+        {
+          "bind": "mosquitto_log",
+          "container": "/mosquitto/log"
+        }
+      ]
+    },
+    {
+      "categories": ["Data visulization"],
+      "description": "Grafana is a multi-platform open source analytics and interactive visualization web application.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        },
+        {
+          "default": "grafana-clock-panel,grafana-simple-json-datasource",
+          "label": "Grafana plugins",
+          "name": "GF_INSTALL_PLUGINS",
+          "description":"Pass the plugins you want installed to Docker with the GF_INSTALL_PLUGINS environment variable as a comma-separated list. "
+        }
+      ],
+      "image": "grafana/grafana-enterprise:8.2.0",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a1/Grafana_logo.svg/753px-Grafana_logo.svg.png",
+      "name": "grafana",
+      "platform": "linux",
+      "ports": [
+        "3000:3000/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Grafana",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "grafana-storage",
+          "container": "/var/lib/grafana"
+        }
+      ]
+    },
+    {
+      "categories": ["Database"],
+      "description": "InfluxDB is a time series database built from the ground up to handle high write and query loads.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        },
+        {
+          "name": "DOCKER_INFLUXDB_INIT_MODE",
+          "label": "Influx initial mode",
+          "default": "setup",
+          "description": "Set DOCKER_INFLUXDB_INIT_MODE to setup enables the InfluxDB image to automatically bootstrap the system."
+        },
+        {
+          "name": "DOCKER_INFLUXDB_INIT_USERNAME",
+          "label": "Influx initial username",
+          "default": "Required",
+          "description": "The username to set for the system's initial super-user (Required)."
+        },
+        {
+          "name": "DOCKER_INFLUXDB_INIT_PASSWORD",
+          "label": "Influx initial password",
+          "default": "Required, at least 8 characters",
+          "description": "The password to set for the system's inital super-user (Required)."
+        },
+        {
+          "name": "DOCKER_INFLUXDB_INIT_ORG",
+          "label": "Influx initial organization",
+          "default": "Required",
+          "description": "The name to set for the system's initial organization (Required)."
+        },
+        {
+          "name": "DOCKER_INFLUXDB_INIT_BUCKET",
+          "label": "Influx initial bucket",
+          "default": "Required",
+          "description": "The name to set for the system's initial bucket (Required)."
+        },
+        {
+          "name": "DOCKER_INFLUXDB_INIT_RETENTION",
+          "label": "Influx initial bucket retain data duration",
+          "description": "Optional. E.g. 1w means tetain te data for 1 week. If not set, the initial bucket will retain data forever."
+        },
+        {
+          "name": "DOCKER_INFLUXDB_INIT_ADMIN_TOKEN",
+          "label": "initial super-user's authentication token to associate with the system's ",
+          "description": "Optional. The authentication token to associate with the system's initial super-user. If not set, a token will be auto-generated by the system."
+        }
+      ],
+      "image": "influxdb:2.0",
+      "logo": "https://influxdata.github.io/branding/img/downloads/influxdata-logo--symbol--pool.svg",
+      "name": "influxdb",
+      "platform": "linux",
+      "ports": [
+        "8086:8086/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "InfluxDB",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/influxdb2/data",
+          "container": "/var/lib/influxdb2"
+        },
+        {
+          "bind": "/influxdb2/config",
+          "container": "/etc/influxdb2"
+        }
+      ]
+    },
+    {
+      "categories": ["Data visulization"],
+      "description": "ThingsBoard allows you to create rich IoT Dashboards for data visualization and remote device control in real-time",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        },
+        {
+          "name": "TB_QUEUE_TYPE",
+          "label": "ThingsBoard queue service",
+          "default": "in-memory",
+          "description": "ThingsBoard uses various messaging systems/brokers for storing the messages and communication between ThingsBoard services. Check https://thingsboard.io/docs/user-guide/install/docker/?ubuntuThingsboardQueue=inmemory for more details"
+        }
+      ],
+      "image": "thingsboard/tb-postgres",
+      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/main/thingsboard_blue_logo.jpg?raw=true",
+      "name": "thingsBoard",
+      "platform": "linux",
+      "repository": {
+        "stackfile": "thingsboard-docker-compose-template.yml",
+        "url": "https://gitee.com/sheng_lyu/portainer_app_template"
+      },
+      "title": "Thingsboard",
+      "type": 3
+    },
+    {
+      "categories": ["Database"],
+      "description": "TimescaleDB is a an open-source time-series database optimized for fast ingest and complex queries. ",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        },
+        {
+          "name": "POSTGRES_PASSWORD",
+          "label": "Influx initial mode",
+          "default": "changeme",
+          "description": "Set DOCKER_INFLUXDB_INIT_MODE to setup enables the InfluxDB image to automatically bootstrap the system."
+        },
+        {
+          "name": "TIMESCALEDB_TELEMETRY",
+          "label": "TimescaleDB telemetry",
+          "default": "off",
+          "description": "Set TimescaleDB telemetry to off to turn off telemetry, only works for if the cluster has not been initialized previously "
+        },
+        {
+          "name": "timescaledb-tune",
+          "label": "TimescaleDB max number of connections",
+          "default":"true",
+          "select": [
+            {
+              "text": "true",
+              "value": "true"
+            },
+            {
+              "text": "false",
+              "value": "false"
+            }
+          ],
+          "description": "Limiting the amount of resources the container can have on the host. If select ture, please update the following timescaledb-tune virables."
+        },
+        {
+          "name": "TS_TUNE_MEMORY",
+          "label": "TimescaleDB memory limitation",
+          "description": "Optional. E.g. 2GB."
+        },
+        {
+          "name": "TS_TUNE_NUM_CPUS",
+          "label": "TimescaleDB CPUs",
+          "description": "Optional. E.g. 4."
+        },
+        {
+          "name": "TS_TUNE_MAX_BG_WORKERS",
+          "label": "TimescaleDB max background workers",
+          "description": "Optional. Specifize a maximum number of background workers."
+        },
+        {
+          "name": "TS_TUNE_MAX_CONNS",
+          "label": "TimescaleDB max number of connections",
+          "description": "Optional. Specifize a maximum number of connections."
+        }
+      ],
+      "image": "timescale/timescaledb:latest-pg11",
+      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/main/Timescale_logo_png.png?raw=true",
+      "name": "timescaleDB",
+      "platform": "linux",
+      "ports": [
+        "5432:5432/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "TimescaleDB",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/timescaledb/db-data",
+          "container": "/var/lib/postgresql/data"
+        }
+      ]
+    }      
   ]
 }
+  
