@@ -87,7 +87,7 @@
       ],
       "image": "xoseperez/basicstation:latest",
       "logo": "https://avatars.githubusercontent.com/u/706487?v=4",
-      "name": "BasicStation_Packet_Forwarder",
+      "name": "basicStation_packet_forwarder",
       "platform": "linux",
       "restart_policy": "unless-stopped",
       "title": "BasicStation Packet Forwarder",
@@ -135,7 +135,7 @@
       ],
       "image": "nodered/node-red:latest",
       "logo": "https://nodered.org/about/resources/media/node-red-icon-2.png",
-      "name": "NodeRed",
+      "name": "nodered",
       "platform": "linux",
       "ports": [
         "1880:1880/tcp"
@@ -154,7 +154,7 @@
     },
     {
       "categories": [
-        "LoRaWAN_Chirpstack"
+        "LoRaWAN"
       ],
       "description": "The ChirpStack open-source LoRaWAN Network Server stack provides open-source components for LoRaWAN networks.",
       "env": [
@@ -181,7 +181,7 @@
         }
       ],
       "logo": "data:image/png;base64,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",
-      "name": "ChirpStack_Network_Server",
+      "name": "chirpStack_network_server",
       "platform": "linux",
       "repository": {
         "stackfile": "docker-compose-template.yml",
@@ -558,7 +558,7 @@
       ],
       "image": "eclipse-mosquitto",
       "logo": "https://raw.githubusercontent.com/eclipse/mosquitto/3cbe805e71ac41a2a20cc9b2ea6b3b619f49554a/logo/mosquitto-text-below.svg",
-      "name": "Eclipse-Mosquitto",
+      "name": "eclipse-mosquitto",
       "platform": "linux",
       "ports": [
         "1883:1883/tcp",
@@ -730,13 +730,13 @@
       ],
       "image": "thingsboard/tb-postgres",
       "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/main/thingsboard_blue_logo.jpg?raw=true",
-      "name": "thingsBoard",
+      "name": "thingsboard",
       "platform": "linux",
       "repository": {
         "stackfile": "thingsboard-docker-compose-template.yml",
-        "url": "https://gitee.com/sheng_lyu/portainer_app_template"
+        "url": "https://github.com/Sheng-IoT/Portainer_Templates/tree/main"
       },
-      "title": "Thingsboard",
+      "title": "ThingsBoard",
       "type": 3
     },
     {
@@ -809,7 +809,7 @@
       ],
       "image": "timescale/timescaledb:latest-pg11",
       "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/main/Timescale_logo_png.png?raw=true",
-      "name": "timescaleDB",
+      "name": "timescaledb",
       "platform": "linux",
       "ports": [
         "5432:5432/tcp"
