@@ -151,7 +151,8 @@
         }
       ],
       "network": "bridge",
-      "hostname": "NodeRed"
+      "hostname": "NodeRed",
+      "note":"Browse to http://{host-ip}:1880 to access the web interface"
     },
     {
       "categories": [
@@ -185,12 +186,13 @@
       "name": "ChirpStackNetworkServer",
       "platform": "linux",
       "repository": {
-        "stackfile": "stack/chirpstack-docker-compose-template.yml",
+        "stackfile": "Stack/chirpstack.yml",
         "url": "https://github.com/Sheng-IoT/Portainer_Templates"
       },
       "title": "ChirpStack Network Server",
       "network": "bridge",
-      "type": 3
+      "type": 3,
+      "note":"Browse to http://{host-ip}:8080 to access the web interface, default username:admin, default password:admin. Check https://github.com/brocaar/chirpstack-docker for more details."
     },
     {
       "categories": [
@@ -223,12 +225,13 @@
       "name": "TheThingsStackLNS",
       "platform": "linux",
       "repository": {
-        "stackfile": "stack/TTS-docker-compose-template.yml",
+        "stackfile": "Stack/thethingsstack.yml",
         "url": "https://github.com/Sheng-IoT/Portainer_Templates"
       },
       "title": "The Things Stack LNS",
       "network": "bridge",
-      "type": 3
+      "type": 3,
+      "note":"Point your browser to the first local IP of the device or to the domain name (if you have defined one) using HTTPS and use the default credentials (admin/changeme) to log in as administrator. Check https://github.com/xoseperez/the-things-stack-docker for more details "
     },
     {
       "categories": [
@@ -625,7 +628,8 @@
           "container": "/var/lib/grafana"
         }
       ],
-      "network":"bridge"
+      "network":"bridge",
+      "note":"Browse to http://{host-ip}:3000 to access the web interface, default username:admin, default password:admin. Check https://grafana.com/docs/grafana/latest/installation/docker/ for more details."
     },
     {
       "categories": ["Database"],
@@ -764,7 +768,8 @@
         }
       ],     
       "restart_policy": "unless-stopped",
-      "type": 1
+      "type": 1,
+      "note":"Browse to http://{host-ip}:8080 to access the web interface. Use the following default credentials:<br/>System Administrator: sysadmin@thingsboard.org / sysadmin<br/>Tenant Administrator: tenant@thingsboard.org / tenant<br/>Customer User: customer@thingsboard.org / customer<br/>Check https://thingsboard.io/docs/user-guide/install/docker/ for more details."
     },
     {
       "categories": ["Database"],
