@@ -86,7 +86,7 @@
         }
       ],
       "image": "xoseperez/basicstation:latest",
-      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/main/logo/gateway_icon.png?raw=true",
+      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/gateway_icon.png?raw=true",
       "name": "BasicsStation",
       "platform": "linux",
       "restart_policy": "unless-stopped",
@@ -95,7 +95,7 @@
       "network": "host",
       "privileged": true,
       "hostname": "basicstation",
-      "note":"Check https://github.com/xoseperez/basicstation for more details"
+      "note":"Check <a href='https://github.com/xoseperez/basicstation'>LoRa Basics™ Station for Docker Github repository</a> for more details."
     },
     {
       "categories": [
@@ -152,7 +152,7 @@
       ],
       "network": "bridge",
       "hostname": "NodeRed",
-      "note":"Browse to http://{host-ip}:1880 to access the web interface"
+      "note":"Browse to <a herf='http://{host-ip}:1880'>http://{host-ip}:1880</a> to access the web interface."
     },
     {
       "categories": [
@@ -182,7 +182,7 @@
           "description": "Frequency channels used by Chirpstack for uplink transmissions, valid values are AU915, EU868, US915 ... "
         }
       ],
-      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/main/logo/chirpstack-logo.png?raw=true",
+      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/chirpstack-logo.png?raw=true",
       "name": "ChirpStackNetworkServer",
       "platform": "linux",
       "repository": {
@@ -192,7 +192,7 @@
       "title": "ChirpStack Network Server",
       "network": "bridge",
       "type": 3,
-      "note":"Browse to http://{host-ip}:8080 to access the web interface, default username:admin, default password:admin. Check https://github.com/brocaar/chirpstack-docker for more details."
+      "note":"Browse to <a href='http://{host-ip}:8080'>http://{host-ip}:8080</a> to access the web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: admin</li>Check <a href='https://github.com/brocaar/chirpstack-docker'>ChirpStack Docker Github reposotory</a> for more details."
     },
     {
       "categories": [
@@ -221,7 +221,7 @@
           "description": "set this to the IP or domain name of the host you will be using to access the stack "
         }
       ],
-      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/main/logo/the_things_stack_logo.jpg?raw=true",
+      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/the_things_stack_logo.jpg?raw=true",
       "name": "TheThingsStackLNS",
       "platform": "linux",
       "repository": {
@@ -231,7 +231,7 @@
       "title": "The Things Stack LNS",
       "network": "bridge",
       "type": 3,
-      "note":"Point your browser to the first local IP of the device or to the domain name (if you have defined one) using HTTPS and use the default credentials (admin/changeme) to log in as administrator. Check https://github.com/xoseperez/the-things-stack-docker for more details "
+      "note":"Point your browser to the first local IP of the device or to the domain name (if you have defined one) using HTTPS to access the web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: changeme</li>Check <a href='https://github.com/xoseperez/the-things-stack-docker'>The Things Stack LoRaWAN Network Server Github repository</a> for more details. "
     },
     {
       "categories": [
@@ -532,7 +532,7 @@
         }
       ],
       "image": "rakwireless/udp-packet-forwarder:latest",
-      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/main/logo/gateway_icon.png?raw=true",
+      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/gateway_icon.png?raw=true",
       "name": "UDPPacketForwarder",
       "platform": "linux",
       "restart_policy": "unless-stopped",
@@ -540,7 +540,7 @@
       "type": 1,
       "network": "host",
       "privileged": true,
-      "note":"Check https://github.com/RAKWireless/udp-packet-forwarder for more details",
+      "note":"Check <a href='https://github.com/RAKWireless/udp-packet-forwarder'>LoRaWAN UDP Packet Forwarder Protocol for Docker Github repository</a> for more details.",
       "hostname": "UDP"
     },
     {
@@ -564,7 +564,7 @@
         }
       ],
       "image": "eclipse-mosquitto",
-      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/main/logo/mosquitto_logo.png?raw=true",
+      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/mosquitto_logo.png?raw=true",
       "name": "Mosquitto",
       "platform": "linux",
       "ports": [
@@ -584,7 +584,8 @@
           "container": "/mosquitto/log"
         }
       ],
-      "network":"bridge"
+      "network":"bridge",
+      "note":"Check <a href='https://hub.docker.com/_/eclipse-mosquitto'>Eclipse-Mosquitto Dockerhub quick reference</a> for more details."
     },
     {
       "categories": ["Data visulization"],
@@ -613,7 +614,7 @@
         }
       ],
       "image": "grafana/grafana-enterprise:8.2.0",
-      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/main/logo/grafana-logo.png?raw=true",
+      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/grafana-logo.png?raw=true",
       "name": "Grafana",
       "platform": "linux",
       "ports": [
@@ -629,7 +630,7 @@
         }
       ],
       "network":"bridge",
-      "note":"Browse to http://{host-ip}:3000 to access the web interface, default username:admin, default password:admin. Check https://grafana.com/docs/grafana/latest/installation/docker/ for more details."
+      "note":"Browse to <a href='http://{host-ip}:3000'>http://{host-ip}:3000</a> to access the web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: admin</li>Check <a href='https://grafana.com/docs/grafana/latest/installation/docker/'>Run Grafana Docker image quick reference</a> for more details."
     },
     {
       "categories": ["Database"],
@@ -711,7 +712,8 @@
           "container": "/etc/influxdb2"
         }
       ],
-      "network":"bridge"
+      "network":"bridge",
+      "note":"Check <a href='https://hub.docker.com/_/influxdb'>InfluxDB Dockerhub quick reference</a> for more details."
     },
     {
       "categories": ["Data visulization"],
@@ -740,7 +742,7 @@
         }
       ],
       "image": "thingsboard/tb-postgres",
-      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/main/logo/thingsboard_blue_logo.jpg?raw=true",
+      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/thingsboard_blue_logo.jpg?raw=true",
       "name": "ThingsBoard",
       "platform": "linux",
      
@@ -769,7 +771,7 @@
       ],     
       "restart_policy": "unless-stopped",
       "type": 1,
-      "note":"Browse to http://{host-ip}:8080 to access the web interface. Use the following default credentials:<br/>System Administrator: sysadmin@thingsboard.org / sysadmin<br/>Tenant Administrator: tenant@thingsboard.org / tenant<br/>Customer User: customer@thingsboard.org / customer<br/>Check https://thingsboard.io/docs/user-guide/install/docker/ for more details."
+      "note":"Browse to <a href='http://{host-ip}:8080'>http://{host-ip}:8080</a> to access the web interface.<ulstyle='padding-left:20px'><li>System Administrator: sysadmin@thingsboard.org / sysadmin</li><li>Tenant Administrator: tenant@thingsboard.org / tenant</li><li>Customer User: customer@thingsboard.org / customer</li>This template uses In Memory queue service, for other queue services, please check <a href='https://thingsboard.io/docs/user-guide/install/docker/'>Installing ThingsBoard using Docker</a> for more details."
     },
     {
       "categories": ["Database"],
@@ -840,7 +842,7 @@
         }
       ],
       "image": "timescale/timescaledb:latest-pg11",
-      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/main/logo/timescale_logo.png?raw=true",
+      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/timescale_logo.png?raw=true",
       "name": "TimeScaledb",
       "platform": "linux",
       "ports": [
@@ -855,7 +857,8 @@
           "bind": "/timescaledb/db-data",
           "container": "/var/lib/postgresql/data"
         }
-      ]
+      ],
+      "note":"Please check <a href='https://github.com/timescale/timescaledb-docker'>TimescaleDB docker Github repository</a> for more details"
     }      
   ]
 }
