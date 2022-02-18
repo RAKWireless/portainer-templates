@@ -38,6 +38,6 @@ Most templates are already configured to bind mount to various places on your dr
   - ThingsBoard 
   - TimescaleDB
 
-### Copyright ad license
+### Copyright and license
 
 Copyright (c) 2022 RAKwireless, under MIT License.
