@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+
+  nodered:
+    image: sheng2216/nodered-docker:alpine-latest
+    container_name: NodeRed
+    restart: unless-stopped
+    environment:
+        - NODE_RED_ENABLE_PROJECTS=${NODE_RED_ENABLE_PROJECTS}
+        - PUID=${PUID}
+        - PGID=${PGID}
+        - TZ=${TZ}
+    volumes:
+        - '/node_red_data:/data'
+    ports:
+        - "1880:1880/tcp"
+    devices:
+        - "/dev/vcio:/dev/vcio"
+        - "/dev/mem:/dev/mem"
+    cap_add:
+      - CAP_SYS_RAWIO
