@@ -134,24 +134,16 @@
           ]
         }
       ],
-      "image": "nodered/node-red:latest",
       "logo": "https://nodered.org/about/resources/media/node-red-icon-2.png",
+      "title": "NodeRed",
       "name": "NodeRed",
       "platform": "linux",
-      "ports": [
-        "1880:1880/tcp"
-      ],
-      "restart_policy": "unless-stopped",
-      "title": "NodeRed",
-      "type": 1,
-      "volumes": [
-        {
-          "bind": "/data",
-          "container": "/node_red_data"
-        }
-      ],
       "network": "bridge",
-      "hostname": "NodeRed",
+      "repository": {
+        "stackfile": "Stack/nodered.yml",
+        "url": "https://github.com/Sheng-IoT/Portainer_Templates"
+      },
+      "type": 3,
       "note":"Browse to <a herf='http://{host-ip}:1880'>http://{host-ip}:1880</a> to access the web interface."
     },
     {
