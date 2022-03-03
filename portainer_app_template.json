@@ -248,7 +248,7 @@
         },
         {
           "name": "MODEL",
-          "label": "RAK gateway model",
+          "label": "RAK gateway model/RAK WisLink LPWAN module",
           "select": [
             {
               "text": "RAK7243/RAK7244(no LTE)",
@@ -281,14 +281,7 @@
             {
               "text": "RAK7371",
               "value": "RAK7371"
-            }
-          ],
-          "description": "RAKwireless Developer gateway model. Once defined, we take care of all the concentrator configurations and you can skip to option <Interface for gateway EUI>"
-        },
-        {
-          "name": "MODEL",
-          "label": "RAK WisLink LPWAN module",
-          "select": [
+            },
             {
               "text": "RAK831(SPI only)",
               "value": "RAK831"
@@ -326,7 +319,7 @@
               "value": "RAK5146"
             }
           ],
-          "description": "If RAK gateway model is not defined, you can define either <RAKwireless WisLink LPWAN module> or <Semtech concentrator>. Once defined this virable, also need to specify other features of the module, for example, <Concentrator interface>,<HAS GPS>,<HAS LTE>."
+          "description": "RAKwireless Developer gateway model or RAKwireless WisLink LPWAN module. Once defined, we take care of all the concentrator configurations and you can skip to option <Interface for gateway EUI>"
         },
         {
           "name": "CONCENTRATOR",
@@ -349,7 +342,7 @@
               "value": "SX1308"
             }
           ],
-          "description": "If RAK gateway model is not defined, you can define either <Semtech concentrator> or <RAKwireless WisLink LPWAN module>. Once defined this virable, also need to specify other features of the module, for example, <Concentrator interface>,<HAS GPS>,<HAS LTE>."
+          "description": "If RAK gateway model is not defined, you can define <Semtech concentrator> instead. Once defined this env variable, also need to specify other features of the module, for example, <Concentrator interface>,<HAS GPS>,<HAS LTE>."
         },
         {
           "name": "INTERFACE",
@@ -413,15 +406,13 @@
         },
         {
           "name": "RADIO_DEV",
-          "default":"Don't set it if you don't know what this means",
           "label": "Where the concentrator is connected to",
-          "description": "/dev/spidev0.0 for SPI concentrators, /dev/ttyACM0 for USB concentrators."
+          "description": "Don't set it if you don't know what this means, /dev/spidev0.0 for SPI concentrators, /dev/ttyACM0 for USB concentrators."
         },
         {
           "name": "GPS_DEV",
-          "default":"Don't set it if you don't know what this means",
           "label": "Where the GPS is connected to",
-          "description": "/dev/ttyAMA0 except when HAS_LTE is 1, in this case it will default to /dev/i2c-1. "
+          "description": "Don't set it if you don't know what this means, /dev/ttyAMA0 except when HAS_LTE is 1, in this case it will default to /dev/i2c-1. "
         },
         {
           "name": "GATEWAY_EUI_NIC",
@@ -810,7 +801,7 @@
               "value": "false"
             }
           ],
-          "description": "Limiting the amount of resources the container can have on the host. If select ture, please update the following timescaledb-tune virables."
+          "description": "Limiting the amount of resources the container can have on the host. If select ture, please update the following timescaledb-tune variables."
         },
         {
           "name": "TS_TUNE_MEMORY",
