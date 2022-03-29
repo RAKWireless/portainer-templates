@@ -47,7 +47,7 @@ services:
       - postgresqldata:/var/lib/postgresql/data
 
   redis:
-    image: redis:5-alpine
+    image: redis:5
     restart: unless-stopped
     volumes:
       - redisdata:/data
