@@ -13,7 +13,7 @@ services:
       - node-red
 
   nodered:
-    image: sheng2216/nodered-docker:1.0
+    image: sheng2216/nodered-docker:1.1
     container_name: NodeRed
     restart: unless-stopped
     user: node-red
