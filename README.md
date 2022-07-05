@@ -37,6 +37,8 @@ Most templates are already configured to bind mount to various places on your dr
   - InfluxDB
   - ThingsBoard 
   - TimescaleDB
+  - Telegraf
+  - Tailscale
 
 ### Copyright and license
 
