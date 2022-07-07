@@ -99,271 +99,6 @@
     },
     {
       "categories": [
-        "Home Automation"
-      ],
-      "description": "Node-RED is a flow-based development tool for visual programming.",
-      "env": [
-        {
-          "default": "1000",
-          "label": "PUID",
-          "name": "PUID"
-        },
-        {
-          "default": "100",
-          "label": "PGID",
-          "name": "PGID"
-        },
-        {
-          "default": "Europe/London",
-          "label": "Time Zone",
-          "name": "TZ"
-        },
-        {
-          "default": "False",
-          "label": "Enable the projects feature",
-          "name": "NODE_RED_ENABLE_PROJECTS",
-          "select": [
-            {
-              "text": "Enable",
-              "value": "true"
-            },
-            {
-              "text": "Disable",
-              "value": "false"
-            }
-          ]
-        }
-      ],
-      "logo": "https://nodered.org/about/resources/media/node-red-icon-2.png",
-      "title": "NodeRed",
-      "name": "NodeRed",
-      "platform": "linux",
-      "network": "bridge",
-      "repository": {
-        "stackfile": "Stack/nodered.yml",
-        "url": "https://github.com/Sheng-IoT/Portainer_Templates"
-      },
-      "type": 3,
-      "note": "Browse to <a herf='http://{host-ip}:1880'>http://{host-ip}:1880</a> to access the web interface."
-    },
-    {
-      "categories": [
-        "Home Automation"
-      ],
-      "description": "Zigbee2MQTT is a nodejs Gateway application that connects Zigbee networks to MQTT networks.",
-      "env": [
-        {
-          "default": "1000",
-          "label": "PUID",
-          "name": "PUID"
-        },
-        {
-          "default": "100",
-          "label": "PGID",
-          "name": "PGID"
-        },
-        {
-          "default": "Europe/London",
-          "label": "Time Zone",
-          "name": "TZ"
-        },
-        {
-          "default": "true",
-          "label": "Allow new devices to join",
-          "name": "NODE_RED_ENABLE_PROJECTS",
-          "select": [
-            {
-              "text": "Enable",
-              "value": "true"
-            },
-            {
-              "text": "Disable",
-              "value": "false"
-            }
-          ]
-        },
-        {
-          "default": "zigbee2mqtt",
-          "label": "MQTT base topic",
-          "name": "ZIGBEE2MQTT_CONFIG_MQTT_BASE_TOPIC",
-          "description": "Default MQTT base topic"
-        },
-        {
-          "default": "mqtt://mqtt",
-          "label": "MQTT server address",
-          "name": "ZIGBEE2MQTT_CONFIG_MQTT_SERVER",
-          "description": "MQTT server address"
-        },
-        {
-          "default": "/dev/ttyUSB0",
-          "label": "Zigbee Adapter path",
-          "name": "ZIGBEE2MQTT_CONFIG_SERIAL_PORT",
-          "description": "Zigbee Adapter path, for example, the serial port the adapter connected to:"
-        },
-        {
-          "default": "true",
-          "label": "Enable the Zigbee2MQTT frontend",
-          "name": "ZIGBEE2MQTT_CONFIG_FRONTEND",
-          "select": [
-            {
-              "text": "Enable",
-              "value": "true"
-            },
-            {
-              "text": "Disable",
-              "value": "false"
-            }
-          ]
-        },
-        {
-          "default": "8002",
-          "label": "Frontend external port",
-          "name": "external_port ",
-          "description": "Frontend external port bind to Zigbee2MQTT service's 8080 port. Browse to http://{host-ip}:<Frontend external port> to access the web interface."
-        },
-        {
-          "default": "/dev/ttyUSB0",
-          "label": "Zigbee Adapter path",
-          "name": "ZIGBEE2MQTT_CONFIG_SERIAL_PORT",
-          "description": "Zigbee Adapter path, for example, the serial port the adapter connected to"
-        },
-        {
-          "default": "[7, 3, 5, 7, 9, 11, 13, 15, 0, 2, 4, 6, 8, 11, 12, 13]",
-          "label": "Network encryption key",
-          "name": "ZIGBEE2MQTT_CONFIG_ADVANCED_NETWORK_KEY",
-          "description": "Note: will improve security,but requires repairing of all devices after changing"
-        }
-      ],
-      "logo": "https://www.zigbee2mqtt.io/logo.png",
-      "name": "Zigbee2MQTT",
-      "platform": "linux",
-      "repository": {
-        "stackfile": "Stack/zigbee2mqtt.yml",
-        "url": "https://github.com/Sheng-IoT/Portainer_Templates"
-      },
-      "title": "Zigbee2MQTT",
-      "network": "bridge",
-      "type": 3,
-      "note": "Browse to <a href='http://{host-ip}:<8002'>http://{host-ip}:8002</a> to access the web interface, or change the external port number to your customised port number. Check <a href='https://www.zigbee2mqtt.io/guide/configuration/'>Zigbee2MQTT configuration guide</a> for more details."
-    },
-    {
-      "categories": [
-        "VPN"
-      ],
-      "description": "Tailscale is a zero config VPN. It can be Installed on any device in minutes, it manages firewall rules for users, and works from anywhere. ",
-      "env": [
-        {
-          "default": "1000",
-          "label": "PUID",
-          "name": "PUID"
-        },
-        {
-          "default": "100",
-          "label": "PGID",
-          "name": "PGID"
-        },
-        {
-          "default": "Europe/London",
-          "label": "Time Zone",
-          "name": "TZ"
-        },
-        {
-          "label": "TS_AUTH_KEY",
-          "name": "TS_AUTH_KEY",
-          "description": "Pre-authentication keys (“auth keys” for short) let you register new nodes without needing to sign in via a web browser, check https://tailscale.com/kb/1085/auth-keys/ for more details."
-        }
-      ],
-      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/tailscale_logo.png?raw=true",
-      "platform": "linux",
-      "repository": {
-        "stackfile": "Stack/tailscale.yml",
-        "url": "https://github.com/Sheng-IoT/Portainer_Templates"
-      },
-      "title": "Tailscale",
-      "type": 3,
-      "note": "Create an account at <a href='https://tailscale.com/'>Tailscale</a>, and then check <a href='https://tailscale.com/kb/1085/auth-keys/'>Tailscale's official documentation</a> on how to generate an authkey. Copy the key and fill in to the TS_AUTH_KEY variable below."
-    },
-    {
-      "categories": [
-        "LoRaWAN"
-      ],
-      "description": "The ChirpStack open-source LoRaWAN Network Server stack provides open-source components for LoRaWAN networks.",
-      "env": [
-        {
-          "default": "1000",
-          "label": "PUID",
-          "name": "PUID"
-        },
-        {
-          "default": "100",
-          "label": "PGID",
-          "name": "PGID"
-        },
-        {
-          "default": "Europe/London",
-          "label": "Time Zone",
-          "name": "TZ"
-        },
-        {
-          "default": "EU868",
-          "label": "Network Server Band",
-          "name": "NETWORK_SERVER__BAND__NAME",
-          "description": "Frequency channels used by Chirpstack for uplink transmissions, valid values are AU915, EU868, US915 ... "
-        }
-      ],
-      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/chirpstack-logo.png?raw=true",
-      "name": "ChirpStackNetworkServer",
-      "platform": "linux",
-      "repository": {
-        "stackfile": "Stack/chirpstack.yml",
-        "url": "https://github.com/Sheng-IoT/Portainer_Templates"
-      },
-      "title": "ChirpStack Network Server",
-      "network": "bridge",
-      "type": 3,
-      "note": "Browse to <a href='http://{host-ip}:8080'>http://{host-ip}:8080</a> to access the web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: admin</li>Check <a href='https://github.com/brocaar/chirpstack-docker'>ChirpStack Docker Github reposotory</a> for more details."
-    },
-    {
-      "categories": [
-        "LoRaWAN"
-      ],
-      "description": "The Things Stack LNS establishes a data connection between a LoRa Basics™ Station gateway and a Network Server (in this case, The Things Stack).",
-      "env": [
-        {
-          "default": "1000",
-          "label": "PUID",
-          "name": "PUID"
-        },
-        {
-          "default": "100",
-          "label": "PGID",
-          "name": "PGID"
-        },
-        {
-          "default": "Europe/London",
-          "label": "Time Zone",
-          "name": "TZ"
-        },
-        {
-          "label": "TTS DOMAIN",
-          "name": "TTS_DOMAIN",
-          "description": "set this to the IP or domain name of the host you will be using to access the stack "
-        }
-      ],
-      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/the_things_stack_logo.jpg?raw=true",
-      "name": "TheThingsStackLNS",
-      "platform": "linux",
-      "repository": {
-        "stackfile": "Stack/thethingsstack.yml",
-        "url": "https://github.com/Sheng-IoT/Portainer_Templates"
-      },
-      "title": "The Things Stack LNS",
-      "network": "bridge",
-      "type": 3,
-      "note": "Point your browser to the first local IP of the device or to the domain name (if you have defined one) using HTTPS to access the web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: changeme</li>Check <a href='https://github.com/xoseperez/the-things-stack-docker'>The Things Stack LoRaWAN Network Server Github repository</a> for more details. "
-    },
-    {
-      "categories": [
         "LoRaWAN"
       ],
       "description": "This app dockerize the rak_common_for_gateway project, which aim to help users to use the RAK Raspberry Pi Developer Gateway more easily.",
@@ -662,6 +397,342 @@
       "privileged": true,
       "note": "Check <a href='https://github.com/RAKWireless/udp-packet-forwarder'>LoRaWAN UDP Packet Forwarder Protocol for Docker Github repository</a> for more details.",
       "hostname": "UDP"
+    },
+    {
+      "categories": [
+        "LoRaWAN"
+      ],
+      "description": "This project deploys UDP Packet Forwarder protocol for LoRa 2.4GHz Gateways using Docker. It runs on any amd64/x86_64 PC, or a SBC like a Raspberry Pi 3/4, Compute Module 3/4 or balenaFin.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        },
+        {
+          "name": "Device",
+          "default": "/dev/ttyACM0",
+          "label": "Concentrator port",
+          "description": "Where the concentrator is connected to."
+        },
+        {
+          "name": "TTN_REGION",
+          "label": "TTN region",
+          "default": "eu1",
+          "description": "If using a TTN server, region of the TTN server to use. Can be eu1, nam1, and au1"
+        },
+        {
+          "name": "SERVER_HOST",
+          "label": "Host Server URL",
+          "description": "If TTN_REGION is defined it will build the right address for the TTN server"
+        },
+        {
+          "name": "SERVER_PORT",
+          "label": "Server port",
+          "default": "1700",
+          "description": "Port the server is listening to"
+        },
+        
+        {
+          "name": "GPS_LATITUDE",
+          "label": "GPS LATITUDE",
+          "description": "Report this latitude for the gateway"
+        },
+        {
+          "name": "GPS_LONGITUDE",
+          "label": "GPS LONGITUDE",
+          "description": "Report this longitude for the gateway"
+        },
+        {
+          "name": "GPS_ALTITUDE",
+          "label": "GPS ALTITUDE",
+          "description": "Report this altitude for the gateway"
+        }
+      ],
+      "image": "xoseperez/2g4-packet-forwarder:latest",
+      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/gateway_icon.png?raw=true",
+      "name": "2g4PacketForwarder",
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "title": "2.4GHz Gateway UDP Packet Forwarder",
+      "type": 1,
+      "note": "Check <a href='https://github.com/RAKWireless/udp-packet-forwarder'>LoRaWAN UDP Packet Forwarder Protocol for Docker Github repository</a> for more details.",
+      "hostname": "2g4-packet-forwarder"
+    },
+    {
+      "categories": [
+        "Home Automation"
+      ],
+      "description": "Node-RED is a flow-based development tool for visual programming.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        },
+        {
+          "default": "False",
+          "label": "Enable the projects feature",
+          "name": "NODE_RED_ENABLE_PROJECTS",
+          "select": [
+            {
+              "text": "Enable",
+              "value": "true"
+            },
+            {
+              "text": "Disable",
+              "value": "false"
+            }
+          ]
+        }
+      ],
+      "logo": "https://nodered.org/about/resources/media/node-red-icon-2.png",
+      "title": "NodeRed",
+      "name": "NodeRed",
+      "platform": "linux",
+      "network": "bridge",
+      "repository": {
+        "stackfile": "Stack/nodered.yml",
+        "url": "https://github.com/Sheng-IoT/Portainer_Templates"
+      },
+      "type": 3,
+      "note": "Browse to <a herf='http://{host-ip}:1880'>http://{host-ip}:1880</a> to access the web interface."
+    },
+    {
+      "categories": [
+        "Home Automation"
+      ],
+      "description": "Zigbee2MQTT is a nodejs Gateway application that connects Zigbee networks to MQTT networks.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        },
+        {
+          "default": "true",
+          "label": "Allow new devices to join",
+          "name": "NODE_RED_ENABLE_PROJECTS",
+          "select": [
+            {
+              "text": "Enable",
+              "value": "true"
+            },
+            {
+              "text": "Disable",
+              "value": "false"
+            }
+          ]
+        },
+        {
+          "default": "zigbee2mqtt",
+          "label": "MQTT base topic",
+          "name": "ZIGBEE2MQTT_CONFIG_MQTT_BASE_TOPIC",
+          "description": "Default MQTT base topic"
+        },
+        {
+          "default": "mqtt://mqtt",
+          "label": "MQTT server address",
+          "name": "ZIGBEE2MQTT_CONFIG_MQTT_SERVER",
+          "description": "MQTT server address"
+        },
+        {
+          "default": "/dev/ttyUSB0",
+          "label": "Zigbee Adapter path",
+          "name": "ZIGBEE2MQTT_CONFIG_SERIAL_PORT",
+          "description": "Zigbee Adapter path, for example, the serial port the adapter connected to:"
+        },
+        {
+          "default": "true",
+          "label": "Enable the Zigbee2MQTT frontend",
+          "name": "ZIGBEE2MQTT_CONFIG_FRONTEND",
+          "select": [
+            {
+              "text": "Enable",
+              "value": "true"
+            },
+            {
+              "text": "Disable",
+              "value": "false"
+            }
+          ]
+        },
+        {
+          "default": "8002",
+          "label": "Frontend external port",
+          "name": "external_port ",
+          "description": "Frontend external port bind to Zigbee2MQTT service's 8080 port. Browse to http://{host-ip}:<Frontend external port> to access the web interface."
+        },
+        {
+          "default": "/dev/ttyUSB0",
+          "label": "Zigbee Adapter path",
+          "name": "ZIGBEE2MQTT_CONFIG_SERIAL_PORT",
+          "description": "Zigbee Adapter path, for example, the serial port the adapter connected to"
+        },
+        {
+          "default": "[7, 3, 5, 7, 9, 11, 13, 15, 0, 2, 4, 6, 8, 11, 12, 13]",
+          "label": "Network encryption key",
+          "name": "ZIGBEE2MQTT_CONFIG_ADVANCED_NETWORK_KEY",
+          "description": "Note: will improve security,but requires repairing of all devices after changing"
+        }
+      ],
+      "logo": "https://www.zigbee2mqtt.io/logo.png",
+      "name": "Zigbee2MQTT",
+      "platform": "linux",
+      "repository": {
+        "stackfile": "Stack/zigbee2mqtt.yml",
+        "url": "https://github.com/Sheng-IoT/Portainer_Templates"
+      },
+      "title": "Zigbee2MQTT",
+      "network": "bridge",
+      "type": 3,
+      "note": "Browse to <a href='http://{host-ip}:<8002'>http://{host-ip}:8002</a> to access the web interface, or change the external port number to your customised port number. Check <a href='https://www.zigbee2mqtt.io/guide/configuration/'>Zigbee2MQTT configuration guide</a> for more details."
+    },
+    {
+      "categories": [
+        "VPN"
+      ],
+      "description": "Tailscale is a zero config VPN. It can be Installed on any device in minutes, it manages firewall rules for users, and works from anywhere. ",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        },
+        {
+          "label": "TS_AUTH_KEY",
+          "name": "TS_AUTH_KEY",
+          "description": "Pre-authentication keys (“auth keys” for short) let you register new nodes without needing to sign in via a web browser, check https://tailscale.com/kb/1085/auth-keys/ for more details."
+        }
+      ],
+      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/tailscale_logo.png?raw=true",
+      "platform": "linux",
+      "repository": {
+        "stackfile": "Stack/tailscale.yml",
+        "url": "https://github.com/Sheng-IoT/Portainer_Templates"
+      },
+      "title": "Tailscale",
+      "type": 3,
+      "note": "Create an account at <a href='https://tailscale.com/'>Tailscale</a>, and then check <a href='https://tailscale.com/kb/1085/auth-keys/'>Tailscale's official documentation</a> on how to generate an authkey. Copy the key and fill in to the TS_AUTH_KEY variable below."
+    },
+    {
+      "categories": [
+        "LoRaWAN"
+      ],
+      "description": "The ChirpStack open-source LoRaWAN Network Server stack provides open-source components for LoRaWAN networks.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        },
+        {
+          "default": "EU868",
+          "label": "Network Server Band",
+          "name": "NETWORK_SERVER__BAND__NAME",
+          "description": "Frequency channels used by Chirpstack for uplink transmissions, valid values are AU915, EU868, US915 ... "
+        }
+      ],
+      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/chirpstack-logo.png?raw=true",
+      "name": "ChirpStackNetworkServer",
+      "platform": "linux",
+      "repository": {
+        "stackfile": "Stack/chirpstack.yml",
+        "url": "https://github.com/Sheng-IoT/Portainer_Templates"
+      },
+      "title": "ChirpStack Network Server",
+      "network": "bridge",
+      "type": 3,
+      "note": "Browse to <a href='http://{host-ip}:8080'>http://{host-ip}:8080</a> to access the web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: admin</li>Check <a href='https://github.com/brocaar/chirpstack-docker'>ChirpStack Docker Github reposotory</a> for more details."
+    },
+    {
+      "categories": [
+        "LoRaWAN"
+      ],
+      "description": "The Things Stack LNS establishes a data connection between a LoRa Basics™ Station gateway and a Network Server (in this case, The Things Stack).",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        },
+        {
+          "label": "TTS DOMAIN",
+          "name": "TTS_DOMAIN",
+          "description": "set this to the IP or domain name of the host you will be using to access the stack "
+        }
+      ],
+      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/the_things_stack_logo.jpg?raw=true",
+      "name": "TheThingsStackLNS",
+      "platform": "linux",
+      "repository": {
+        "stackfile": "Stack/thethingsstack.yml",
+        "url": "https://github.com/Sheng-IoT/Portainer_Templates"
+      },
+      "title": "The Things Stack LNS",
+      "network": "bridge",
+      "type": 3,
+      "note": "Point your browser to the first local IP of the device or to the domain name (if you have defined one) using HTTPS to access the web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: changeme</li>Check <a href='https://github.com/xoseperez/the-things-stack-docker'>The Things Stack LoRaWAN Network Server Github repository</a> for more details. "
     },
     {
       "categories": [
