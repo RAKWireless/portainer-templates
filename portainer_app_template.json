@@ -148,6 +148,106 @@
     },
     {
       "categories": [
+        "Home Automation"
+      ],
+      "description": "Zigbee2MQTT is a nodejs Gateway application that connects Zigbee networks to MQTT networks.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        },
+        {
+          "default": "true",
+          "label": "Allow new devices to join",
+          "name": "NODE_RED_ENABLE_PROJECTS",
+          "select": [
+            {
+              "text": "Enable",
+              "value": "true"
+            },
+            {
+              "text": "Disable",
+              "value": "false"
+            }
+          ]
+        },
+        {
+          "default": "zigbee2mqtt",
+          "label": "MQTT base topic",
+          "name": "ZIGBEE2MQTT_CONFIG_MQTT_BASE_TOPIC",
+          "description": "Default MQTT base topic"
+        },
+        {
+          "default": "mqtt://mqtt",
+          "label": "MQTT server address",
+          "name": "ZIGBEE2MQTT_CONFIG_MQTT_SERVER",
+          "description": "MQTT server address"
+        },
+        {
+          "default": "/dev/ttyUSB0",
+          "label": "Zigbee Adapter path",
+          "name": "ZIGBEE2MQTT_CONFIG_SERIAL_PORT",
+          "description": "Zigbee Adapter path, for example, the serial port the adapter connected to:"
+        },
+        {
+          "default": "true",
+          "label": "Enable the Zigbee2MQTT frontend",
+          "name": "ZIGBEE2MQTT_CONFIG_FRONTEND",
+          "select": [
+            {
+              "text": "Enable",
+              "value": "true"
+            },
+            {
+              "text": "Disable",
+              "value": "false"
+            }
+          ]
+        },
+        {
+          "default": "8002",
+          "label": "Frontend external port",
+          "name": "external_port ",
+          "description": "Frontend external port bind to Zigbee2MQTT service's 8080 port. Browse to http://{host-ip}:<Frontend external port> to access the web interface."
+        },
+        {
+          "default": "/dev/ttyUSB0",
+          "label": "Zigbee Adapter path",
+          "name": "ZIGBEE2MQTT_CONFIG_SERIAL_PORT",
+          "description": "Zigbee Adapter path, for example, the serial port the adapter connected to"
+        },
+        {
+          "default": "[7, 3, 5, 7, 9, 11, 13, 15, 0, 2, 4, 6, 8, 11, 12, 13]",
+          "label": "Network encryption key",
+          "name": "ZIGBEE2MQTT_CONFIG_ADVANCED_NETWORK_KEY",
+          "description": "Note: will improve security,but requires repairing of all devices after changing"
+        }
+      ],
+      "logo": "https://www.zigbee2mqtt.io/logo.png",
+      "name": "Zigbee2MQTT",
+      "platform": "linux",
+      "repository": {
+        "stackfile": "Stack/zigbee2mqtt.yml",
+        "url": "https://github.com/Sheng-IoT/Portainer_Templates"
+      },
+      "title": "Zigbee2MQTT",
+      "network": "bridge",
+      "type": 3,
+      "note": "Browse to <a href='http://{host-ip}:<8002'>http://{host-ip}:8002</a> to access the web interface, or change the external port number to your customised port number. Check <a href='https://www.zigbee2mqtt.io/guide/configuration/'>Zigbee2MQTT configuration guide</a> for more details."
+    },
+    {
+      "categories": [
         "VPN"
       ],
       "description": "Tailscale is a zero config VPN. It can be Installed on any device in minutes, it manages firewall rules for users, and works from anywhere. ",
@@ -794,7 +894,7 @@
         "url": "https://github.com/kkcloudy/Portainer_Templates"
       },
       "network": "bridge",
-      "note": "The default configuration requires a running InfluxDB instance as an output plugin. <li>Ensure that InfluxDB is running on port 8086 before starting the Telegraf container.</li><li> Browse to <a href='https://hub.docker.com/_/telegraf'>Telegraf dockerhub quick reference</a> for more details.</li>" 
+      "note": "The default configuration requires a running InfluxDB instance as an output plugin. <li>Ensure that InfluxDB is running on port 8086 before starting the Telegraf container.</li><li> Browse to <a href='https://hub.docker.com/_/telegraf'>Telegraf dockerhub quick reference</a> for more details.</li>"
     },
     {
       "categories": [
