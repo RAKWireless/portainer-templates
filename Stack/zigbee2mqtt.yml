@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  mqtt:
+    image: eclipse-mosquitto:2.0
+    restart: unless-stopped
+    volumes:
+      - "./mosquitto-data:/mosquitto"
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    environment:
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
+    command: "mosquitto -c /mosquitto-no-auth.conf"
+
+  zigbee2mqtt:
+    container_name: zigbee2mqtt
+    restart: unless-stopped
+    image: koenkk/zigbee2mqtt
+    volumes:
+      - ./data:/app/data
+    ports:
+      - 8002:8080
+    environment:
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - ZIGBEE2MQTT_CONFIG_PERMIT_JOIN=${ZIGBEE2MQTT_CONFIG_PERMIT_JOIN}
+      - ZIGBEE2MQTT_CONFIG_MQTT_BASE_TOPIC=${ZIGBEE2MQTT_CONFIG_MQTT_BASE_TOPIC}
+      - ZIGBEE2MQTT_CONFIG_MQTT_SERVER=${ZIGBEE2MQTT_CONFIG_MQTT_SERVER}
+      - ZIGBEE2MQTT_CONFIG_SERIAL_PORT=${ZIGBEE2MQTT_CONFIG_SERIAL_PORT}
+      - ZIGBEE2MQTT_CONFIG_ADVANCED_NETWORK_KEY=${ZIGBEE2MQTT_CONFIG_ADVANCED_NETWORK_KEY}
+      - ZIGBEE2MQTT_CONFIG_FRONTEND=${ZIGBEE2MQTT_CONFIG_FRONTEND}
+      
+    devices:
+      #- /dev/ttyUSB0:/dev/ttyUSB0
+      - ${ZIGBEE2MQTT_CONFIG_SERIAL_PORT}:${ZIGBEE2MQTT_CONFIG_SERIAL_PORT}
