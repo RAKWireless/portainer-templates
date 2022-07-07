@@ -21,7 +21,7 @@ services:
     volumes:
       - ./data:/app/data
     ports:
-      - 8002:8080
+      - ${external_port}:8080
     environment:
       - TZ=${TZ}
       - PUID=${PUID}
@@ -34,5 +34,4 @@ services:
       - ZIGBEE2MQTT_CONFIG_FRONTEND=${ZIGBEE2MQTT_CONFIG_FRONTEND}
       
     devices:
-      #- /dev/ttyUSB0:/dev/ttyUSB0
-      - ${ZIGBEE2MQTT_CONFIG_SERIAL_PORT}:${ZIGBEE2MQTT_CONFIG_SERIAL_PORT}
+      - /dev/ttyUSB0:/dev/ttyUSB0
