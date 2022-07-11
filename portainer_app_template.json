@@ -542,7 +542,7 @@
         {
           "default": "true",
           "label": "Allow new devices to join",
-          "name": "NODE_RED_ENABLE_PROJECTS",
+          "name": "ZIGBEE2MQTT_CONFIG_PERMIT_JOIN",
           "select": [
             {
               "text": "Enable",
