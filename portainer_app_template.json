@@ -86,7 +86,7 @@
         }
       ],
       "image": "xoseperez/basicstation:v2",
-      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/gateway_icon.png?raw=true",
+      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_icon.png",
       "name": "BasicsStation",
       "platform": "linux",
       "restart_policy": "unless-stopped",
@@ -387,7 +387,7 @@
         }
       ],
       "image": "rakwireless/udp-packet-forwarder:latest",
-      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/gateway_icon.png?raw=true",
+      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_icon.png",
       "name": "UDPPacketForwarder",
       "platform": "linux",
       "restart_policy": "unless-stopped",
@@ -460,7 +460,7 @@
         }
       ],
       "image": "xoseperez/2g4-packet-forwarder:latest",
-      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/gateway_icon.png?raw=true",
+      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_icon.png",
       "name": "2g4PacketForwarder",
       "platform": "linux",
       "restart_policy": "unless-stopped",
@@ -513,7 +513,7 @@
       "network": "bridge",
       "repository": {
         "stackfile": "Stack/nodered.yml",
-        "url": "https://github.com/Sheng-IoT/Portainer_Templates"
+        "url": "https://github.com/RAKWireless/portainer-templates" 
       },
       "type": 3,
       "note": "Browse to <a herf='http://{host-ip}:1880'>http://{host-ip}:1880</a> to access the web interface."
@@ -599,7 +599,7 @@
       "platform": "linux",
       "repository": {
         "stackfile": "Stack/zigbee2mqtt.yml",
-        "url": "https://github.com/Sheng-IoT/Portainer_Templates"
+        "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "Zigbee2MQTT",
       "network": "bridge",
@@ -633,11 +633,11 @@
           "description": "Pre-authentication keys (“auth keys” for short) let you register new nodes without needing to sign in via a web browser, check https://tailscale.com/kb/1085/auth-keys/ for more details."
         }
       ],
-      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/tailscale_logo.png?raw=true",
+      "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/tailscale_logo.png?raw=true",
       "platform": "linux",
       "repository": {
         "stackfile": "Stack/tailscale.yml",
-        "url": "https://github.com/Sheng-IoT/Portainer_Templates"
+        "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "Tailscale",
       "type": 3,
@@ -671,12 +671,12 @@
           "description": "Frequency channels used by Chirpstack for uplink transmissions, valid values are AU915, EU868, US915 ... "
         }
       ],
-      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/chirpstack-logo.png?raw=true",
+      "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/chirpstack-logo.png?raw=true",
       "name": "ChirpStackNetworkServer",
       "platform": "linux",
       "repository": {
         "stackfile": "Stack/chirpstack.yml",
-        "url": "https://github.com/Sheng-IoT/Portainer_Templates"
+        "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "ChirpStack Network Server",
       "network": "bridge",
@@ -710,12 +710,12 @@
           "description": "set this to the IP or domain name of the host you will be using to access the stack "
         }
       ],
-      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/the_things_stack_logo.jpg?raw=true",
+      "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/the_things_stack_logo.jpg?raw=true",
       "name": "TheThingsStackLNS",
       "platform": "linux",
       "repository": {
         "stackfile": "Stack/thethingsstack.yml",
-        "url": "https://github.com/Sheng-IoT/Portainer_Templates"
+        "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "The Things Stack LNS",
       "network": "bridge",
@@ -745,7 +745,7 @@
         }
       ],
       "image": "eclipse-mosquitto:2",
-      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/mosquitto_logo.png?raw=true",
+      "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/mosquitto_logo.png?raw=true",
       "name": "Mosquitto",
       "platform": "linux",
       "ports": [
@@ -797,7 +797,7 @@
         }
       ],
       "image": "grafana/grafana-enterprise:8.4.4",
-      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/grafana-logo.png?raw=true",
+      "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/grafana-logo.png?raw=true",
       "name": "Grafana",
       "platform": "linux",
       "ports": [
@@ -942,7 +942,7 @@
           "name": "HOST_SYS"
         }
       ],
-      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/telegraf_logo.png?raw=true",
+      "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/telegraf_logo.png?raw=true",
       "name": "telegraf",
       "platform": "linux",
       "restart_policy": "unless-stopped",
@@ -950,7 +950,7 @@
       "type": 3,
       "repository": {
         "stackfile": "Stack/telegraf.yml",
-        "url": "https://github.com/kkcloudy/Portainer_Templates"
+        "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "network": "bridge",
       "note": "The default configuration requires a running InfluxDB instance as an output plugin. <li>Ensure that InfluxDB is running on port 8086 before starting the Telegraf container.</li><li> Browse to <a href='https://hub.docker.com/_/telegraf'>Telegraf dockerhub quick reference</a> for more details.</li>"
@@ -984,7 +984,7 @@
         }
       ],
       "image": "thingsboard/tb-postgres:3.3.4",
-      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/thingsboard_blue_logo.jpg?raw=true",
+      "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/thingsboard_blue_logo.jpg?raw=true",
       "name": "ThingsBoard",
       "platform": "linux",
       "title": "ThingsBoard",
@@ -1085,7 +1085,7 @@
         }
       ],
       "image": "timescale/timescaledb:2.6.0-pg12",
-      "logo": "https://github.com/Sheng-IoT/Portainer_Templates/blob/master/logo/timescale_logo.png?raw=true",
+      "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/timescale_logo.png?raw=true",
       "name": "TimeScaledb",
       "platform": "linux",
       "ports": [
