@@ -42,10 +42,6 @@ To buy WisBlock modules please visit our [online store](https://store.rakwireles
   - ThingsBoard 
   - TimescaleDB
 
-
-### Notes
-[The Node-red image ](https://github.com/portainer/portainer/issues/6970)
-
 ### Copyright and license
 
 Copyright (c) 2022 RAKwireless, under MIT License.
