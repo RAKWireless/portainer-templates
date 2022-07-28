@@ -3,7 +3,10 @@ version: '3.7'
 services:
 
   nodered:
-    image: sheng2216/nodered-docker:1.2
+    #image: sheng2216/nodered-docker:1.2
+    build:
+      context: ./
+      dockerfile: Dockerfile
     container_name: NodeRed
     user: node-red
     group_add:

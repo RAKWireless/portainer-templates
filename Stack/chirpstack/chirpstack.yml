@@ -39,7 +39,10 @@ services:
       - mosquitto
 
   postgresql:
-    image: sheng2216/postgres_for_chirpstack:rak
+    #image: sheng2216/postgres_for_chirpstack:rak
+    build:
+      context: ./
+      dockerfile: Dockerfile
     restart: unless-stopped
     environment:
       - POSTGRES_PASSWORD=root

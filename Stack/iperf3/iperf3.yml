@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  iperf3:
+    image: taoyou/iperf3-alpine:latest
+    restart: unless-stopped
+    ports:
+      - ${port}:5201/udp
+      - ${port}:5201/tcp
+    environment:
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
+    command: "${command}"
+    network_mode: "bridge"

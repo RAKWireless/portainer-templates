@@ -86,7 +86,7 @@
         }
       ],
       "image": "xoseperez/basicstation:v2",
-      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_icon.png",
+      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_logo.png",
       "name": "BasicsStation",
       "platform": "linux",
       "restart_policy": "unless-stopped",
@@ -387,7 +387,7 @@
         }
       ],
       "image": "rakwireless/udp-packet-forwarder:latest",
-      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_icon.png",
+      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_logo.png",
       "name": "UDPPacketForwarder",
       "platform": "linux",
       "restart_policy": "unless-stopped",
@@ -442,7 +442,6 @@
           "default": "1700",
           "description": "Port the server is listening to"
         },
-        
         {
           "name": "GPS_LATITUDE",
           "label": "GPS LATITUDE",
@@ -460,7 +459,7 @@
         }
       ],
       "image": "xoseperez/2g4-packet-forwarder:latest",
-      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_icon.png",
+      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_logo.png",
       "name": "2g4PacketForwarder",
       "platform": "linux",
       "restart_policy": "unless-stopped",
@@ -512,8 +511,8 @@
       "platform": "linux",
       "network": "bridge",
       "repository": {
-        "stackfile": "Stack/nodered.yml",
-        "url": "https://github.com/RAKWireless/portainer-templates" 
+        "stackfile": "Stack/nodered/nodered.yml",
+        "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "type": 3,
       "note": "Browse to <a herf='http://{host-ip}:1880'>http://{host-ip}:1880</a> to access the web interface."
@@ -598,13 +597,86 @@
       "name": "Zigbee2MQTT",
       "platform": "linux",
       "repository": {
-        "stackfile": "Stack/zigbee2mqtt.yml",
+        "stackfile": "Stack/zigbee2mqtt/zigbee2mqtt.yml",
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "Zigbee2MQTT",
       "network": "bridge",
       "type": 3,
       "note": "Browse to <a href='http://{host-ip}:<8002'>http://{host-ip}:8002</a> to access the web interface, or change the external port number to your customised port number. Check <a href='https://www.zigbee2mqtt.io/guide/configuration/'>Zigbee2MQTT configuration guide</a> for more details."
+    },
+    {
+      "categories": [
+        "File Sync & Share"
+      ],
+      "description": "Seafile is an open source file sync&share solution designed for high reliability, performance and productivity.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        },
+        {
+          "default": "db_dev",
+          "label": "MySQL service's root password ",
+          "name": "MYSQL_ROOT_PASSWORD",
+          "description": "Requested, set the root's password of MySQL service"
+        },
+        {
+          "default": "me@example.com",
+          "label": "Seafile admin user email",
+          "name": "SEAFILE_ADMIN_EMAIL",
+          "description": "Specifies Seafile admin user, default is 'me@example.com'."
+        },
+        {
+          "default": "changeme",
+          "label": "Seafile admin user password",
+          "name": "SEAFILE_ADMIN_PASSWORD",
+          "description": "Seafile admin password, default is 'changeme'"
+        },
+        {
+          "default": "false",
+          "label": "Whether to use https or not",
+          "name": "SEAFILE_SERVER_LETSENCRYPT",
+          "description": "Whether to use https or not. If https is enabled, please publish port 443 manually",
+          "select": [
+            {
+              "text": "Enable",
+              "value": "true"
+            },
+            {
+              "text": "Disable",
+              "value": "false"
+            }
+          ]
+        },
+        {
+          "default": "docs.seafile.com",
+          "label": "Seafile Server_HOSTNAME",
+          "name": "SEAFILE_SERVER_HOSTNAME",
+          "description": "Specifies your host name if https is enabled."
+        }
+      ],
+      "logo": "https://manual.seafile.com/media/seafile-transparent-1024.png",
+      "name": "Seafile",
+      "platform": "linux",
+      "repository": {
+        "stackfile": "Stack/seafile/seafile.yml",
+        "url": "https://github.com/RAKWireless/portainer-templates"
+      },
+      "title": "Seafile",
+      "type": 3,
+      "note": "Browse to <a href='http://{host-ip}:<80'>http://{host-ip}:80</a> to access the web interface. HTTPS is not enabled by default.<br>After login, please go to <b>System admin</b> on top right, then navigate to <b>Settings</b>, and change the <b>FILE_SERVER_ROOT</b> URL to http://{host-ip}/seafhttp.<br>Check <a href='https://manual.seafile.com/docker/deploy_seafile_with_docker/'>Seafile Community Installation Guide</a> for more details."
     },
     {
       "categories": [
@@ -636,12 +708,13 @@
       "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/tailscale_logo.png?raw=true",
       "platform": "linux",
       "repository": {
-        "stackfile": "Stack/tailscale.yml",
+        "stackfile": "Stack/tailscale/tailscale.yml",
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "Tailscale",
+      "name": "Tailscale",
       "type": 3,
-      "note": "Create an account at <a href='https://tailscale.com/'>Tailscale</a>, and then check <a href='https://tailscale.com/kb/1085/auth-keys/'>Tailscale's official documentation</a> on how to generate an authkey. Copy the key and fill in to the TS_AUTH_KEY variable below."
+      "note": "Create an account at <a href='https://tailscale.com/'>Tailscale</a> first, and then check <a href='https://tailscale.com/kb/1085/auth-keys/'>Tailscale's official documentation</a> on how to generate an authkey.<br>Copy the key and fill in to the <b>TS_AUTH_KEY</b> variable below, and then deploy the service"
     },
     {
       "categories": [
@@ -671,11 +744,11 @@
           "description": "Frequency channels used by Chirpstack for uplink transmissions, valid values are AU915, EU868, US915 ... "
         }
       ],
-      "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/chirpstack-logo.png?raw=true",
+      "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/chirpstack_logo.png?raw=true",
       "name": "ChirpStackNetworkServer",
       "platform": "linux",
       "repository": {
-        "stackfile": "Stack/chirpstack.yml",
+        "stackfile": "Stack/chirpstack/chirpstack.yml",
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "ChirpStack Network Server",
@@ -714,7 +787,7 @@
       "name": "TheThingsStackLNS",
       "platform": "linux",
       "repository": {
-        "stackfile": "Stack/thethingsstack.yml",
+        "stackfile": "Stack/thethingsstack/thethingsstack.yml",
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "The Things Stack LNS",
@@ -797,7 +870,7 @@
         }
       ],
       "image": "grafana/grafana-enterprise:8.4.4",
-      "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/grafana-logo.png?raw=true",
+      "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/grafana_logo.png?raw=true",
       "name": "Grafana",
       "platform": "linux",
       "ports": [
@@ -949,7 +1022,7 @@
       "title": "Telegraf",
       "type": 3,
       "repository": {
-        "stackfile": "Stack/telegraf.yml",
+        "stackfile": "Stack/telegraf/telegraf.yml",
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "network": "bridge",
@@ -984,7 +1057,7 @@
         }
       ],
       "image": "thingsboard/tb-postgres:3.3.4",
-      "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/thingsboard_blue_logo.jpg?raw=true",
+      "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/thingsboard_logo.jpg?raw=true",
       "name": "ThingsBoard",
       "platform": "linux",
       "title": "ThingsBoard",
@@ -1102,6 +1175,72 @@
         }
       ],
       "note": "Please check <a href='https://github.com/timescale/timescaledb-docker'>TimescaleDB docker Github repository</a> for more details"
+    },
+    {
+      "categories": [
+        "Other"
+      ],
+      "description": "NATS is a simple, secure and performant communications system for digital systems, services and devices.",
+      "image": "nats",
+      "interactive": true,
+      "command": "--http_port 8222",
+      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/nats_logo.jpg",
+      "name": "nats",
+      "platform": "linux",
+      "ports": [
+        "4222:4222/tcp",
+        "8222:8222/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "NATS Server",
+      "type": 1,
+      "network": "bridge",
+      "note": "To test the monitoring endpoint, browse to <a href='http://{host-ip}:8222'>http://{host-ip}:8222</a>."
+    },
+    {
+      "categories": [
+        "Other"
+      ],
+      "description": "A tiny Docker image of iperf3 based on Alpine Linux for Network Performance and Bandwidth Testing.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        },
+        {
+          "default": "-s",
+          "label": "Iperf command to run in the container",
+          "name": "command",
+          "description": "Set to server mode by default, you can pass any parameters for the server here"
+        },
+        {
+          "default": "5201",
+          "label": "port",
+          "name": "port",
+          "description": "Server port that the container exposed for the server to listen on."
+        }
+      ],
+      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/iperf3_logo.png",
+      "name": "iperf3-server",
+      "platform": "linux",
+      "repository": {
+        "stackfile": "Stack/iperf3/iperf3.yml",
+        "url": "https://github.com/RAKWireless/portainer-templates"
+      },
+      "title": "iperf3-server",
+      "type": 3,
+      "note": "The template runs as an iperf3 server by default.<br> Run an iperf3 client with the following command in terminal:docker run --rm -t taoyou/iperf3-alpine:latest -c {server address}<br>Browse to <a href='https://hub.docker.com/r/taoyou/iperf3-alpine'>iperf3-alpine dockerhub quick reference</a> for more details."
     }
   ]
 }

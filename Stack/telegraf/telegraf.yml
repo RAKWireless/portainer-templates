@@ -3,8 +3,10 @@ version: '3.9'
 services:
     telegraf:
         container_name: telegraf
-        image: "xikai3344/mytelegraf:v2.0"
-
+        #image: "xikai3344/mytelegraf:v2.0"
+        build:
+          context: ./
+          dockerfile: Dockerfile
         volumes:
           - /etc/telegraf:/etc/telegraf:rw
           - /sys:/rootfs/sys:ro
