@@ -2,7 +2,7 @@
 ARG version=2.2.2
 
 #### Use nodered/node-red:2.2.2 as the base
-FROM nodered/node-red:version AS base
+FROM nodered/node-red:${version} AS base
 
 USER root
 

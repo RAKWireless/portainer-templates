@@ -32,6 +32,7 @@ To buy WisBlock modules please visit our [online store](https://store.rakwireles
   - 2.4GHz Gatewat UDP Packet Forwarder
   - NodeRed
   - Zigbee2MQTT
+  - Seafile
   - Tailscale
   - ChirpStack Network Server
   - The Things Stack LNS
@@ -41,6 +42,8 @@ To buy WisBlock modules please visit our [online store](https://store.rakwireles
   - Telegraf
   - ThingsBoard 
   - TimescaleDB
+  - NATS Server
+  - iperf3-server
 
 ### Copyright and license
 
