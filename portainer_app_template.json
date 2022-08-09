@@ -517,7 +517,7 @@
         "restart_policy": "unless-stopped",
         "type": 1,
         "privileged": true,
-        "note": "Check <a href='https://github.com/RAKWireless/udp-packet-forwarder'>LoRaWAN UDP Packet Forwarder Protocol for Docker Github repository</a> for more details."
+        "note": "Start the UDP packet forwarder service first.<br>Set the packet forwarder to forward to the (default) configured helium-gateway on 127.0.0.1 at udp port 1680.<br>Check <a href='https://github.com/helium/gateway-rs'>Helium gateway-rs Github Repository</a> for more details."
       },
       {
         "categories": [
