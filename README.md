@@ -30,6 +30,7 @@ To buy WisBlock modules please visit our [online store](https://store.rakwireles
   - LoRa Basics™ Station for Docker 
   - UDP Packet Forwarder
   - 2.4GHz Gatewat UDP Packet Forwarder
+  - Helium light hotspot
   - NodeRed
   - Zigbee2MQTT
   - Seafile

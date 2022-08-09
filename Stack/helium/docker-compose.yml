@@ -1,0 +1,34 @@
+version: '2.0'
+
+services:
+
+  udp-packet-forwarder:
+    image: rakwireless/udp-packet-forwarder:latest
+    container_name: udp-packet-forwarder
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+    environment:
+      MODEL: "RAK2245"
+      SERVER_HOST: "127.0.0.1"
+      SERVER_PORT: "1680"
+      BAND: "cn_470_510"
+
+  helium-gateway-rs:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+#      args:
+#        ARCH: aarch64
+    container_name: helium-gateway-rs
+    restart: unless-stopped
+    privileged: true
+    command:
+      - /bin/bash
+      - /app/start.sh
+    environment:
+      version: "v1.0.0-alpha.29"
+      platform: "raspi_64"
+      region: "CN470"
+    depends_on:
+      - udp-packet-forwarder
