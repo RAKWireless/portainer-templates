@@ -9,26 +9,29 @@ services:
     privileged: true
     network_mode: host
     environment:
-      MODEL: "RAK2245"
+      MODEL: "RAK5146"
+      CONCENTRATOR: "SX1303"
       SERVER_HOST: "127.0.0.1"
       SERVER_PORT: "1680"
-      BAND: "cn_470_510"
+      BAND: "us_902_928"
 
   helium-gateway-rs:
-    build:
-      context: ./
-      dockerfile: Dockerfile
+#    build:
+#      context: ./
+#      dockerfile: Dockerfile
+    image: sheng2216/helium:0.1
 #      args:
 #        ARCH: aarch64
     container_name: helium-gateway-rs
     restart: unless-stopped
     privileged: true
+    network_mode: host
     command:
       - /bin/bash
       - /app/start.sh
     environment:
-      version: "v1.0.0-alpha.29"
+      version: "v1.0.0-alpha.30"
       platform: "raspi_64"
-      region: "CN470"
+      region: "US915"
     depends_on:
       - udp-packet-forwarder
