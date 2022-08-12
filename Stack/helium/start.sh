@@ -23,6 +23,7 @@ wget https://github.com/helium/gateway-rs/releases/download/${version}/helium-ga
 
 ### Install the Helium-gateway pakage
 dpkg -i helium-gateway-* 
+rm helium-gateway-*.deb
 
 ### Configure the settings file,
 echo region = \"$region\" > /etc/helium_gateway/settings.toml

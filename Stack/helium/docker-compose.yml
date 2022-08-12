@@ -19,13 +19,15 @@ services:
 #    build:
 #      context: ./
 #      dockerfile: Dockerfile
-    image: sheng2216/helium:0.1
+    image: sheng2216/helium:0.2
 #      args:
 #        ARCH: aarch64
     container_name: helium-gateway-rs
     restart: unless-stopped
     privileged: true
     network_mode: host
+    volumes:
+      - /etc/helium_gateway:/etc/helium_gateway/
     command:
       - /bin/bash
       - /app/start.sh

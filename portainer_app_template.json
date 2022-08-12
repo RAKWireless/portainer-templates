@@ -472,7 +472,7 @@
       "categories": [
         "LoRaWAN"
       ],
-      "description": "Helium light (or data-only) hotspot does not mine HNT but can be used to increase coverage on the Helium network.",
+      "description": "The Helium gateway-rs is a service designed to run on Linux-based LoRaWAN gateways. It's intended to run alongside a typical LoRa packet forwarder and to connect via Semtech's Gateway Messaging Protocol. It does not mine HNT for now but can be used to increase coverage on the Helium network.",
       "env": [
         {
           "default": "1000",
@@ -491,7 +491,7 @@
         },
         {
           "name": "version",
-          "default": "v1.0.0-alpha.29",
+          "default": "v1.0.0-alpha.30",
           "label": "Version of gateway-rs ",
           "description": "version of gateway-rs .deb package, please check the release note at https://github.com/helium/gateway-rs/releases"
         },
@@ -509,16 +509,22 @@
         }
       ],
       "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/helium_logo.png",
-      "title": "Helium light hotspot",
+      "title": "Helium gateway-rs",
       "name": "Helium-gateway-rs",
       "platform": "linux",
-      "image": "sheng2216/helium:0.1",
+      "image": "sheng2216/helium:0.2",
       "network": "host",
+      "volumes": [
+        {
+          "bind": "/etc/helium_gateway",
+          "container": "/etc/helium_gateway"
+        }
+      ],
       "command": "/bin/bash -c /app/start.sh",
       "restart_policy": "unless-stopped",
       "type": 1,
       "privileged": true,
-      "note": "Start the UDP packet forwarder service first.<br>Set the packet forwarder to forward to the (default) configured helium-gateway on 127.0.0.1 at udp port 1680.<br>Check <a href='https://github.com/helium/gateway-rs'>Helium gateway-rs Github Repository</a> for more details."
+      "note": "Start the UDP packet forwarder service first.<br>Make sure to set the packet forwarder to forward to the (default) configured helium-gateway on 127.0.0.1 at udp port 1680.<br>The <strong>gateway_key.bin</strong> file is stored under <strong>/etc/helium_gateway</strong> on your host by default.<br>Use the command <strong>docker exec {container name} helium_gateway key info </strong>on your host to get the public key address and animal name.<br>Check <a href='https://github.com/helium/gateway-rs'>Helium gateway-rs Github Repository</a> for more details."
     },
     {
       "categories": [
