@@ -468,7 +468,7 @@
       "note": "Check <a href='https://github.com/RAKWireless/udp-packet-forwarder'>LoRaWAN UDP Packet Forwarder Protocol for Docker Github repository</a> for more details.",
       "hostname": "2g4-packet-forwarder"
     },
-   {
+    {
       "categories": [
         "LoRaWAN"
       ],
@@ -575,6 +575,55 @@
       "type": 1,
       "privileged": true,
       "note": "The image comes with helium/gateway-rs & helium-wallet packages.<br>Start the UDP packet forwarder service first, make sure to set the packet forwarder to forward to the (default) configured helium-gateway on 127.0.0.1 at udp port 1680.<br>The <strong>gateway_key.bin</strong> file is stored under <strong>/etc/helium_gateway</strong> on your host by default.<br>Use the command <strong>docker exec {container name} helium_gateway key info </strong>on your host to get the public key address and animal name.<br>Check <a href='https://github.com/helium/gateway-rs'>Helium gateway-rs Github Repository</a> for more details."
+    },
+    {
+      "categories": [
+        "Home Automation"
+      ],
+      "description": "Node-RED is a flow-based development tool for visual programming.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        },
+        {
+          "default": "False",
+          "label": "Enable the projects feature",
+          "name": "NODE_RED_ENABLE_PROJECTS",
+          "select": [
+            {
+              "text": "Enable",
+              "value": "true"
+            },
+            {
+              "text": "Disable",
+              "value": "false"
+            }
+          ]
+        }
+      ],
+      "logo": "https://nodered.org/about/resources/media/node-red-icon-2.png",
+      "title": "NodeRed",
+      "name": "NodeRed",
+      "platform": "linux",
+      "network": "bridge",
+      "repository": {
+        "stackfile": "Stack/nodered/nodered.yml",
+        "url": "https://github.com/RAKWireless/portainer-templates"
+      },
+      "type": 3,
+      "note": "Browse to <a herf='http://{host-ip}:1880'>http://{host-ip}:1880</a> to access the web interface.<br>Check <a href='https://nodered.org/docs/getting-started/docker'>Node-RED docker quick start guide</a> for more details."
     },
     {
       "categories": [
@@ -1254,7 +1303,7 @@
       "title": "NATS Server",
       "type": 1,
       "network": "bridge",
-      "note": "To test the monitoring endpoint, browse to <a href='http://{host-ip}:8222'>http://{host-ip}:8222</a>."
+      "note": "To test the monitoring endpoint, browse to <a href='http://{host-ip}:8222'>http://{host-ip}:8222</a>.<br>Please check <a href='https://docs.nats.io/running-a-nats-service/nats_docker/nats-docker-tutorial'>NATS docker tutorial</a> for more details."
     },
     {
       "categories": [
