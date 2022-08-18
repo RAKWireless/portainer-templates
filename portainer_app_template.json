@@ -468,7 +468,7 @@
       "note": "Check <a href='https://github.com/RAKWireless/udp-packet-forwarder'>LoRaWAN UDP Packet Forwarder Protocol for Docker Github repository</a> for more details.",
       "hostname": "2g4-packet-forwarder"
     },
-    {
+   {
       "categories": [
         "LoRaWAN"
       ],
@@ -491,9 +491,9 @@
         },
         {
           "name": "version",
-          "default": "v1.0.0-alpha.30",
-          "label": "Version of gateway-rs ",
-          "description": "version of gateway-rs .deb package, please check the release note at https://github.com/helium/gateway-rs/releases"
+          "default": "latest",
+          "label": "Version of gateway-rs package ",
+          "description": "Version of gateway-rs package, default is set to the latest. You can specify a history version, for example, v1.0.0-alpha.29. Please check the release note at https://github.com/helium/gateway-rs/releases"
         },
         {
           "name": "platform",
@@ -505,14 +505,64 @@
           "name": "region",
           "label": "Region",
           "default": "US915",
-          "description": "Possible values are US915, EU868, EU433, CN470, CN779, AU915, AS923_1, AS923_2, AS923_3, AS923_4, KR920, and IN865"
+          "select": [
+            {
+              "text": "US915",
+              "value": "US915"
+            },
+            {
+              "text": "EU868",
+              "value": "EU868"
+            },
+            {
+              "text": "EU433",
+              "value": "EU433"
+            },
+            {
+              "text": "CN470",
+              "value": "CN470"
+            },
+            {
+              "text": "CN779",
+              "value": "CN779"
+            },
+            {
+              "text": "AU915",
+              "value": "AU915"
+            },
+            {
+              "text": "AS923_1",
+              "value": "AS923_1"
+            },
+            {
+              "text": "AS923_2",
+              "value": "AS923_2"
+            },
+            {
+              "text": "AS923_3",
+              "value": "AS923_3"
+            },
+            {
+              "text": "AS923_4",
+              "value": "AS923_4"
+            },
+            {
+              "text": "KR920",
+              "value": "KR920"
+            },
+            {
+              "text": "IN865",
+              "value": "IN865"
+            }
+          ],
+          "description": "Possible valuess for regional parameters"
         }
       ],
       "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/helium_logo.png",
       "title": "Helium gateway-rs",
       "name": "Helium-gateway-rs",
       "platform": "linux",
-      "image": "sheng2216/helium:0.2",
+      "image": "sheng2216/helium:latest",
       "network": "host",
       "volumes": [
         {
@@ -524,56 +574,7 @@
       "restart_policy": "unless-stopped",
       "type": 1,
       "privileged": true,
-      "note": "Start the UDP packet forwarder service first.<br>Make sure to set the packet forwarder to forward to the (default) configured helium-gateway on 127.0.0.1 at udp port 1680.<br>The <strong>gateway_key.bin</strong> file is stored under <strong>/etc/helium_gateway</strong> on your host by default.<br>Use the command <strong>docker exec {container name} helium_gateway key info </strong>on your host to get the public key address and animal name.<br>Check <a href='https://github.com/helium/gateway-rs'>Helium gateway-rs Github Repository</a> for more details."
-    },
-    {
-      "categories": [
-        "Home Automation"
-      ],
-      "description": "Node-RED is a flow-based development tool for visual programming.",
-      "env": [
-        {
-          "default": "1000",
-          "label": "PUID",
-          "name": "PUID"
-        },
-        {
-          "default": "100",
-          "label": "PGID",
-          "name": "PGID"
-        },
-        {
-          "default": "Europe/London",
-          "label": "Time Zone",
-          "name": "TZ"
-        },
-        {
-          "default": "False",
-          "label": "Enable the projects feature",
-          "name": "NODE_RED_ENABLE_PROJECTS",
-          "select": [
-            {
-              "text": "Enable",
-              "value": "true"
-            },
-            {
-              "text": "Disable",
-              "value": "false"
-            }
-          ]
-        }
-      ],
-      "logo": "https://nodered.org/about/resources/media/node-red-icon-2.png",
-      "title": "NodeRed",
-      "name": "NodeRed",
-      "platform": "linux",
-      "network": "bridge",
-      "repository": {
-        "stackfile": "Stack/nodered/nodered.yml",
-        "url": "https://github.com/RAKWireless/portainer-templates"
-      },
-      "type": 3,
-      "note": "Browse to <a herf='http://{host-ip}:1880'>http://{host-ip}:1880</a> to access the web interface."
+      "note": "The image comes with helium/gateway-rs & helium-wallet packages.<br>Start the UDP packet forwarder service first, make sure to set the packet forwarder to forward to the (default) configured helium-gateway on 127.0.0.1 at udp port 1680.<br>The <strong>gateway_key.bin</strong> file is stored under <strong>/etc/helium_gateway</strong> on your host by default.<br>Use the command <strong>docker exec {container name} helium_gateway key info </strong>on your host to get the public key address and animal name.<br>Check <a href='https://github.com/helium/gateway-rs'>Helium gateway-rs Github Repository</a> for more details."
     },
     {
       "categories": [
