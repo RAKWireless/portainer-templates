@@ -598,7 +598,7 @@
           "name": "TZ"
         },
         {
-          "default": "False",
+          "default": "false",
           "label": "Enable the projects feature",
           "name": "NODE_RED_ENABLE_PROJECTS",
           "select": [
@@ -1303,6 +1303,23 @@
       "title": "NATS Server",
       "type": 1,
       "network": "bridge",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        }
+      ],
       "note": "To test the monitoring endpoint, browse to <a href='http://{host-ip}:8222'>http://{host-ip}:8222</a>.<br>Please check <a href='https://docs.nats.io/running-a-nats-service/nats_docker/nats-docker-tutorial'>NATS docker tutorial</a> for more details."
     },
     {
@@ -1356,7 +1373,7 @@
       ],
       "description": "TagoCore is a free, fast, and open-source IoT platform for edge computing.",
       "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/tagocore_logo.png",
-      "name": "TogoCore",
+      "name": "TagoCore",
       "platform": "linux",
       "restart_policy": "unless-stopped",
       "title": "TagoCore",
@@ -1366,7 +1383,24 @@
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "network": "bridge",
-      "note": "Browse to <a href='http://{host-ip}:<8080'>http://{host-ip}:8080</a> to access the web interface."
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        }
+      ],
+      "note": "Browse to <a href='http://{host-ip}:<8080'>http://{host-ip}:8080</a> to access the web interface.<br>Please check <a href='https://tagocore.com/docs/'>TagoCore introduction page</a> for more information."
     }
   ]
 }

@@ -1,5 +1,5 @@
 ### Define the base image version
-ARG version=2.2.2
+ARG version=3.0.2
 
 #### Use nodered/node-red:2.2.2 as the base
 FROM nodered/node-red:${version} AS base
@@ -16,7 +16,8 @@ COPY package.json .
 RUN npm install --unsafe-perm --no-update-notifier --no-fund --only=production
 
 RUN addgroup -g 998 i2c
-#RUN addgroup node-red i2c
-#RUN addgroup node-red dialout
+RUN addgroup node-red i2c
+RUN addgroup node-red dialout
 
 USER node-red
+

@@ -1,6 +1,6 @@
 {
     "name": "node-red-docker",
-    "version": "2.2.2",
+    "version": "3.0.2",
     "description": "Low-code programming for event-driven applications",
     "homepage": "http://nodered.org",
     "license": "Apache-2.0",
@@ -29,15 +29,24 @@
         }
     ],
     "dependencies": {
+        "node-red": "3.0.2",
         "@mschaeffler/node-red-lora": "^1.2.4",
-        "node-red": "2.2.0",
         "node-red-contrib-ads1x15_i2c": "0.0.14",
         "node-red-contrib-aedes": "^0.7.0",
         "node-red-contrib-i2c": "^0.9.0",
         "node-red-contrib-influxdb": "^0.6.1",
         "node-red-contrib-schedex": "^1.10.6",
         "node-red-dashboard": "^3.1.6",
-        "node-red-node-pi-gpiod": "^0.4.0"
+        "node-red-node-pi-gpiod": "^0.4.0",
+        "@rakwireless/shtc3": "^1.0.4",
+        "@rakwireless/adc121c021": "^1.0.0",
+        "@rakwireless/linbus": "^1.0.0",
+        "@rakwireless/ltr-390uv": "^1.0.0",
+        "@rakwireless/opt3001": "^1.0.0",
+        "@rakwireless/pi4ioe5v": "^1.0.0",
+        "@rakwireless/ads7830": "^1.0.0",
+        "@rakwireless/mcp-pcf-aio": "^1.0.0",
+        "@rakwireless/pn532": "^1.0.0"
     },
     "engines": {
         "node": ">=12"

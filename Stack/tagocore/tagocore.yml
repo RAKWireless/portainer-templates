@@ -9,3 +9,7 @@ services:
         ports:
           - 8080:8888
         restart: unless-stopped
+        environment:
+          - PUID=${PUID}
+          - PGID=${PGID}
+          - TZ=${TZ}

@@ -3,10 +3,10 @@ version: '3.7'
 services:
 
   nodered:
-    #image: sheng2216/nodered-docker:1.2
-    build:
-      context: ./
-      dockerfile: Dockerfile
+    image: sheng2216/nodered-docker:rak
+#    build:
+#      context: ./
+#      dockerfile: Dockerfile
     container_name: NodeRed
     user: node-red
     group_add:
@@ -22,6 +22,10 @@ services:
       - 'node-red-data:/data'
     ports:
       - "1880:1880"
-
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - NODE_RED_ENABLE_PROJECTS=${NODE_RED_ENABLE_PROJECTS}
 volumes:
   node-red-data:
+
