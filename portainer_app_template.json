@@ -1349,6 +1349,24 @@
       "title": "iperf3-server",
       "type": 3,
       "note": "The template runs as an iperf3 server by default.<br> Run an iperf3 client with the following command in terminal:docker run --rm -t taoyou/iperf3-alpine:latest -c {server address}<br>Browse to <a href='https://hub.docker.com/r/taoyou/iperf3-alpine'>iperf3-alpine dockerhub quick reference</a> for more details."
+    },
+    {
+      "categories": [
+        "Other"
+      ],
+      "description": "TagoCore is a free, fast, and open-source IoT platform for edge computing.",
+      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/tagocore_logo.png",
+      "name": "TogoCore",
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "title": "TagoCore",
+      "type": 3,
+      "repository": {
+        "stackfile": "Stack/tagocore/tagocore.yml",
+        "url": "https://github.com/RAKWireless/portainer-templates"
+      },
+      "network": "bridge",
+      "note": "Browse to <a href='http://{host-ip}:<8080'>http://{host-ip}:8080</a> to access the web interface."
     }
   ]
 }

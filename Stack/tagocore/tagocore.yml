@@ -1,0 +1,11 @@
+version: '3.9'
+
+services:
+    tagocore:
+        container_name: tagocore
+        build:
+          context: ./
+          dockerfile: Dockerfile
+        ports:
+          - 8080:8888
+        restart: unless-stopped

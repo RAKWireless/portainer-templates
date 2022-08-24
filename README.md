@@ -45,6 +45,7 @@ RAK7391 is a flexible IoT platform powered with Raspberry Pi Compute Module 4 wh
 - [TimescaleDB](https://github.com/timescale/timescaledb-docker)
 - [NATS Server](https://hub.docker.com/_/nats)
 - [iperf3-server](https://hub.docker.com/r/taoyou/iperf3-alpine)
+- [TagoCore](https://tagocore.com/docs)
 
 ### Copyright and license
 
