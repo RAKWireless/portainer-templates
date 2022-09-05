@@ -1415,13 +1415,13 @@
           "description": "Contains all relevant configuration files."
         },
         {
-          "default": "~/duplicati/source",
+          "default": "/opt/duplicati/source",
           "label": "SOURCE",
           "name": "SOURCE",
           "description":"Path to source for files to backup."
         },
         {
-          "default": "~/duplicati/backups",
+          "default": "/opt/duplicati/backups",
           "label": "BACKUPS",
           "name": "BACKUPS",
           "description": "Path to store local backups."
