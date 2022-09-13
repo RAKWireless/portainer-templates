@@ -1401,6 +1401,167 @@
         }
       ],
       "note": "Browse to <a href='http://{host-ip}:<8080'>http://{host-ip}:8080</a> to access the web interface.<br>Please check <a href='https://tagocore.com/docs/'>TagoCore introduction page</a> for more information."
+    },
+    {
+      "categories": [
+        "Ad Blockers"
+      ],
+      "description": "AdGuard Home is a network-wide software for blocking ads & tracking.",
+      "image": "adguard/adguardhome",
+      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/adguardhome_logo.png",
+      "name": "adguardhome",
+      "note": "Browse to <a herf='http://{host-ip}:3000'>http://{host-ip}:3000</a> to access the web interface.<br>Please check <a href='https://hub.docker.com/r/adguard/adguardhome'>AdGuard Home Docker introduction page</a> for more information.",
+      "platform": "linux",
+      "ports": [
+        "53:53/tcp",
+        "53:53/udp",
+        "80:80/tcp",
+        "3000:3000/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "AdguardHome",
+      "type": 1,
+      "volumes": [
+        {
+          "container": "/opt/adguardhome/work",
+          "bind": "/opt/adguardhome/work"
+        },
+        {
+          "container": "/opt/adguardhome/conf",
+          "bind": "/opt/adguardhome/conf"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "Homeassistant",
+      "name": "Homeassistant",
+      "note": "Browse to <a href='http://{host-ip}:8123'>http://{host-ip}:8123</a> to access the web interface.<br>Check <a href='https://www.home-assistant.io/installation/linux#install-home-assistant-container'>Home Assistant container documentation</a> for more details.<br>Path to Home Assistant's configuration on the host is: <b>/etc/homeassistant/config</b>.",
+      "description": "Open source home automation that puts local control and privacy first. Powered by a worldwide community of tinkerers and DIY enthusiasts. Perfect to run on a Raspberry Pi or a local server.",
+      "categories": [
+        "Home Automation"
+      ],
+      "platform": "linux",
+      "logo": "https://github.com/home-assistant/home-assistant.io/raw/next/source/images/favicon-192x192-full.png",
+      "image": "ghcr.io/home-assistant/home-assistant:stable",
+      "network": "host",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        }
+      ],
+      "ports": [
+        "8123:8123/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/etc/homeassistant/config"
+        },
+        {
+          "container": "/etc/localtime",
+          "bind": "/etc/localtime"
+        }
+      ],
+      "restart_policy": "unless-stopped"
+    },
+    {
+      "categories": [
+        "Ad Blockers"
+      ],
+      "description": "A DNS sinkhole that protects your devices from unwanted content without installing any client-side software",
+      "image": "pihole/pihole:latest",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/0/00/Pi-hole_Logo.png",
+      "name": "pihole",
+      "note": "Browse to <a herf='http://{host-ip}/admin/'>http://{host-ip}/admin/</a> to access the web interface.<br>Check <a href='https://github.com/pi-hole/docker-pi-hole'>Docker Pi-hole quick start guide</a> for more details.<br>The default web password is <b>changeme</b>",
+      "platform": "linux",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        },
+        {
+          "default": "changeme",
+          "label": "Web password",
+          "name": "WEBPASSWORD"
+        }
+      ],
+      "ports": [
+        "53:53/tcp",
+        "53:53/udp",
+        "80:80/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Pi-Hole",
+      "type": 1,
+      "volumes": [
+        {
+          "container": "/etc/pihole",
+          "bind": "/etc/pihole"
+        },
+        {
+          "container": "/etc/dnsmasq.d",
+          "bind": "/etc/dnsmasq.d"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Other"
+      ],
+      "description": "OpenPLC is an open-source Programmable Logic Controller that is based on an easy to use software.",
+      "image": "sheng2216/open_plc:tiny",
+      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/open_plc_logo.png",
+      "name": "OpenPLC",
+      "network": "bridge",
+      "note": "Browse to <a herf='http://{host-ip}/:8080'>http://{host-ip}:8080</a> to access the web interface.<br>Check <a href='https://openplcproject.com/docs/openplc-overview/'>Open PLC official documentations</a> for more details.<ulstyle='padding-left:20px'><li>Default username: openplc</li><li>Default password: openplc</li>",
+      "platform": "linux",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        }
+      ],
+      "ports": [
+        "8080:8080/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Open-PLC",
+      "type": 1
     }
   ]
 }
