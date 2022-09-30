@@ -46,7 +46,7 @@ services:
         - PUID=${PUID:-1000}
         - PGID=${PGID:-100}
         - TTS_DOMAIN=${TTS_DOMAIN:-127.0.0.1}     # set this to the IP or domain name of the host you will be using to access the stack
-        - TTN_LW_BLOB_LOCAL_DIRECTORY: /srv/ttn-lorawan/public/blob
+        - TTN_LW_BLOB_LOCAL_DIRECTORY=/srv/ttn-lorawan/public/blob
         - TTN_LW_REDIS_ADDRESS=redis:6379
         - TTN_LW_IS_DATABASE_URI=postgres://root:root@postgres:5432/ttn_lorawan?sslmode=disable
 

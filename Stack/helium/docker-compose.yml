@@ -33,8 +33,11 @@ services:
       - /bin/bash
       - /app/start.sh
     environment:
-      version: "latest"
-      platform: "raspi_64"
-      region: "US915"
+      - TZ=${TZ:-Europe/London}
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-100}
+      - version=${version:-latest}
+      - platform=${platform:-raspi_64}
+      - region=${region:-US915}
     depends_on:
       - udp-packet-forwarder
