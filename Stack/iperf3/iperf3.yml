@@ -4,11 +4,12 @@ services:
     image: taoyou/iperf3-alpine:latest
     restart: unless-stopped
     ports:
-      - ${port}:5201/udp
-      - ${port}:5201/tcp
+      - ${port:-5201}:5201/udp
+      - ${port:-5201}:5201/tcp
     environment:
-      - TZ=${TZ}
-      - PUID=${PUID}
-      - PGID=${PGID}
-    command: "${command}"
+      - TZ=${TZ:-Europe/London}
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-100}
+    command: "${command:--s}"
     network_mode: "bridge"
+    

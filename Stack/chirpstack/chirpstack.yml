@@ -5,9 +5,12 @@ services:
     image: chirpstack/chirpstack-network-server:3
     restart: unless-stopped
     environment:
+      - TZ=${TZ:-Europe/London}
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-100}
       - POSTGRESQL__DSN=postgres://chirpstack_ns:chirpstack_ns@postgresql/chirpstack_ns?sslmode=disable
       - REDIS__URL=redis://redis:6379
-      - NETWORK_SERVER__BAND__NAME=${NETWORK_SERVER__BAND__NAME}
+      - NETWORK_SERVER__BAND__NAME=${NETWORK_SERVER__BAND__NAME:-EU868}
       - NETWORK_SERVER__GATEWAY__BACKEND__MQTT__SERVER=tcp://mosquitto:1883
       - JOIN_SERVER__DEFAULT__SERVER=http://chirpstack-application-server:8003
     depends_on:
@@ -20,6 +23,9 @@ services:
     ports:
       - 8080:8080
     environment:
+      - TZ=${TZ:-Europe/London}
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-100}
       - POSTGRESQL__DSN=postgres://chirpstack_as:chirpstack_as@postgresql/chirpstack_as?sslmode=disable
       - REDIS__URL=redis://redis:6379
       - APPLICATION_SERVER__INTEGRATION__MQTT__SERVER=tcp://mosquitto:1883
@@ -34,6 +40,9 @@ services:
     ports:
       - 1700:1700/udp
     environment:
+      - TZ=${TZ:-Europe/London}
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-100}
       - INTEGRATION__MQTT__AUTH__GENERIC__SERVERS=tcp://mosquitto:1883
     depends_on: 
       - mosquitto

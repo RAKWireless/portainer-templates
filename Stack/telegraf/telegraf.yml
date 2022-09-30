@@ -7,6 +7,7 @@ services:
         build:
           context: ./
           dockerfile: Dockerfile
+        restart: unless-stopped
         volumes:
           - /etc/telegraf:/etc/telegraf:rw
           - /sys:/rootfs/sys:ro
@@ -15,8 +16,11 @@ services:
           - /:/hostfs:ro
           - /var/run/docker.sock:/var/run/docker.sock
         environment:
-          HOST_MOUNT_PREFIX: /hostfs
-          HOST_ETC: /hostfs/etc
-          HOST_PROC: /hostfs/proc
-          HOST_SYS: /hostfs/sys
-        restart: unless-stopped
+          - TZ=${TZ:-Europe/London}
+          - PUID=${PUID:-1000}
+          - PGID=${PGID:-100}
+          - HOST_MOUNT_PREFIX=${HOST_MOUNT_PREFIX:-/hostfs} 
+          - HOST_ETC={HOST_ETC:-/hostfs/etc}
+          - HOST_PROC={HOST_PROC:-/hostfs/proc}
+          - HOST_SYS={HOST_SYS:-/hostfs/sys}
+        

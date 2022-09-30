@@ -18,7 +18,10 @@ services:
       - net_admin
       - sys_module
     environment:
-      - TS_AUTH_KEY=${TS_AUTH_KEY}
+      - TZ=${TZ:-Europe/London}
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-100}
+      - TS_AUTH_KEY=${TS_AUTH_KEY:-enterauthkeyhere}
     command:
       - /bin/sh
       - /launch.sh

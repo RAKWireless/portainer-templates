@@ -4,8 +4,10 @@ services:
     image: mariadb:10.5
     container_name: seafile-mysql
     environment:
-      - TZ=${TZ}
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}  # Requested, set the root's password of MySQL service.
+      - TZ=${TZ:-Europe/London}
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-100}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-db_dev}  # Requested, set the root's password of MySQL service.
       - MYSQL_LOG_CONSOLE=true
     volumes:
       - /opt/seafile-mysql/db:/var/lib/mysql  # Requested, specifies the path to MySQL data persistent store.
@@ -17,7 +19,9 @@ services:
     container_name: seafile-memcached
     entrypoint: memcached -m 256
     environment:
-      - TZ=${TZ}
+      - TZ=${TZ:-Europe/London}
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-100}
     networks:
       - seafile-net
 
@@ -30,13 +34,15 @@ services:
     volumes:
       - /opt/seafile-data:/shared   # Requested, specifies the path to Seafile data persistent store.
     environment:
+      - TZ=${TZ:-Europe/London}
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-100}
       - DB_HOST=db
-      - DB_ROOT_PASSWD=${MYSQL_ROOT_PASSWORD} # Requested, the value shuold be root's password of MySQL service.
-      - TIME_ZONE=${TZ} # Optional, default is UTC. Should be uncomment and set to your local time zone.
-      - SEAFILE_ADMIN_EMAIL=${SEAFILE_ADMIN_EMAIL}  # Specifies Seafile admin user, default is 'me@example.com'.
-      - SEAFILE_ADMIN_PASSWORD=${SEAFILE_ADMIN_PASSWORD}  # Specifies Seafile admin password, default is 'changeme'.
-      - SEAFILE_SERVER_LETSENCRYPT=${SEAFILE_SERVER_LETSENCRYPT}  # Whether to use https or not.
-      - SEAFILE_SERVER_HOSTNAME=${SEAFILE_SERVER_HOSTNAME}  # Specifies your host name if https is enabled.
+      - DB_ROOT_PASSWD=${MYSQL_ROOT_PASSWORD:-db_dev} # Requested, the value shuold be root's password of MySQL service.
+      - SEAFILE_ADMIN_EMAIL=${SEAFILE_ADMIN_EMAIL:-me@example.com}  # Specifies Seafile admin user, default is 'me@example.com'.
+      - SEAFILE_ADMIN_PASSWORD=${SEAFILE_ADMIN_PASSWORD:-changeme}  # Specifies Seafile admin password, default is 'changeme'.
+      - SEAFILE_SERVER_LETSENCRYPT=${SEAFILE_SERVER_LETSENCRYPT:-false}  # Whether to use https or not.
+      - SEAFILE_SERVER_HOSTNAME=${SEAFILE_SERVER_HOSTNAME:-docs.seafile.com}  # Specifies your host name if https is enabled.
     depends_on:
       - db
       - memcached

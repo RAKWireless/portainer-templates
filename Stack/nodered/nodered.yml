@@ -23,9 +23,10 @@ services:
     ports:
       - "1880:1880"
     environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - NODE_RED_ENABLE_PROJECTS=${NODE_RED_ENABLE_PROJECTS}
+      - TZ=${TZ:-Europe/London}
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-100}
+      - NODE_RED_ENABLE_PROJECTS=${NODE_RED_ENABLE_PROJECTS:-false}
 volumes:
   node-red-data:
 

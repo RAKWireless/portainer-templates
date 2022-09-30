@@ -10,6 +10,6 @@ services:
           - 8080:8888
         restart: unless-stopped
         environment:
-          - PUID=${PUID}
-          - PGID=${PGID}
-          - TZ=${TZ}
+          - TZ=${TZ:-Europe/London}
+          - PUID=${PUID:-1000}
+          - PGID=${PGID:-100}

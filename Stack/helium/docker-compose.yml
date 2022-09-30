@@ -1,5 +1,6 @@
 version: '2.0'
-
+# This is only an example that deploys the UDP packet forwarder and helium-gateway-rs at the same time
+# Not a stack file
 services:
 
   udp-packet-forwarder:
@@ -19,7 +20,7 @@ services:
 #    build:
 #      context: ./
 #      dockerfile: Dockerfile
-    image: sheng2216/helium:0.2
+    image: sheng2216/helium:latest
 #      args:
 #        ARCH: aarch64
     container_name: helium-gateway-rs
@@ -32,7 +33,7 @@ services:
       - /bin/bash
       - /app/start.sh
     environment:
-      version: "v1.0.0-alpha.30"
+      version: "latest"
       platform: "raspi_64"
       region: "US915"
     depends_on:
