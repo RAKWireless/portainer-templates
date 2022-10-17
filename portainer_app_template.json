@@ -51,8 +51,8 @@
         },
         {
           "default": "17",
-          "label": "Gateway RESET GPIO:",
-          "name": "GW_RESET_GPIO:",
+          "label": "Gateway RESET GPIO",
+          "name": "GW_RESET_GPIO",
           "description": "GPIO number that resets (Broadcom pin number)"
         },
         {
@@ -560,7 +560,7 @@
       ],
       "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/helium_logo.png",
       "title": "Helium gateway-rs",
-      "name": "Helium-gateway-rs",
+      "name": "HeliumGatewayRS",
       "platform": "linux",
       "image": "sheng2216/helium:latest",
       "network": "host",
@@ -619,7 +619,7 @@
       "platform": "linux",
       "network": "bridge",
       "repository": {
-        "stackfile": "Stack/nodered/nodered.yml",
+        "stackfile": "Stack/NodeRed/nodered.yml",
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "type": 3,
@@ -705,7 +705,7 @@
       "name": "Zigbee2MQTT",
       "platform": "linux",
       "repository": {
-        "stackfile": "Stack/zigbee2mqtt/zigbee2mqtt.yml",
+        "stackfile": "Stack/Zigbee2MQTT/zigbee2mqtt.yml",
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "Zigbee2MQTT",
@@ -779,7 +779,7 @@
       "name": "Seafile",
       "platform": "linux",
       "repository": {
-        "stackfile": "Stack/seafile/seafile.yml",
+        "stackfile": "Stack/Seafile/seafile.yml",
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "Seafile",
@@ -816,7 +816,7 @@
       "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/tailscale_logo.png?raw=true",
       "platform": "linux",
       "repository": {
-        "stackfile": "Stack/tailscale/tailscale.yml",
+        "stackfile": "Stack/TimeScaledb/tailscale.yml",
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "Tailscale",
@@ -856,7 +856,7 @@
       "name": "ChirpStackNetworkServer",
       "platform": "linux",
       "repository": {
-        "stackfile": "Stack/chirpstack/chirpstack.yml",
+        "stackfile": "Stack/ChirpStackNetworkServer/chirpstack.yml",
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "ChirpStack Network Server",
@@ -895,7 +895,7 @@
       "name": "TheThingsStackLNS",
       "platform": "linux",
       "repository": {
-        "stackfile": "Stack/thethingsstack/thethingsstack.yml",
+        "stackfile": "Stack/TheThingsStackLNS/thethingsstack.yml",
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "The Things Stack LNS",
@@ -1124,13 +1124,13 @@
         }
       ],
       "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/telegraf_logo.png?raw=true",
-      "name": "telegraf",
+      "name": "Telegraf",
       "platform": "linux",
       "restart_policy": "unless-stopped",
       "title": "Telegraf",
       "type": 3,
       "repository": {
-        "stackfile": "Stack/telegraf/telegraf.yml",
+        "stackfile": "Stack/Telegraf/telegraf.yml",
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "network": "bridge",
@@ -1293,7 +1293,7 @@
       "interactive": true,
       "command": "--http_port 8222",
       "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/nats_logo.jpg",
-      "name": "nats",
+      "name": "NATS",
       "platform": "linux",
       "ports": [
         "4222:4222/tcp",
@@ -1357,10 +1357,10 @@
         }
       ],
       "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/iperf3_logo.png",
-      "name": "iperf3-server",
+      "name": "Iperf3-Server",
       "platform": "linux",
       "repository": {
-        "stackfile": "Stack/iperf3/iperf3.yml",
+        "stackfile": "Stack/Iperf3-Server/iperf3.yml",
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "iperf3-server",
@@ -1379,7 +1379,7 @@
       "title": "TagoCore",
       "type": 3,
       "repository": {
-        "stackfile": "Stack/tagocore/tagocore.yml",
+        "stackfile": "Stack/TagoCore/tagocore.yml",
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "network": "bridge",
@@ -1409,7 +1409,7 @@
       "description": "AdGuard Home is a network-wide software for blocking ads & tracking.",
       "image": "adguard/adguardhome",
       "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/adguardhome_logo.png",
-      "name": "adguardhome",
+      "name": "AdguardHome",
       "note": "Browse to <a herf='http://{host-ip}:3000'>http://{host-ip}:3000</a> to access the web interface.<br>Please check <a href='https://hub.docker.com/r/adguard/adguardhome'>AdGuard Home Docker introduction page</a> for more information.",
       "platform": "linux",
       "ports": [
@@ -1484,7 +1484,7 @@
       "description": "A DNS sinkhole that protects your devices from unwanted content without installing any client-side software",
       "image": "pihole/pihole:latest",
       "logo": "https://upload.wikimedia.org/wikipedia/commons/0/00/Pi-hole_Logo.png",
-      "name": "pihole",
+      "name": "PiHole",
       "note": "Browse to <a herf='http://{host-ip}/admin/'>http://{host-ip}/admin/</a> to access the web interface.<br>Check <a href='https://github.com/pi-hole/docker-pi-hole'>Docker Pi-hole quick start guide</a> for more details.<br>The default web password is <b>changeme</b>",
       "platform": "linux",
       "env": [
