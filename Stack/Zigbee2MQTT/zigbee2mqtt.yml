@@ -1,37 +1,53 @@
-version: '3.8'
+version: '2.0'
 services:
-  mqtt:
-    image: eclipse-mosquitto:2.0
-    restart: unless-stopped
-    volumes:
-      - "./mosquitto-data:/mosquitto"
-    ports:
-      - "1883:1883"
-      - "9001:9001"
+  db:
+    image: mariadb:10.5
+    container_name: seafile-mysql
     environment:
       - TZ=${TZ:-Europe/London}
       - PUID=${PUID:-1000}
       - PGID=${PGID:-100}
-    command: "mosquitto -c /mosquitto-no-auth.conf"
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-db_dev}  # Requested, set the root's password of MySQL service.
+      - MYSQL_LOG_CONSOLE=true
+    volumes:
+      - /opt/seafile-mysql/db:/var/lib/mysql  # Requested, specifies the path to MySQL data persistent store.
+    networks:
+      - seafile-net
 
-  zigbee2mqtt:
-    container_name: zigbee2mqtt
-    restart: unless-stopped
-    image: koenkk/zigbee2mqtt
-    volumes:
-      - ./data:/app/data
-    ports:
-      - ${external_port:-8002}:8080
+  memcached:
+    image: memcached:1.6
+    container_name: seafile-memcached
+    entrypoint: memcached -m 256
     environment:
       - TZ=${TZ:-Europe/London}
       - PUID=${PUID:-1000}
       - PGID=${PGID:-100}
-      - ZIGBEE2MQTT_CONFIG_PERMIT_JOIN=${ZIGBEE2MQTT_CONFIG_PERMIT_JOIN:-true}
-      - ZIGBEE2MQTT_CONFIG_MQTT_BASE_TOPIC=${ZIGBEE2MQTT_CONFIG_MQTT_BASE_TOPIC:-zigbee2mqtt}
-      - ZIGBEE2MQTT_CONFIG_MQTT_SERVER=${ZIGBEE2MQTT_CONFIG_MQTT_SERVER:-mqtt://mqtt}
-      - ZIGBEE2MQTT_CONFIG_SERIAL_PORT=${ZIGBEE2MQTT_CONFIG_SERIAL_PORT:-/dev/ttyUSB0}
-      #- ZIGBEE2MQTT_CONFIG_ADVANCED_NETWORK_KEY=${ZIGBEE2MQTT_CONFIG_ADVANCED_NETWORK_KEY}
-      - ZIGBEE2MQTT_CONFIG_FRONTEND=${ZIGBEE2MQTT_CONFIG_FRONTEND:-true}
-      
-    devices:
-      - ${ZIGBEE2MQTT_CONFIG_SERIAL_PORT:-/dev/ttyUSB0}:${ZIGBEE2MQTT_CONFIG_SERIAL_PORT:-/dev/ttyUSB0}
+    networks:
+      - seafile-net
+
+  seafile:
+    image: seafileltd/seafile-mc:latest
+    container_name: seafile
+    ports:
+      - 80:80
+#     - "443:443"  # If https is enabled, cancel the comment.
+    volumes:
+      - /opt/seafile-data:/shared   # Requested, specifies the path to Seafile data persistent store.
+    environment:
+      - TZ=${TZ:-Europe/London}
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-100}
+      - DB_HOST=db
+      - DB_ROOT_PASSWD=${DB_ROOT_PASSWORD:-db_dev} # Requested, the value shuold be root's password of MySQL service.
+      - SEAFILE_ADMIN_EMAIL=${SEAFILE_ADMIN_EMAIL:-me@example.com}  # Specifies Seafile admin user, default is 'me@example.com'.
+      - SEAFILE_ADMIN_PASSWORD=${SEAFILE_ADMIN_PASSWORD:-changeme}  # Specifies Seafile admin password, default is 'changeme'.
+      - SEAFILE_SERVER_LETSENCRYPT=${SEAFILE_SERVER_LETSENCRYPT:-false}  # Whether to use https or not.
+      - SEAFILE_SERVER_HOSTNAME=${SEAFILE_SERVER_HOSTNAME:-docs.seafile.com}  # Specifies your host name if https is enabled.
+    depends_on:
+      - db
+      - memcached
+    networks:
+      - seafile-net
+
+networks:
+  seafile-net:

@@ -1,11 +1,24 @@
 {
   "version": "2",
+  "version_for_rakpios_cli": "0.1",
   "templates": [
     {
       "categories": [
         "LoRaWAN"
       ],
       "description": "This app deploys a LoRaWAN gateway with Basics™ Station Packet Forward protocol using Docker.",
+      "post_up_info":"Please check the Github repository https://github.com/xoseperez/basicstation for more information.",
+      "note": "Check <a href='https://github.com/xoseperez/basicstation'>LoRa Basics™ Station for Docker Github repository</a> for more details.",
+      "image": "xoseperez/basicstation:v2",
+      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_logo.png",
+      "name": "BasicsStation",
+      "title": "LoRa Basics™ Station for Docker",
+      "hostname": "basicstation",
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "type": 1,
+      "network": "host",
+      "privileged": true, 
       "env": [
         {
           "default": "1000",
@@ -84,24 +97,25 @@
           "name": "TC_KEY",
           "description": "Unique TTN Gateway Key used for TTS Community Edition pasted from TTN console"
         }
-      ],
-      "image": "xoseperez/basicstation:v2",
-      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_logo.png",
-      "name": "BasicsStation",
-      "platform": "linux",
-      "restart_policy": "unless-stopped",
-      "title": "LoRa Basics™ Station for Docker",
-      "type": 1,
-      "network": "host",
-      "privileged": true,
-      "hostname": "basicstation",
-      "note": "Check <a href='https://github.com/xoseperez/basicstation'>LoRa Basics™ Station for Docker Github repository</a> for more details."
+      ]
     },
     {
       "categories": [
         "LoRaWAN"
       ],
       "description": "This app dockerize the rak_common_for_gateway project, which aim to help users to use the RAK Raspberry Pi Developer Gateway more easily.",
+      "post_up_info":"Please check the Github repository https://github.com/RAKWireless/udp-packet-forwarder for more information.",
+      "note": "Check <a href='https://github.com/RAKWireless/udp-packet-forwarder'>LoRaWAN UDP Packet Forwarder Protocol for Docker Github repository</a> for more details.",
+      "image": "rakwireless/udp-packet-forwarder:latest",
+      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_logo.png",
+      "name": "UDPPacketForwarder",
+      "title": "UDP Packet Forwarder",
+      "hostname": "UDP",
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "type": 1,
+      "network": "host",
+      "privileged": true,
       "env": [
         {
           "default": "1000",
@@ -385,24 +399,23 @@
           "label": "GPS ALTITUDE",
           "description": "Report this altitude for the gateway"
         }
-      ],
-      "image": "rakwireless/udp-packet-forwarder:latest",
-      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_logo.png",
-      "name": "UDPPacketForwarder",
-      "platform": "linux",
-      "restart_policy": "unless-stopped",
-      "title": "UDP Packet Forwarder",
-      "type": 1,
-      "network": "host",
-      "privileged": true,
-      "note": "Check <a href='https://github.com/RAKWireless/udp-packet-forwarder'>LoRaWAN UDP Packet Forwarder Protocol for Docker Github repository</a> for more details.",
-      "hostname": "UDP"
+      ]
     },
     {
       "categories": [
         "LoRaWAN"
       ],
       "description": "This project deploys UDP Packet Forwarder protocol for LoRa 2.4GHz Gateways using Docker. It runs on any amd64/x86_64 PC, or a SBC like a Raspberry Pi 3/4, Compute Module 3/4 or balenaFin.",
+      "post_up_info":"Please check the Github repository https://github.com/RAKWireless/udp-packet-forwarder for more details.",
+      "note": "Check <a href='https://github.com/RAKWireless/udp-packet-forwarder'>LoRaWAN UDP Packet Forwarder Protocol for Docker Github repository</a> for more details.",      
+      "image": "xoseperez/2g4-packet-forwarder:latest",
+      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_logo.png",
+      "name": "2g4PacketForwarder",
+      "title": "2.4GHz Gateway UDP Packet Forwarder",
+      "hostname": "2g4-packet-forwarder",
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "type": 1,
       "env": [
         {
           "default": "1000",
@@ -457,22 +470,31 @@
           "label": "GPS ALTITUDE",
           "description": "Report this altitude for the gateway"
         }
-      ],
-      "image": "xoseperez/2g4-packet-forwarder:latest",
-      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_logo.png",
-      "name": "2g4PacketForwarder",
-      "platform": "linux",
-      "restart_policy": "unless-stopped",
-      "title": "2.4GHz Gateway UDP Packet Forwarder",
-      "type": 1,
-      "note": "Check <a href='https://github.com/RAKWireless/udp-packet-forwarder'>LoRaWAN UDP Packet Forwarder Protocol for Docker Github repository</a> for more details.",
-      "hostname": "2g4-packet-forwarder"
+      ]
     },
     {
       "categories": [
         "LoRaWAN"
       ],
       "description": "The Helium gateway-rs is a service designed to run on Linux-based LoRaWAN gateways. It's intended to run alongside a typical LoRa packet forwarder and to connect via Semtech's Gateway Messaging Protocol. It does not mine HNT for now but can be used to increase coverage on the Helium network.",
+      "post_up_info":"The image comes with helium/gateway-rs & helium-wallet packages installed.\nStart a UDP packet forwarder service first, make sure to set the packet forwarder to forward to the (default) configured helium-gateway on 127.0.0.1 at udp port 1680.\nThe gateway_key.bin file is stored under /etc/helium_gateway on your host by default.\nTo get the public key address and animal name on your host, please use this command: docker exec {container name} helium_gateway key info.\nPlease check https://github.com/helium/gateway-rs for more details. ",
+      "note": "The image comes with helium/gateway-rs & helium-wallet packages.<br>Start a UDP packet forwarder service first, make sure to set the packet forwarder to forward to the (default) configured helium-gateway on 127.0.0.1 at udp port 1680.<br>The <strong>gateway_key.bin</strong> file is stored under <strong>/etc/helium_gateway</strong> on your host by default.<br>Use the command <strong>docker exec {container name} helium_gateway key info </strong>on your host to get the public key address and animal name.<br>Check <a href='https://github.com/helium/gateway-rs'>Helium gateway-rs Github Repository</a> for more details.",
+      "image": "sheng2216/helium:latest",
+      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/helium_logo.png",
+      "name": "HeliumGatewayRS",
+      "title": "Helium gateway-rs",
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "type": 1,
+      "network": "host",
+      "privileged": true,
+      "command": "/bin/bash -c /app/start.sh",
+      "volumes": [
+        {
+          "bind": "/etc/helium_gateway",
+          "container": "/etc/helium_gateway"
+        }
+      ],
       "env": [
         {
           "default": "1000",
@@ -557,30 +579,25 @@
           ],
           "description": "Possible valuess for regional parameters"
         }
-      ],
-      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/helium_logo.png",
-      "title": "Helium gateway-rs",
-      "name": "HeliumGatewayRS",
-      "platform": "linux",
-      "image": "sheng2216/helium:latest",
-      "network": "host",
-      "volumes": [
-        {
-          "bind": "/etc/helium_gateway",
-          "container": "/etc/helium_gateway"
-        }
-      ],
-      "command": "/bin/bash -c /app/start.sh",
-      "restart_policy": "unless-stopped",
-      "type": 1,
-      "privileged": true,
-      "note": "The image comes with helium/gateway-rs & helium-wallet packages.<br>Start a UDP packet forwarder service first, make sure to set the packet forwarder to forward to the (default) configured helium-gateway on 127.0.0.1 at udp port 1680.<br>The <strong>gateway_key.bin</strong> file is stored under <strong>/etc/helium_gateway</strong> on your host by default.<br>Use the command <strong>docker exec {container name} helium_gateway key info </strong>on your host to get the public key address and animal name.<br>Check <a href='https://github.com/helium/gateway-rs'>Helium gateway-rs Github Repository</a> for more details."
+      ]    
     },
     {
       "categories": [
         "Home Automation"
       ],
       "description": "Node-RED is a flow-based development tool for visual programming.",
+      "post_up_info":"Browse to http://{host-ip}:1880 to access the web interface.\nCheck https://nodered.org/docs/getting-started/docker for Node-RED docker quick start guide.",
+      "note": "Browse to <a herf='http://{host-ip}:1880'>http://{host-ip}:1880</a> to access the web interface.<br>Check <a href='https://nodered.org/docs/getting-started/docker'>Node-RED docker quick start guide</a> for more details.",
+      "logo": "https://nodered.org/about/resources/media/node-red-icon-2.png",
+      "title": "NodeRed",
+      "name": "NodeRed",
+      "platform": "linux",
+      "network": "bridge",
+      "type": 3,
+      "repository": {
+        "stackfile": "Stack/NodeRed/nodered.yml",
+        "url": "https://github.com/RAKWireless/portainer-templates"
+      },
       "env": [
         {
           "default": "1000",
@@ -612,24 +629,15 @@
             }
           ]
         }
-      ],
-      "logo": "https://nodered.org/about/resources/media/node-red-icon-2.png",
-      "title": "NodeRed",
-      "name": "NodeRed",
-      "platform": "linux",
-      "network": "bridge",
-      "repository": {
-        "stackfile": "Stack/NodeRed/nodered.yml",
-        "url": "https://github.com/RAKWireless/portainer-templates"
-      },
-      "type": 3,
-      "note": "Browse to <a herf='http://{host-ip}:1880'>http://{host-ip}:1880</a> to access the web interface.<br>Check <a href='https://nodered.org/docs/getting-started/docker'>Node-RED docker quick start guide</a> for more details."
+      ]  
     },
     {
       "categories": [
         "Home Automation"
       ],
       "description": "Zigbee2MQTT is a nodejs Gateway application that connects Zigbee networks to MQTT networks.",
+      "post_up_info": "Browse to http://{host-ip}:<8002> to access the web interface, or change the external port number to your customised port number. \nCheck https://www.zigbee2mqtt.io/guide/configuration/ for Zigbee2MQTT configuration guide.",
+      "note": "Browse to <a href='http://{host-ip}:<8002'>http://{host-ip}:8002</a> to access the web interface, or change the external port number to your customised port number. Check <a href='https://www.zigbee2mqtt.io/guide/configuration/'>Zigbee2MQTT configuration guide</a> for more details.",
       "env": [
         {
           "default": "1000",
@@ -697,7 +705,7 @@
         {
           "default": "8002",
           "label": "Frontend external port",
-          "name": "external_port ",
+          "name": "external_port",
           "description": "Frontend external port bind to Zigbee2MQTT service's 8080 port. Browse to http://{host-ip}:<Frontend external port> to access the web interface."
         }
       ],
@@ -710,14 +718,15 @@
       },
       "title": "Zigbee2MQTT",
       "network": "bridge",
-      "type": 3,
-      "note": "Browse to <a href='http://{host-ip}:<8002'>http://{host-ip}:8002</a> to access the web interface, or change the external port number to your customised port number. Check <a href='https://www.zigbee2mqtt.io/guide/configuration/'>Zigbee2MQTT configuration guide</a> for more details."
+      "type": 3
     },
     {
       "categories": [
         "File Sync & Share"
       ],
       "description": "Seafile is an open source file sync&share solution designed for high reliability, performance and productivity.",
+      "post_up_info": "Browse to http://{host-ip}:80 to access the web interface. HTTPS is not enabled by default.\nAfter login, please go to System admin on top right, then navigate to Settings, and change the FILE_SERVER_ROOT URL to http://{host-ip}/seafhttp.\nCheck https://manual.seafile.com/docker/deploy_seafile_with_docker/ for Seafile Community Installation Guide.",
+      "note": "Browse to <a href='http://{host-ip}:<80'>http://{host-ip}:80</a> to access the web interface. HTTPS is not enabled by default.<br>After login, please go to <b>System admin</b> on top right, then navigate to <b>Settings</b>, and change the <b>FILE_SERVER_ROOT</b> URL to http://{host-ip}/seafhttp.<br>Check <a href='https://manual.seafile.com/docker/deploy_seafile_with_docker/'>Seafile Community Installation Guide</a> for more details.",
       "env": [
         {
           "default": "1000",
@@ -736,9 +745,15 @@
         },
         {
           "default": "db_dev",
-          "label": "MySQL service's root password ",
+          "label": "MySQL service's root password for the service called db",
           "name": "MYSQL_ROOT_PASSWORD",
-          "description": "Requested, set the root's password of MySQL service"
+          "description": "Required, must be the same with password for service named seafile"
+        },
+        {
+          "default": "db_dev",
+          "label": "MySQL service's root password for the service named seafile",
+          "name": "DB_ROOT_PASSWORD",
+          "description": "Required, must be the same with password for the service called db"
         },
         {
           "default": "me@example.com",
@@ -783,14 +798,15 @@
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "Seafile",
-      "type": 3,
-      "note": "Browse to <a href='http://{host-ip}:<80'>http://{host-ip}:80</a> to access the web interface. HTTPS is not enabled by default.<br>After login, please go to <b>System admin</b> on top right, then navigate to <b>Settings</b>, and change the <b>FILE_SERVER_ROOT</b> URL to http://{host-ip}/seafhttp.<br>Check <a href='https://manual.seafile.com/docker/deploy_seafile_with_docker/'>Seafile Community Installation Guide</a> for more details."
+      "type": 3
     },
     {
       "categories": [
         "VPN"
       ],
       "description": "Tailscale is a zero config VPN. It can be Installed on any device in minutes, it manages firewall rules for users, and works from anywhere. ",
+      "post_up_info": "Create an account at https://tailscale.com/ first, and then check https://tailscale.com/kb/1085/auth-keys/ for Tailscale's official documentation on how to generate an authkey.\nCopy the key and fill in to the TS_AUTH_KEY variable provided, and then deploy the service",
+      "note": "Create an account at <a href='https://tailscale.com/'>Tailscale</a> first, and then check <a href='https://tailscale.com/kb/1085/auth-keys/'>Tailscale's official documentation</a> on how to generate an authkey.<br>Copy the key and fill in to the <b>TS_AUTH_KEY</b> variable below, and then deploy the service",
       "env": [
         {
           "default": "1000",
@@ -821,14 +837,15 @@
       },
       "title": "Tailscale",
       "name": "Tailscale",
-      "type": 3,
-      "note": "Create an account at <a href='https://tailscale.com/'>Tailscale</a> first, and then check <a href='https://tailscale.com/kb/1085/auth-keys/'>Tailscale's official documentation</a> on how to generate an authkey.<br>Copy the key and fill in to the <b>TS_AUTH_KEY</b> variable below, and then deploy the service"
+      "type": 3
     },
     {
       "categories": [
         "LoRaWAN"
       ],
       "description": "The ChirpStack open-source LoRaWAN Network Server stack provides open-source components for LoRaWAN networks.",
+      "post_up_info": "Browse to http://{host-ip}:8080 to access the web interface. \nDefault username: admin\nDefault password: admin\nCheck https://github.com/brocaar/chirpstack-docker for for more details.",
+      "note": "Browse to <a href='http://{host-ip}:8080'>http://{host-ip}:8080</a> to access the web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: admin</li>Check <a href='https://github.com/brocaar/chirpstack-docker'>ChirpStack Docker Github reposotory</a> for more details.",
       "env": [
         {
           "default": "1000",
@@ -861,14 +878,15 @@
       },
       "title": "ChirpStack Network Server",
       "network": "bridge",
-      "type": 3,
-      "note": "Browse to <a href='http://{host-ip}:8080'>http://{host-ip}:8080</a> to access the web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: admin</li>Check <a href='https://github.com/brocaar/chirpstack-docker'>ChirpStack Docker Github reposotory</a> for more details."
+      "type": 3
     },
     {
       "categories": [
         "LoRaWAN"
       ],
       "description": "The Things Stack LNS establishes a data connection between a LoRa Basics™ Station gateway and a Network Server (in this case, The Things Stack).",
+      "post_up_info": "Point your browser to the first local IP of the device or to the domain name (if you have defined one) using HTTPS to access the web interface.\nDefault username: admin\nDefault password: changeme\nCheck https://github.com/xoseperez/the-things-stack-docker for more details.",
+      "note": "Point your browser to the first local IP of the device or to the domain name (if you have defined one) using HTTPS to access the web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: changeme</li>Check <a href='https://github.com/xoseperez/the-things-stack-docker'>The Things Stack LoRaWAN Network Server Github repository</a> for more details. ",
       "env": [
         {
           "default": "1000",
@@ -900,14 +918,15 @@
       },
       "title": "The Things Stack LNS",
       "network": "bridge",
-      "type": 3,
-      "note": "Point your browser to the first local IP of the device or to the domain name (if you have defined one) using HTTPS to access the web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: changeme</li>Check <a href='https://github.com/xoseperez/the-things-stack-docker'>The Things Stack LoRaWAN Network Server Github repository</a> for more details. "
+      "type": 3
     },
     {
       "categories": [
         "Other"
       ],
       "description": "Eclipse Mosquitto is an open source implementation of a server for versions 5, 3.1.1, and 3.1 of the MQTT protocol.",
+      "post_up_info": "Check https://hub.docker.com/_/eclipse-mosquitto for Eclipse-Mosquitto Dockerhub quick reference.",
+      "note": "Check <a href='https://hub.docker.com/_/eclipse-mosquitto'>Eclipse-Mosquitto Dockerhub quick reference</a> for more details.",
       "env": [
         {
           "default": "1000",
@@ -946,14 +965,15 @@
           "container": "/mosquitto/log"
         }
       ],
-      "network": "bridge",
-      "note": "Check <a href='https://hub.docker.com/_/eclipse-mosquitto'>Eclipse-Mosquitto Dockerhub quick reference</a> for more details."
+      "network": "bridge"
     },
     {
       "categories": [
         "Data visulization"
       ],
       "description": "Grafana is a multi-platform open source analytics and interactive visualization web application.",
+      "post_up_info": "Browse to http://{host-ip}:3000 to access the web interface.\nDefault username: admin\nDefault password: admin\nCheck https://grafana.com/docs/grafana/latest/installation/docker/ for quick reference of running Grafana Docker image.",
+      "note": "Browse to <a href='http://{host-ip}:3000'>http://{host-ip}:3000</a> to access the web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: admin</li>Check <a href='https://grafana.com/docs/grafana/latest/installation/docker/'>Run Grafana Docker image quick reference</a> for more details.",
       "env": [
         {
           "default": "1000",
@@ -993,14 +1013,15 @@
           "container": "/var/lib/grafana"
         }
       ],
-      "network": "bridge",
-      "note": "Browse to <a href='http://{host-ip}:3000'>http://{host-ip}:3000</a> to access the web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: admin</li>Check <a href='https://grafana.com/docs/grafana/latest/installation/docker/'>Run Grafana Docker image quick reference</a> for more details."
+      "network": "bridge"
     },
     {
       "categories": [
         "Database"
       ],
       "description": "InfluxDB is a time series database built from the ground up to handle high write and query loads.",
+      "post_up_info": "Check https://hub.docker.com/_/influxdb for InfluxDB Dockerhub quick reference.",
+      "note": "Check <a href='https://hub.docker.com/_/influxdb'>InfluxDB Dockerhub quick reference</a> for more details.",
       "env": [
         {
           "default": "1000",
@@ -1078,14 +1099,15 @@
           "container": "/etc/influxdb2"
         }
       ],
-      "network": "bridge",
-      "note": "Check <a href='https://hub.docker.com/_/influxdb'>InfluxDB Dockerhub quick reference</a> for more details."
+      "network": "bridge"
     },
     {
       "categories": [
         "Data Collection"
       ],
       "description": "Telegraf is an agent for collecting metrics and writing them to InfluxDB or other outputs.",
+      "post_up_info": "The default configuration requires a running InfluxDB instance as an output plugin.\nEnsure that InfluxDB is running on port 8086 before starting the Telegraf container.\nBrowse to https://hub.docker.com/_/telegraf for Telegraf dockerhub quick reference.</li>",
+      "note": "The default configuration requires a running InfluxDB instance as an output plugin. <li>Ensure that InfluxDB is running on port 8086 before starting the Telegraf container.</li><li> Browse to <a href='https://hub.docker.com/_/telegraf'>Telegraf dockerhub quick reference</a> for more details.</li>",
       "env": [
         {
           "default": "1000",
@@ -1133,14 +1155,15 @@
         "stackfile": "Stack/Telegraf/telegraf.yml",
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
-      "network": "bridge",
-      "note": "The default configuration requires a running InfluxDB instance as an output plugin. <li>Ensure that InfluxDB is running on port 8086 before starting the Telegraf container.</li><li> Browse to <a href='https://hub.docker.com/_/telegraf'>Telegraf dockerhub quick reference</a> for more details.</li>"
+      "network": "bridge"
     },
     {
       "categories": [
         "Data visulization"
       ],
       "description": "ThingsBoard allows you to create rich IoT Dashboards for data visualization and remote device control in real-time",
+      "post_up_info": "Browse to http://{host-ip}:8080 to access the web interface.\nSystem Administrator: sysadmin@thingsboard.org / sysadmin\nTenant Administrator: tenant@thingsboard.org\ntenant\nCustomer User: customer@thingsboard.org / customer\nThis template uses In Memory queue service, for other queue services, please check https://thingsboard.io/docs/user-guide/install/docker/ for references of installing ThingsBoard using Docker.",
+      "note": "Browse to <a href='http://{host-ip}:8080'>http://{host-ip}:8080</a> to access the web interface.<ulstyle='padding-left:20px'><li>System Administrator: sysadmin@thingsboard.org / sysadmin</li><li>Tenant Administrator: tenant@thingsboard.org / tenant</li><li>Customer User: customer@thingsboard.org / customer</li>This template uses In Memory queue service, for other queue services, please check <a href='https://thingsboard.io/docs/user-guide/install/docker/'>Installing ThingsBoard using Docker</a> for more details.",
       "env": [
         {
           "default": "1000",
@@ -1192,14 +1215,15 @@
         }
       ],
       "restart_policy": "unless-stopped",
-      "type": 1,
-      "note": "Browse to <a href='http://{host-ip}:8080'>http://{host-ip}:8080</a> to access the web interface.<ulstyle='padding-left:20px'><li>System Administrator: sysadmin@thingsboard.org / sysadmin</li><li>Tenant Administrator: tenant@thingsboard.org / tenant</li><li>Customer User: customer@thingsboard.org / customer</li>This template uses In Memory queue service, for other queue services, please check <a href='https://thingsboard.io/docs/user-guide/install/docker/'>Installing ThingsBoard using Docker</a> for more details."
+      "type": 1
     },
     {
       "categories": [
         "Database"
       ],
-      "description": "TimescaleDB is a an open-source time-series database optimized for fast ingest and complex queries. ",
+      "description": "TimescaleDB is a an open-source time-series database optimized for fast ingest and complex queries.",
+      "post_up_info": "Please check https://github.com/timescale/timescaledb-docker for more details",
+      "note": "Please check <a href='https://github.com/timescale/timescaledb-docker'>TimescaleDB docker Github repository</a> for more details",
       "env": [
         {
           "default": "1000",
@@ -1281,14 +1305,15 @@
           "bind": "/timescaledb/db-data",
           "container": "/var/lib/postgresql/data"
         }
-      ],
-      "note": "Please check <a href='https://github.com/timescale/timescaledb-docker'>TimescaleDB docker Github repository</a> for more details"
+      ]
     },
     {
       "categories": [
         "Other"
       ],
       "description": "NATS is a simple, secure and performant communications system for digital systems, services and devices.",
+      "post_up_info": "To test the monitoring endpoint, browse to http://{host-ip}:8222\nPlease check https://docs.nats.io/running-a-nats-service/nats_docker/nats-docker-tutorial for NATS docker tutorial.",
+      "note": "To test the monitoring endpoint, browse to <a href='http://{host-ip}:8222'>http://{host-ip}:8222</a>.<br>Please check <a href='https://docs.nats.io/running-a-nats-service/nats_docker/nats-docker-tutorial'>NATS docker tutorial</a> for more details.",
       "image": "nats",
       "interactive": true,
       "command": "--http_port 8222",
@@ -1319,14 +1344,15 @@
           "label": "Time Zone",
           "name": "TZ"
         }
-      ],
-      "note": "To test the monitoring endpoint, browse to <a href='http://{host-ip}:8222'>http://{host-ip}:8222</a>.<br>Please check <a href='https://docs.nats.io/running-a-nats-service/nats_docker/nats-docker-tutorial'>NATS docker tutorial</a> for more details."
+      ]
     },
     {
       "categories": [
         "Other"
       ],
       "description": "A tiny Docker image of iperf3 based on Alpine Linux for Network Performance and Bandwidth Testing.",
+      "post_up_info": "The template runs as an iperf3 server by default.\nRun an iperf3 client with the following command in terminal:docker run --rm -t taoyou/iperf3-alpine:latest -c {server address}\nBrowse to https://hub.docker.com/r/taoyou/iperf3-alpine for dockerhub quick reference.",
+      "note": "The template runs as an iperf3 server by default.<br> Run an iperf3 client with the following command in terminal:docker run --rm -t taoyou/iperf3-alpine:latest -c {server address}<br>Browse to <a href='https://hub.docker.com/r/taoyou/iperf3-alpine'>iperf3-alpine dockerhub quick reference</a> for more details.",
       "env": [
         {
           "default": "1000",
@@ -1364,14 +1390,15 @@
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "iperf3-server",
-      "type": 3,
-      "note": "The template runs as an iperf3 server by default.<br> Run an iperf3 client with the following command in terminal:docker run --rm -t taoyou/iperf3-alpine:latest -c {server address}<br>Browse to <a href='https://hub.docker.com/r/taoyou/iperf3-alpine'>iperf3-alpine dockerhub quick reference</a> for more details."
+      "type": 3
     },
     {
       "categories": [
         "Other"
       ],
       "description": "TagoCore is a free, fast, and open-source IoT platform for edge computing.",
+      "post_up_info": "Browse to http://{host-ip}:8080 to access the web interface.\nPlease check https://tagocore.com/docs/ for more details about TagoCore.",
+      "note": "Browse to <a href='http://{host-ip}:<8080'>http://{host-ip}:8080</a> to access the web interface.<br>Please check <a href='https://tagocore.com/docs/'>TagoCore introduction page</a> for more information.",
       "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/tagocore_logo.png",
       "name": "TagoCore",
       "platform": "linux",
@@ -1399,18 +1426,18 @@
           "label": "Time Zone",
           "name": "TZ"
         }
-      ],
-      "note": "Browse to <a href='http://{host-ip}:<8080'>http://{host-ip}:8080</a> to access the web interface.<br>Please check <a href='https://tagocore.com/docs/'>TagoCore introduction page</a> for more information."
+      ]
     },
     {
       "categories": [
         "Ad Blockers"
       ],
       "description": "AdGuard Home is a network-wide software for blocking ads & tracking.",
+      "post_up_info": "Browse to http://{host-ip}:3000 to access the web interface.\nPlease check https://hub.docker.com/r/adguard/adguardhome for AdGuard Home Docker introduction page.",
+      "note": "Browse to <a herf='http://{host-ip}:3000'>http://{host-ip}:3000</a> to access the web interface.<br>Please check <a href='https://hub.docker.com/r/adguard/adguardhome'>AdGuard Home Docker introduction page</a> for more information.",
       "image": "adguard/adguardhome",
       "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/adguardhome_logo.png",
       "name": "AdguardHome",
-      "note": "Browse to <a herf='http://{host-ip}:3000'>http://{host-ip}:3000</a> to access the web interface.<br>Please check <a href='https://hub.docker.com/r/adguard/adguardhome'>AdGuard Home Docker introduction page</a> for more information.",
       "platform": "linux",
       "ports": [
         "53:53/tcp",
@@ -1421,26 +1448,44 @@
       "restart_policy": "unless-stopped",
       "title": "AdguardHome",
       "type": 1,
-      "volumes": [
+      "env": [
         {
-          "container": "/opt/adguardhome/work",
-          "bind": "/opt/adguardhome/work"
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
         },
         {
-          "container": "/opt/adguardhome/conf",
-          "bind": "/opt/adguardhome/conf"
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        }
+      ],
+      "volumes": [
+        {
+          "bind": "/opt/adguardhome/work",
+          "container": "/opt/adguardhome/work"
+        },
+        {
+          "bind": "/opt/adguardhome/conf",
+          "container": "/opt/adguardhome/conf"
         }
       ]
     },
     {
-      "type": 1,
-      "title": "Homeassistant",
-      "name": "Homeassistant",
-      "note": "Browse to <a href='http://{host-ip}:8123'>http://{host-ip}:8123</a> to access the web interface.<br>Check <a href='https://www.home-assistant.io/installation/linux#install-home-assistant-container'>Home Assistant container documentation</a> for more details.<br>Path to Home Assistant's configuration on the host is: <b>/etc/homeassistant/config</b>.",
-      "description": "Open source home automation that puts local control and privacy first. Powered by a worldwide community of tinkerers and DIY enthusiasts. Perfect to run on a Raspberry Pi or a local server.",
       "categories": [
         "Home Automation"
       ],
+      "description": "Open source home automation that puts local control and privacy first. Powered by a worldwide community of tinkerers and DIY enthusiasts. Perfect to run on a Raspberry Pi or a local server.",
+      "post_up_info": "Browse to http://{host-ip}:8123 to access the web interface.\nCheck https://www.home-assistant.io/installation/linux#install-home-assistant-container for the Home Assistant container documentation.\nPath to Home Assistant's configuration on the host is: /etc/homeassistant/config.",
+      "note": "Browse to <a href='http://{host-ip}:8123'>http://{host-ip}:8123</a> to access the web interface.<br>Check <a href='https://www.home-assistant.io/installation/linux#install-home-assistant-container'>Home Assistant container documentation</a> for more details.<br>Path to Home Assistant's configuration on the host is: <b>/etc/homeassistant/config</b>.",
+      "type": 1,
+      "title": "Homeassistant",
+      "name": "Homeassistant",
       "platform": "linux",
       "logo": "https://github.com/home-assistant/home-assistant.io/raw/next/source/images/favicon-192x192-full.png",
       "image": "ghcr.io/home-assistant/home-assistant:stable",
@@ -1467,12 +1512,12 @@
       ],
       "volumes": [
         {
-          "container": "/config",
-          "bind": "/etc/homeassistant/config"
+          "bind": "/etc/homeassistant/config",
+          "container": "/config"
         },
         {
-          "container": "/etc/localtime",
-          "bind": "/etc/localtime"
+          "bind": "/etc/localtime",
+          "container": "/etc/localtime"
         }
       ],
       "restart_policy": "unless-stopped"
@@ -1482,10 +1527,11 @@
         "Ad Blockers"
       ],
       "description": "A DNS sinkhole that protects your devices from unwanted content without installing any client-side software",
+      "post_up_info": "Browse to http://{host-ip}/admin/ to access the web interface.\nCheck https://github.com/pi-hole/docker-pi-hole for Docker Pi-hole quick start guide.\nThe default web password is changeme",
+      "note": "Browse to <a herf='http://{host-ip}/admin/'>http://{host-ip}/admin/</a> to access the web interface.<br>Check <a href='https://github.com/pi-hole/docker-pi-hole'>Docker Pi-hole quick start guide</a> for more details.<br>The default web password is <b>changeme</b>",
       "image": "pihole/pihole:latest",
       "logo": "https://upload.wikimedia.org/wikipedia/commons/0/00/Pi-hole_Logo.png",
       "name": "PiHole",
-      "note": "Browse to <a herf='http://{host-ip}/admin/'>http://{host-ip}/admin/</a> to access the web interface.<br>Check <a href='https://github.com/pi-hole/docker-pi-hole'>Docker Pi-hole quick start guide</a> for more details.<br>The default web password is <b>changeme</b>",
       "platform": "linux",
       "env": [
         {
@@ -1519,12 +1565,12 @@
       "type": 1,
       "volumes": [
         {
-          "container": "/etc/pihole",
-          "bind": "/etc/pihole"
+          "bind": "/etc/pihole",
+          "container": "/etc/pihole"
         },
         {
-          "container": "/etc/dnsmasq.d",
-          "bind": "/etc/dnsmasq.d"
+          "bind": "/etc/dnsmasq.d",
+          "container": "/etc/dnsmasq.d"
         }
       ]
     },
@@ -1533,11 +1579,12 @@
         "Other"
       ],
       "description": "OpenPLC is an open-source Programmable Logic Controller that is based on an easy to use software.",
+      "post_up_info": "Browse to http://{host-ip}/:8080 to access the web interface.\nCheck https://openplcproject.com/docs/openplc-overview/ for Open PLC official documentations.\nDefault username: openplc\nDefault password: openplc",
+      "note": "Browse to <a herf='http://{host-ip}/:8080'>http://{host-ip}:8080</a> to access the web interface.<br>Check <a href='https://openplcproject.com/docs/openplc-overview/'>Open PLC official documentations</a> for more details.<ulstyle='padding-left:20px'><li>Default username: openplc</li><li>Default password: openplc</li>",
       "image": "sheng2216/open_plc:tiny",
       "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/open_plc_logo.png",
       "name": "OpenPLC",
       "network": "bridge",
-      "note": "Browse to <a herf='http://{host-ip}/:8080'>http://{host-ip}:8080</a> to access the web interface.<br>Check <a href='https://openplcproject.com/docs/openplc-overview/'>Open PLC official documentations</a> for more details.<ulstyle='padding-left:20px'><li>Default username: openplc</li><li>Default password: openplc</li>",
       "platform": "linux",
       "env": [
         {
