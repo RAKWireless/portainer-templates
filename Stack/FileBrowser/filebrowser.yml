@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  filebrowser:
+    image: filebrowser/filebrowser:s6 
+    container_name: filebrowser
+    ports:
+      - 8080:80
+    volumes:
+      - ${ROOT_PATH:-/opt/filebrowser/root}:/srv
+      - ${DATABASE_PATH:-/opt/filebrowser/database}:/database
+      - ${CONFIG_PATH:-/opt/filebrowser/config}:/config 
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-100}     
