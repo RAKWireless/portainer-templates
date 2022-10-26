@@ -1609,6 +1609,53 @@
       "restart_policy": "unless-stopped",
       "title": "Open-PLC",
       "type": 1
+    },
+	{
+      "categories": [
+        "File Browser"
+      ],
+      "description": "File Browser is a create-your-own-cloud-kind of software where you can install it on a server, direct it to a path and then access your files through a nice web interface.",
+      "post_up_info": "Browse to http://{host-ip}:8080 to access the web interface.\nDeafault username: admin\nDefault password: admin",
+      "note": "Browse to <a href='http://{host-ip}:<8080'>http://{host-ip}:8080</a> to access the web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: admin</li>",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "/opt/filebrowser/root",
+          "label": "FILE_ROOT_PATH",
+          "name": "FILE_ROOT_PATH",
+          "description": "Specifies your file root path."
+        },
+        {
+          "default": "/opt/filebrowser/config",
+          "label": "CONFIG_PATH",
+          "name": "CONFIG_PATH",
+          "description": "Specifies your configuration file path."
+        },
+        {
+          "default": "/opt/filebrowser/database",
+          "label": "DATABASE_PATH",
+          "name": "DATABASE_PATH",
+          "description": "Specifies your databse path."
+        }
+      ],
+      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/filebrowser_logo.png",
+      "name": "filebrowser",
+      "platform": "linux",
+      "repository": {
+        "stackfile": "Stack/FileBrowser/filebrowser.yml",
+        "url": "https://github.com/RAKWireless/portainer-templates"
+      },
+      "title": "File Browser",
+      "type": 3
     }
   ]
 }
