@@ -1656,6 +1656,47 @@
       },
       "title": "File Browser",
       "type": 3
+    },
+	{
+      "categories": [
+        "Git"
+      ],
+      "description": "Gitea is a community managed lightweight code hosting solution written in Go.",
+      "post_up_info": "Visit http://host-ip:3000 and follow the installation wizard.\nChange the Server domain to {host-ip}\nChange the SSH Server Port to 222\nChange the Gitea Base URL to http://{host-ip}:3000/",
+      "note": "Visit <a href='http://{host-ip}:<3000'>http://{host-ip}:3000</a> and follow the installation wizard.<br>Change the <b>Server domain</b> to {host-ip}<br>Change the <b>SSH Server Port</b> to 222<br>Change the <b>Gitea Base URL</b> to http://{host-ip}:3000/",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "/opt/gitea/data",
+          "label": "GITEA_DATA_PATH",
+          "name": "FILE_ROOT_PATH",
+          "description": "Specifies your gitea data path."
+        },
+        {
+          "default": "/opt/postgres/data",
+          "label": "POSTGRES_DATA_PATH",
+          "name": "POSTGRES_DATA_PATH",
+          "description": "Specifies your postgres data path."
+        }
+      ],
+      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gitea_logo.png",
+      "name": "gitea",
+      "platform": "linux",
+      "repository": {
+        "stackfile": "Stack/Gitea/gitea.yml",
+        "url": "https://github.com/RAKWireless/portainer-templates"
+      },
+      "title": "Gitea",
+      "type": 3
     }
   ]
 }
