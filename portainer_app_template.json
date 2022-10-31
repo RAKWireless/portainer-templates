@@ -1659,7 +1659,7 @@
     },
 	{
       "categories": [
-        "Git"
+        "Other"
       ],
       "description": "Gitea is a community managed lightweight code hosting solution written in Go.",
       "post_up_info": "Visit http://host-ip:3000 and follow the installation wizard.\nChange the Server domain to {host-ip}\nChange the SSH Server Port to 222\nChange the Gitea Base URL to http://{host-ip}:3000/",
@@ -1696,6 +1696,90 @@
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "Gitea",
+      "type": 3
+    },
+    {
+      "categories": [
+        "Other"
+      ],
+      "description": "Docker Registry is a stateless, highly scalable server side application that stores and lets you distribute Docker images.",
+      "post_up_info":"Quick reference:\n1. Pull(or build some image from the hub, e.g., ubuntu)\ndocker pull ubuntu\n2. Tag the image so that it points to your registry\ndocker image tag ubuntu localhost:5000/myfirstimage\n3. Push it\ndocker push localhost:5000/myfirstimage\n4. Pull it back\n docker pull localhost:5000/myfirstimage ",
+      "note": "Check <a href='https://hub.docker.com/_/registry'>Docker Registry dockerhub overview page</a> for more details.<br>Read <a href='https://docs.docker.com/registry/deploying/'>the section regarding deployment</a> to see more complex use cases.",
+      "image": "registry:latest",
+      "logo": "https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png",
+      "name": "Registry",
+      "title": "Registry",
+      "hostname": "registry",
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "type": 1,
+      "network": "host",
+      "privileged": true, 
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        }
+      ],
+      "ports": [
+        "5000:5000"
+      ]
+    },
+    {
+      "categories": [
+        "Database"
+      ],
+      "description": "Azure SQL Edge is an optimized relational database engine geared for IoT and IoT Edge deployments. It provides capabilities to create a high-performance data storage and processing layer for IoT applications and solutions.",
+      "post_up_info":"Quick reference:\nPlease check https://learn.microsoft.com/en-us/azure/azure-sql-edge/disconnected-deployment for detailed instructions.\nMake sure you changed the SA password afte deployment.",
+      "note": "Check the instructions <a href='https://learn.microsoft.com/en-us/azure/azure-sql-edge/disconnected-deployment'>Deploy Azure SQL Edge with Docker</a> for more details.<br>Make sure you changed the SA password afte deployment.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        },
+        {
+          "default": "Y",
+          "label": "Accept the End-User Licensing Agreement",
+          "name": "ACCEPT_EULA",
+          "description": "Set the ACCEPT_EULA variable to any value to confirm your acceptance of the End-User Licensing Agreement. Required setting for the Azure SQL Edge image."
+        },
+        {
+          "default": "yourStrong(!)Password",
+          "label": "Initial strong password for SQL SA account.",
+          "name": "MSSQL_SA_PASSWORD",
+          "description": "Strong password that is at least 8 characters and meets the Azure SQL Edge password requirements, you need to change it manually after deployment."
+        }
+      ],
+      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/azuresqledge_logo.png",
+      "name": "AzureSqlEdge",
+      "platform": "linux",
+      "repository": {
+        "stackfile": "Stack/AzureSQLEdge/azuresqledge.yml",
+        "url": "https://github.com/RAKWireless/portainer-templates"
+      },
+      "title": "Azure SQL Edge",
       "type": 3
     }
   ]
