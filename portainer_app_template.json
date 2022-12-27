@@ -1630,8 +1630,8 @@
         },
         {
           "default": "/opt/filebrowser/root",
-          "label": "FILE_ROOT_PATH",
-          "name": "FILE_ROOT_PATH",
+          "label": "ROOT_PATH",
+          "name": "ROOT_PATH",
           "description": "Specifies your file root path."
         },
         {
