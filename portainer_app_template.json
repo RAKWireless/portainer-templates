@@ -861,6 +861,12 @@
           "default": "Europe/London",
           "label": "Time Zone",
           "name": "TZ"
+        },
+        {
+          "default": "127.0.0.1,localhost",
+          "label": "HOSTS",
+          "name": "HOSTS",
+          "description": "Define all the hostnames, domain names and IPs for the server (comma separated)"
         }
       ],
       "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/chirpstack_logo.png?raw=true",
