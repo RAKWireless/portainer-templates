@@ -2,7 +2,7 @@ version: '2'
 
 services:
   portainer:
-    container_name:portainer   
+    container_name: portainer   
     image: portainer/portainer-ce:2.16.2
     ports:
       - 8000:8000
