@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  portainer:
+    container_name:portainer   
+    image: portainer/portainer-ce:2.16.2
+    ports:
+      - 8000:8000
+      - 9443:9443
+    command: --admin-password '$$2y$$05$$CamDlWaqdhRQvy1AuOZlY.4QYi/GptU6lDruXD0YiYiwQljGJmamC' --templates 'https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/portainer_app_template.json'
+    network_mode: "bridge"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer-data:/data
+
+volumes:
+  portainer-data:

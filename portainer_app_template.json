@@ -1697,6 +1697,23 @@
       },
       "title": "Gitea",
       "type": 3
+    },
+    {
+      "categories": [
+        "Docker"
+      ],
+      "description": "Portainer Community Edition (CE) is a powerful, open source toolset that allows you to easily build and manage containers in Docker, Docker Swarm, Kubernetes and Azure ACI.",
+      "post_up_info": "Visit https://host-ip:9443 to access the web interface.\nDeafault username: admin\nDefault password: changeme",
+      "note": "Visit <a href='https://{host-ip}:<9443'>https://{host-ip}:9443 to access the web interface.</a> <ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: changeme</li>",
+      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/raw/master/logo/portainer_logo.png",
+      "name": "Portainer",
+      "platform": "linux",
+      "repository": {
+        "stackfile": "Stack/Portainer/portainer.yml",
+        "url": "https://github.com/RAKWireless/portainer-templates"
+      },
+      "title": "Portainer",
+      "type": 3
     }
   ]
 }
