@@ -17,7 +17,24 @@
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "Portainer",
-      "type": 3
+      "type": 3,
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        }
+      ]
     },
     {
       "categories": [
