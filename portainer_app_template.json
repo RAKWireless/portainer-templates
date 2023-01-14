@@ -4,7 +4,7 @@
   "templates": [
     {
       "categories": [
-        "Docker"
+        "Other"
       ],
       "description": "Portainer Community Edition (CE) is a powerful, open source toolset that allows you to easily build and manage containers in Docker, Docker Swarm, Kubernetes and Azure ACI.",
       "post_up_info": "Visit https://host-ip:9443 to access the web interface.\nDeafault username: admin\nDefault password: changeme",
@@ -17,7 +17,7 @@
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "Portainer",
-      "type": 3,
+      "type": "3-hidden",
       "env": [
         {
           "default": "1000",
