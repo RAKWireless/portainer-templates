@@ -1,17 +1,19 @@
 #support platform: arm64, x64 
 ARG ARCH=arm64
+ARG VERSION=v0.7.1
 
-FROM alpine
+FROM alpine:3
 
 WORKDIR /app
 
 RUN apk add --no-cache libstdc++
 
-ARG ARCH=arm64
+ARG ARCH
+ARG VERSION
 
-RUN wget https://downloads.tagocore.com/v0.5.0/tagocore-v0.5.0-alpine-${ARCH}.tar.gz && \
-    tar -xzf tagocore-v0.5.0-alpine-${ARCH}.tar.gz && \
-    rm tagocore-v0.5.0-alpine-${ARCH}.tar.gz
+RUN wget https://downloads.tagocore.com/${VERSION}/tagocore-${VERSION}-alpine-${ARCH}.tar.gz && \
+    tar -xzf tagocore-${VERSION}-alpine-${ARCH}.tar.gz && \
+    rm tagocore-${VERSION}-alpine-${ARCH}.tar.gz
 
 COPY docker-entrypoint.sh .
 

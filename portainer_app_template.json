@@ -1431,8 +1431,8 @@
         "Other"
       ],
       "description": "TagoCore is a free, fast, and open-source IoT platform for edge computing.",
-      "post_up_info": "Browse to http://{host-ip}:8080 to access the web interface.\nPlease check https://tagocore.com/docs/ for more details about TagoCore.",
-      "note": "Browse to <a href='http://{host-ip}:<8080'>http://{host-ip}:8080</a> to access the web interface.<br>Please check <a href='https://tagocore.com/docs/'>TagoCore introduction page</a> for more information.",
+      "post_up_info": "Browse to http://{host-ip}:8888 (or a different port if you have customized it) to access the web interface.\nPlease check https://tagocore.com/docs/ for more details about TagoCore.",
+      "note": "Browse to <a href='http://{host-ip}:<8888'>http://{host-ip}:8888</a> (or a different port if you have customized it) to access the web interface.<br>Please check <a href='https://tagocore.com/docs/'>TagoCore introduction page</a> for more information.",
       "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/tagocore_logo.png",
       "name": "TagoCore",
       "platform": "linux",
@@ -1445,6 +1445,16 @@
       },
       "network": "bridge",
       "env": [
+        {
+          "default": "v0.7.1",
+          "label": "TagoCore version",
+          "name": "VERSION"
+        },
+        {
+          "default": "8888",
+          "label": "Web Interface Port",
+          "name": "PORT"
+        },
         {
           "default": "1000",
           "label": "PUID",

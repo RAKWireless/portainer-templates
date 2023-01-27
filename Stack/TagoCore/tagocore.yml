@@ -6,8 +6,11 @@ services:
         build:
           context: ./
           dockerfile: Dockerfile
+          args:
+            ARCH: ${ARCH:-arm64}
+            VERSION: ${VERSION:-v0.7.1}
         ports:
-          - 8080:8888
+          - ${PORT:-8888}:8888
         restart: unless-stopped
         environment:
           - TZ=${TZ:-Europe/London}
