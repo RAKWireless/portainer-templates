@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+
+  azuresqledge:
+    image: mcr.microsoft.com/azure-sql-edge 
+    container_name: azuresqledge
+    restart: unless-stopped
+    ports:
+      - "1433:1433"
+    environment:
+      - TZ=${TZ:-Europe/London}
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-100}
+      - ACCEPT_EULA=${ACCEPT_EULA:-Y}
+      - MSSQL_SA_PASSWORD=${MSSQL_SA_PASSWORD:-yourStrong(!)Password}
+    cap_add:
+      - SYS_PTRACE
