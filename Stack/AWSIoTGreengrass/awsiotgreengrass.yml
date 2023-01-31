@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  greengrass:
+    init: true
+    image: sheng2216/aws-iot-greengrasss:2.5.4-rakwireless
+    environment:
+      - TZ=${TZ:-Europe/London}
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-100}
+      - GGC_ROOT_PATH=${GGC_ROOT_PATH:-/greengrass/v2}
+      - AWS_REGION=${AWS_REGION:-us-east-1}
+      - PROVISION=${PROVISION:-true}
+      - THING_NAME=${THING_NAME:-MyGreengrassCore}
+      - THING_GROUP_NAME=${THING_GROUP_NAME:-MyGreengrassCoreGroup}
+      - TES_ROLE_ALIAS_NAME=${TES_ROLE_ALIAS_NAME:-GreengrassCoreTokenExchangeRoleAlias}
+      - COMPONENT_DEFAULT_USER=${COMPONENT_DEFAULT_USER:-ggc_user:ggc_group}
+    volumes:
+     - ${AWS_CREDENTIALS_PATH:-/tmp/greengrass-v2-credentials}:/root/.aws/:ro

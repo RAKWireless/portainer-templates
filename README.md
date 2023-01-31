@@ -46,6 +46,15 @@ RAK7391 is a flexible IoT platform powered with Raspberry Pi Compute Module 4 wh
 - [NATS Server](https://hub.docker.com/_/nats)
 - [iperf3-server](https://hub.docker.com/r/taoyou/iperf3-alpine)
 - [TagoCore](https://tagocore.com/docs)
+- [AdGuard Home](https://hub.docker.com/r/adguard/adguardhome)
+- [Homeassistant](https://www.home-assistant.io/installation/linux#install-home-assistant-container)
+- [Pi-Hole](https://github.com/pi-hole/docker-pi-hole)
+- [Open-PLC](https://openplcproject.com/docs/openplc-overview/)
+- [File Browser](https://github.com/filebrowser/filebrowser)
+- [Gitea](https://docs.gitea.io/en-us/install-with-docker/)
+- [Registry](https://hub.docker.com/_/registry)
+- [Azure SQL Edge](https://learn.microsoft.com/en-us/azure/azure-sql-edge/disconnected-deployment)
+- [AWS IoTG Greengrass](https://docs.aws.amazon.com/greengrass/v2/developerguide/run-greengrass-docker-automatic-provisioning.html#configure-aws-credentials-for-docker)
 
 ### Copyright and license
 
