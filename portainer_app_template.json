@@ -1910,6 +1910,44 @@
             "name": "COMPONENT_DEFAULT_USER"
           }
         ]
-      }
+    },
+    {
+      "categories": [
+          "Backup"
+        ],
+      "description": "free backup software to store encrypted backups online",
+      "env": [
+        {
+          "default": "/etc/duplicati/config",
+          "label": "CONFIG",
+          "name": "CONFIG",
+          "description": "Contains all relevant configuration files."
+        },
+        {
+          "default": "/opt/duplicati/source",
+          "label": "SOURCE",
+          "name": "SOURCE",
+          "description":"Path to source for files to backup."
+        },
+        {
+          "default": "/opt/duplicati/backups",
+          "label": "BACKUPS",
+          "name": "BACKUPS",
+          "description": "Path to store local backups."
+        }
+      ],
+      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/duplicati_logo.png",
+      "name": "Duplicati",
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "title": "Duplicati",
+      "repository": {
+        "stackfile": "Stack/Duplicati/duplicati.yml",
+        "url": "https://github.com/RAKWireless/portainer-templates"
+      },
+      "type": 3,
+      "network": "bridge",
+      "note": "Browse to <a href='http://{host-ip}:<8200'>http://{host-ip}:8200</a> to access the web interface."
+    }
   ]
 }
