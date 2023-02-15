@@ -1,0 +1,14 @@
+version: "2"
+
+services:
+ opcuaserver:
+   image: xikai3344/netpi-opcua-server
+   restart: always
+   ports:
+     - 8080:8080
+     - 4840:4840
+   volumes:
+     - certs:/certs
+
+volumes:
+     certs:

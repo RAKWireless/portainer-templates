@@ -1951,7 +1951,7 @@
     },
     {
       "categories": [
-        "database"
+        "Database"
       ],
       "description": "MongoDB is a document-oriented NoSQL database used for high volume data storage.",
       "post_up_info": "Browse to http://{host-ip}:8081 to access the mongo-express web interface.",
@@ -1978,6 +1978,23 @@
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "MongoDB",
+      "type": 3
+    },
+    {
+      "categories": [
+        "Other"
+      ],
+      "description": "an OPC UA server instance based on a XML nodeset schema file uploaded to it online",
+      "post_up_info": "Browse to http://{host-ip}:8080 to access the web based GUI",
+      "note": "Browse to <a href='http://{host-ip}:<8080'>http://{host-ip}:8080</a> to access the web based GUI.<ulstyle='padding-left:20px'>",
+      "logo": "https://github.com/RAKWireless/portainer-templates/raw/master/logo/opc_logo.png",
+      "name": "opcua-server",
+      "platform": "linux",
+      "repository": {
+        "stackfile": "Stack/OPCUA-Server/opcua-server.yml",
+        "url": "https://github.com/RAKWireless/portainer-templates"
+      },
+      "title": "OPC-UA Server",
       "type": 3
     }
   ]
