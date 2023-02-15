@@ -1948,6 +1948,37 @@
       "type": 3,
       "network": "bridge",
       "note": "Browse to <a href='http://{host-ip}:<8200'>http://{host-ip}:8200</a> to access the web interface."
+    },
+    {
+      "categories": [
+        "database"
+      ],
+      "description": "MongoDB is a document-oriented NoSQL database used for high volume data storage.",
+      "post_up_info": "Browse to http://{host-ip}:8081 to access the mongo-express web interface.",
+      "note": "Browse to <a href='http://{host-ip}:<8081'>http://{host-ip}:8081</a> to access the mongo-express web interface.<ulstyle='padding-left:20px'>",
+      "env": [
+        {
+          "default": "root",
+          "label": "MONGO_INITDB_ROOT_USERNAME",
+          "name": "MONGO_INITDB_ROOT_USERNAME",
+          "description":"specify the root username of mongo init database"
+        },
+        {
+          "default": "changeme",
+          "label": "MONGO_INITDB_ROOT_PASSWORD",
+          "name": "MONGO_INITDB_ROOT_PASSWORD",
+          "description": "specify the root password of mongo init database"
+        }
+      ],
+      "logo": "https://github.com/RAKWireless/portainer-templates/raw/master/logo/MongoDB_logo.png",
+      "name": "mongodb",
+      "platform": "linux",
+      "repository": {
+        "stackfile": "Stack/MongoDB/mongodb.yml",
+        "url": "https://github.com/RAKWireless/portainer-templates"
+      },
+      "title": "MongoDB",
+      "type": 3
     }
   ]
 }
