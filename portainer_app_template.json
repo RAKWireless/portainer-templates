@@ -1996,6 +1996,37 @@
       },
       "title": "OPC-UA Server",
       "type": 3
+    },
+    {
+      "categories": [
+        "Broker"
+      ],
+      "description": "RabbitMQ is open source message broker software that implements the Advanced Message Queuing Protocol (AMQP). ",
+      "post_up_info": "Browse to http://{host-ip}:15672 to access the rabbitmq-management web interface.\nDeafault username: admin\nDefault password: changeme",
+      "note": "Browse to <a href='http://{host-ip}:<15672'>http://{host-ip}:15672</a> to access the rabbitmq-management web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: changeme</li>",
+      "env": [
+        {
+          "default": "admin",
+          "label": "RABBITMQ_DEFAULT_USER",
+          "name": "RABBITMQ_DEFAULT_USER",
+          "description":"specify the default username of rabbitmq"
+        },
+        {
+          "default": "changeme",
+          "label": "RABBITMQ_DEFAULT_PASS",
+          "name": "RABBITMQ_DEFAULT_PASS",
+          "description": "specify the default password of rabbitmq"
+        }
+      ],
+      "logo": "https://github.com/RAKWireless/portainer-templates/raw/master/logo/RabbitMQ_logo.png",
+      "name": "rabbitmq",
+      "platform": "linux",
+      "repository": {
+        "stackfile": "Stack/RabbitMQ/rabbitmq.yml",
+        "url": "https://github.com/RAKWireless/portainer-templates"
+      },
+      "title": "RabbitMQ",
+      "type": 3
     }
   ]
 }
