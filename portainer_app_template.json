@@ -2035,6 +2035,23 @@
       "description": "Rapid SCADA is an open source industrial automation platform. The out of the box software provides tools for rapid creation of monitoring and control systems.",
       "post_up_info": "Browse to http://{host-ip}/scada to access the RapidScada web interface.\nDefault uasername: admin\nDefault password: 123456",
       "note": "Browse to <a href='http://{host-ip}/scada'>http://{host-ip}/scada</a> to access the RapidScada web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: 12345</li>",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        }
+      ],
       "logo": "https://github.com/RAKWireless/portainer-templates/raw/master/logo/RapidScada_logo.png",
       "name": "rapidscada",
       "platform": "linux",
