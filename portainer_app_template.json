@@ -7,7 +7,7 @@
         "Other"
       ],
       "description": "Portainer Community Edition (CE) is a powerful, open source toolset that allows you to easily build and manage containers in Docker, Docker Swarm, Kubernetes and Azure ACI.",
-      "post_up_info": "Visit https://host-ip:9443 to access the web interface.\nDeafault username: admin\nDefault password: changeme",
+      "post_up_info": "Visit https://{host-ip}:9443 to access the web interface.\nDeafault username: admin\nDefault password: changeme",
       "note": "Visit <a href='https://{host-ip}:<9443'>https://{host-ip}:9443 to access the web interface.</a> <ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: changeme</li>",
       "logo": "https://github.com/RAKWireless/portainer-templates/raw/master/logo/portainer_logo.png",
       "name": "Portainer",
@@ -1696,7 +1696,7 @@
         "Other"
       ],
       "description": "Gitea is a community managed lightweight code hosting solution written in Go.",
-      "post_up_info": "Visit http://host-ip:3000 and follow the installation wizard.\nChange the Server domain to {host-ip}\nChange the SSH Server Port to 222\nChange the Gitea Base URL to http://{host-ip}:3000/",
+      "post_up_info": "Visit http://{host-ip}:3000 and follow the installation wizard.\nChange the Server domain to {host-ip}\nChange the SSH Server Port to 222\nChange the Gitea Base URL to http://{host-ip}:3000/",
       "note": "Visit <a href='http://{host-ip}:<3000'>http://{host-ip}:3000</a> and follow the installation wizard.<br>Change the <b>Server domain</b> to {host-ip}<br>Change the <b>SSH Server Port</b> to 222<br>Change the <b>Gitea Base URL</b> to http://{host-ip}:3000/",
       "env": [
         {
@@ -2026,6 +2026,23 @@
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "RabbitMQ",
+      "type": 3
+    },
+    {
+      "categories": [
+        "Industrial Automation"
+      ],
+      "description": "Rapid SCADA is an open source industrial automation platform. The out of the box software provides tools for rapid creation of monitoring and control systems.",
+      "post_up_info": "Browse to http://{host-ip}/scada to access the RapidScada web interface.\nDefault uasername: admin\nDefault password: 123456",
+      "note": "Browse to <a href='http://{host-ip}/scada'>http://{host-ip}/scada</a> to access the RapidScada web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: 12345</li>",
+      "logo": "https://github.com/RAKWireless/portainer-templates/raw/master/logo/RapidScada_logo.png",
+      "name": "rapidscada",
+      "platform": "linux",
+      "repository": {
+        "stackfile": "Stack/RapidScada/rapidscada.yml",
+        "url": "https://github.com/RAKWireless/portainer-templates"
+      },
+      "title": "RapidScada",
       "type": 3
     }
   ]
