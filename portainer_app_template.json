@@ -41,7 +41,7 @@
         "LoRaWAN"
       ],
       "description": "This app deploys a LoRaWAN gateway with Basics™ Station Packet Forward protocol using Docker.",
-      "post_up_info":"Please check the Github repository https://github.com/xoseperez/basicstation for more information.",
+      "post_up_info": "Please check the Github repository https://github.com/xoseperez/basicstation for more information.",
       "note": "Check <a href='https://github.com/xoseperez/basicstation'>LoRa Basics™ Station for Docker Github repository</a> for more details.",
       "image": "xoseperez/basicstation:v2",
       "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_logo.png",
@@ -52,7 +52,7 @@
       "restart_policy": "unless-stopped",
       "type": 1,
       "network": "host",
-      "privileged": true, 
+      "privileged": true,
       "env": [
         {
           "default": "1000",
@@ -138,7 +138,7 @@
         "LoRaWAN"
       ],
       "description": "This app dockerize the rak_common_for_gateway project, which aim to help users to use the RAK Raspberry Pi Developer Gateway more easily.",
-      "post_up_info":"Please check the Github repository https://github.com/RAKWireless/udp-packet-forwarder for more information.",
+      "post_up_info": "Please check the Github repository https://github.com/RAKWireless/udp-packet-forwarder for more information.",
       "note": "Check <a href='https://github.com/RAKWireless/udp-packet-forwarder'>LoRaWAN UDP Packet Forwarder Protocol for Docker Github repository</a> for more details.",
       "image": "rakwireless/udp-packet-forwarder:latest",
       "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_logo.png",
@@ -440,8 +440,8 @@
         "LoRaWAN"
       ],
       "description": "This project deploys UDP Packet Forwarder protocol for LoRa 2.4GHz Gateways using Docker. It runs on any amd64/x86_64 PC, or a SBC like a Raspberry Pi 3/4, Compute Module 3/4 or balenaFin.",
-      "post_up_info":"Please check the Github repository https://github.com/RAKWireless/udp-packet-forwarder for more details.",
-      "note": "Check <a href='https://github.com/RAKWireless/udp-packet-forwarder'>LoRaWAN UDP Packet Forwarder Protocol for Docker Github repository</a> for more details.",      
+      "post_up_info": "Please check the Github repository https://github.com/RAKWireless/udp-packet-forwarder for more details.",
+      "note": "Check <a href='https://github.com/RAKWireless/udp-packet-forwarder'>LoRaWAN UDP Packet Forwarder Protocol for Docker Github repository</a> for more details.",
       "image": "xoseperez/2g4-packet-forwarder:latest",
       "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_logo.png",
       "name": "2g4PacketForwarder",
@@ -511,7 +511,7 @@
         "LoRaWAN"
       ],
       "description": "The Helium gateway-rs is a service designed to run on Linux-based LoRaWAN gateways. It's intended to run alongside a typical LoRa packet forwarder and to connect via Semtech's Gateway Messaging Protocol. It does not mine HNT for now but can be used to increase coverage on the Helium network.",
-      "post_up_info":"The image comes with helium/gateway-rs & helium-wallet packages installed.\nStart a UDP packet forwarder service first, make sure to set the packet forwarder to forward to the (default) configured helium-gateway on 127.0.0.1 at udp port 1680.\nThe gateway_key.bin file is stored under /etc/helium_gateway on your host by default.\nTo get the public key address and animal name on your host, please use this command: docker exec {container name} helium_gateway key info.\nPlease check https://github.com/helium/gateway-rs for more details. ",
+      "post_up_info": "The image comes with helium/gateway-rs & helium-wallet packages installed.\nStart a UDP packet forwarder service first, make sure to set the packet forwarder to forward to the (default) configured helium-gateway on 127.0.0.1 at udp port 1680.\nThe gateway_key.bin file is stored under /etc/helium_gateway on your host by default.\nTo get the public key address and animal name on your host, please use this command: docker exec {container name} helium_gateway key info.\nPlease check https://github.com/helium/gateway-rs for more details. ",
       "note": "The image comes with helium/gateway-rs & helium-wallet packages.<br>Start a UDP packet forwarder service first, make sure to set the packet forwarder to forward to the (default) configured helium-gateway on 127.0.0.1 at udp port 1680.<br>The <strong>gateway_key.bin</strong> file is stored under <strong>/etc/helium_gateway</strong> on your host by default.<br>Use the command <strong>docker exec {container name} helium_gateway key info </strong>on your host to get the public key address and animal name.<br>Check <a href='https://github.com/helium/gateway-rs'>Helium gateway-rs Github Repository</a> for more details.",
       "image": "sheng2216/helium:latest",
       "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/helium_logo.png",
@@ -613,14 +613,14 @@
           ],
           "description": "Possible valuess for regional parameters"
         }
-      ]    
+      ]
     },
     {
       "categories": [
         "Home Automation"
       ],
       "description": "Node-RED is a flow-based development tool for visual programming.",
-      "post_up_info":"Browse to http://{host-ip}:1880 to access the web interface.\nCheck https://nodered.org/docs/getting-started/docker for Node-RED docker quick start guide.",
+      "post_up_info": "Browse to http://{host-ip}:1880 to access the web interface.\nCheck https://nodered.org/docs/getting-started/docker for Node-RED docker quick start guide.",
       "note": "Browse to <a herf='http://{host-ip}:1880'>http://{host-ip}:1880</a> to access the web interface.<br>Check <a href='https://nodered.org/docs/getting-started/docker'>Node-RED docker quick start guide</a> for more details.",
       "logo": "https://nodered.org/about/resources/media/node-red-icon-2.png",
       "title": "NodeRed",
@@ -663,7 +663,7 @@
             }
           ]
         }
-      ]  
+      ]
     },
     {
       "categories": [
@@ -1644,7 +1644,7 @@
       "title": "Open-PLC",
       "type": 1
     },
-	{
+    {
       "categories": [
         "File Browser"
       ],
@@ -1691,7 +1691,7 @@
       "title": "File Browser",
       "type": 3
     },
-	{
+    {
       "categories": [
         "Other"
       ],
@@ -1737,7 +1737,7 @@
         "Other"
       ],
       "description": "Docker Registry is a stateless, highly scalable server side application that stores and lets you distribute Docker images.",
-      "post_up_info":"Quick reference:\n1. Pull(or build some image from the hub, e.g., ubuntu)\ndocker pull ubuntu\n2. Tag the image so that it points to your registry\ndocker image tag ubuntu localhost:5000/myfirstimage\n3. Push it\ndocker push localhost:5000/myfirstimage\n4. Pull it back\n docker pull localhost:5000/myfirstimage ",
+      "post_up_info": "Quick reference:\n1. Pull(or build some image from the hub, e.g., ubuntu)\ndocker pull ubuntu\n2. Tag the image so that it points to your registry\ndocker image tag ubuntu localhost:5000/myfirstimage\n3. Push it\ndocker push localhost:5000/myfirstimage\n4. Pull it back\n docker pull localhost:5000/myfirstimage ",
       "note": "Check <a href='https://hub.docker.com/_/registry'>Docker Registry dockerhub overview page</a> for more details.<br>Read <a href='https://docs.docker.com/registry/deploying/'>the section regarding deployment</a> to see more complex use cases.",
       "image": "registry:latest",
       "logo": "https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png",
@@ -1748,7 +1748,7 @@
       "restart_policy": "unless-stopped",
       "type": 1,
       "network": "host",
-      "privileged": true, 
+      "privileged": true,
       "env": [
         {
           "default": "1000",
@@ -1775,7 +1775,7 @@
         "Database"
       ],
       "description": "Azure SQL Edge is an optimized relational database engine geared for IoT and IoT Edge deployments. It provides capabilities to create a high-performance data storage and processing layer for IoT applications and solutions.",
-      "post_up_info":"Quick reference:\nPlease check https://learn.microsoft.com/en-us/azure/azure-sql-edge/disconnected-deployment for detailed instructions.\nMake sure you changed the SA password afte deployment.",
+      "post_up_info": "Quick reference:\nPlease check https://learn.microsoft.com/en-us/azure/azure-sql-edge/disconnected-deployment for detailed instructions.\nMake sure you changed the SA password afte deployment.",
       "note": "Check the instructions <a href='https://learn.microsoft.com/en-us/azure/azure-sql-edge/disconnected-deployment'>Deploy Azure SQL Edge with Docker</a> for more details.<br>Make sure you changed the SA password afte deployment.",
       "env": [
         {
@@ -1817,105 +1817,104 @@
       "type": 3
     },
     {
-        "categories": [
-          "Other"
-        ],
-        "description": "AWS IoT Greengrass is an open-source edge runtime and cloud service that helps you build, deploy, and manage intelligent device software.",
-        "post_up_info": "Please mount the folder that contains your AWS security credentials by filling in the AWS credentials path section.\nYou can remove the credential file from the host computer after you start the AWS IoT Greengrass container.\nCheck https://docs.aws.amazon.com/greengrass/v2/developerguide/run-greengrass-docker-automatic-provisioning.html#configure-aws-credentials-for-docker for the AWS IoT Greengrass Developer Guide.\nFor more information, check the official Github repository at https://github.com/aws-greengrass/aws-greengrass-docker.",
-        "note": "Please mount the folder that contains your AWS security credentials by filling in the <strong>AWS credentials path</strong> section.<br>You can remove the credential file from the host computer after you start the AWS IoT Greengrass container.<br>Check <a href='https://docs.aws.amazon.com/greengrass/v2/developerguide/run-greengrass-docker-automatic-provisioning.html#configure-aws-credentials-for-docker'>AWS IoT Greengrass Developer Guide</a>.<br>For more information, check <a href='https://github.com/aws-greengrass/aws-greengrass-docker'> official Github repository</a>.", 
-        "logo": "https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,w_60,h_60/https://dashboard.snapcraft.io/site_media/appmedia/2020/05/AWS-IoT-Greengrass4x.png",
-        "name": "AWSIoTGreengrass",
-        "title": "AWS IoTG Greengrass",
-        "network": "bridge",
-        "platform": "linux",
-        "type": 3,
-        "restart_policy": "unless-stopped",
-        
-        "repository": {
-          "stackfile": "Stack/AWSIoTGreengrass/awsiotgreengrass.yml",
-          "url": "https://github.com/RAKwireless/portainer-templates"
+      "categories": [
+        "Other"
+      ],
+      "description": "AWS IoT Greengrass is an open-source edge runtime and cloud service that helps you build, deploy, and manage intelligent device software.",
+      "post_up_info": "Please mount the folder that contains your AWS security credentials by filling in the AWS credentials path section.\nYou can remove the credential file from the host computer after you start the AWS IoT Greengrass container.\nCheck https://docs.aws.amazon.com/greengrass/v2/developerguide/run-greengrass-docker-automatic-provisioning.html#configure-aws-credentials-for-docker for the AWS IoT Greengrass Developer Guide.\nFor more information, check the official Github repository at https://github.com/aws-greengrass/aws-greengrass-docker.",
+      "note": "Please mount the folder that contains your AWS security credentials by filling in the <strong>AWS credentials path</strong> section.<br>You can remove the credential file from the host computer after you start the AWS IoT Greengrass container.<br>Check <a href='https://docs.aws.amazon.com/greengrass/v2/developerguide/run-greengrass-docker-automatic-provisioning.html#configure-aws-credentials-for-docker'>AWS IoT Greengrass Developer Guide</a>.<br>For more information, check <a href='https://github.com/aws-greengrass/aws-greengrass-docker'> official Github repository</a>.",
+      "logo": "https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,w_60,h_60/https://dashboard.snapcraft.io/site_media/appmedia/2020/05/AWS-IoT-Greengrass4x.png",
+      "name": "AWSIoTGreengrass",
+      "title": "AWS IoTG Greengrass",
+      "network": "bridge",
+      "platform": "linux",
+      "type": 3,
+      "restart_policy": "unless-stopped",
+      "repository": {
+        "stackfile": "Stack/AWSIoTGreengrass/awsiotgreengrass.yml",
+        "url": "https://github.com/RAKwireless/portainer-templates"
+      },
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
         },
-        "env": [
-          {
-            "default": "1000",
-            "label": "PUID",
-            "name": "PUID"
-          },
-          {
-            "default": "100",
-            "label": "PGID",
-            "name": "PGID"
-          },
-          {
-            "default": "Europe/London",
-            "label": "Time Zone",
-            "name": "TZ"
-          },  
-          {
-            "default": "/tmp/greengrass-v2-credentials",
-            "label": "AWS credentials path",
-            "name": "AWS_CREDENTIALS_PATH",
-            "description": "Geerated at your AWS console. When you run the Docker image, you must mount the folder that contains this credential file to /root/.aws/ in the Docker container."
-          },
-          {
-            "default": "/greengrass/v2",
-            "label": "GGC_ROOT_PATH",
-            "name": "GGC_ROOT_PATH",
-            "description":"The Greengrass root folder that you want to use for installation."
-          },
-          {
-            "default": "us-east-1",
-            "label": "AWS_REGION",
-            "name": "AWS_REGION",
-            "description":"The AWS Region where you created the resources."
-          },
-          {
-            "default": "true",
-            "select": [
-              {
-                "text": "true",
-                "value": "true"
-              },
-              {
-                "text": "false",
-                "value": "false"
-              }
-            ],
-            "label": "PROVISION",
-            "name": "PROVISION"
-          },
-          {
-            "default": "MyGreengrassCore",
-            "label": "THING_NAME",
-            "name": "THING_NAME"
-          },
-          {
-            "default": "MyGreengrassCoreGroup",
-            "label": "THING_GROUP_NAME",
-            "name": "THING_GROUP_NAME"
-          },
-          {
-            "default": "GreengrassV2TokenExchangeRole",
-            "label": "TES_ROLE_NAME",
-            "name": "TES_ROLE_NAME"
-          },
-          {
-            "default": "GreengrassCoreTokenExchangeRoleAlias",
-            "label": "TES_ROLE_ALIAS_NAME",
-            "name": "TES_ROLE_ALIAS_NAME"
-          },
-          {
-            "default": "ggc_user:ggc_group",
-            "label": "COMPONENT_DEFAULT_USER",
-            "name": "COMPONENT_DEFAULT_USER"
-          }
-        ]
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        },
+        {
+          "default": "/tmp/greengrass-v2-credentials",
+          "label": "AWS credentials path",
+          "name": "AWS_CREDENTIALS_PATH",
+          "description": "Geerated at your AWS console. When you run the Docker image, you must mount the folder that contains this credential file to /root/.aws/ in the Docker container."
+        },
+        {
+          "default": "/greengrass/v2",
+          "label": "GGC_ROOT_PATH",
+          "name": "GGC_ROOT_PATH",
+          "description": "The Greengrass root folder that you want to use for installation."
+        },
+        {
+          "default": "us-east-1",
+          "label": "AWS_REGION",
+          "name": "AWS_REGION",
+          "description": "The AWS Region where you created the resources."
+        },
+        {
+          "default": "true",
+          "select": [
+            {
+              "text": "true",
+              "value": "true"
+            },
+            {
+              "text": "false",
+              "value": "false"
+            }
+          ],
+          "label": "PROVISION",
+          "name": "PROVISION"
+        },
+        {
+          "default": "MyGreengrassCore",
+          "label": "THING_NAME",
+          "name": "THING_NAME"
+        },
+        {
+          "default": "MyGreengrassCoreGroup",
+          "label": "THING_GROUP_NAME",
+          "name": "THING_GROUP_NAME"
+        },
+        {
+          "default": "GreengrassV2TokenExchangeRole",
+          "label": "TES_ROLE_NAME",
+          "name": "TES_ROLE_NAME"
+        },
+        {
+          "default": "GreengrassCoreTokenExchangeRoleAlias",
+          "label": "TES_ROLE_ALIAS_NAME",
+          "name": "TES_ROLE_ALIAS_NAME"
+        },
+        {
+          "default": "ggc_user:ggc_group",
+          "label": "COMPONENT_DEFAULT_USER",
+          "name": "COMPONENT_DEFAULT_USER"
+        }
+      ]
     },
     {
       "categories": [
-          "Backup"
-        ],
-      "description": "free backup software to store encrypted backups online",
+        "Backup"
+      ],
+      "description": "Free backup software to store encrypted backups online",
       "env": [
         {
           "default": "/etc/duplicati/config",
@@ -1927,7 +1926,7 @@
           "default": "/opt/duplicati/source",
           "label": "SOURCE",
           "name": "SOURCE",
-          "description":"Path to source for files to backup."
+          "description": "Path to source for files to backup."
         },
         {
           "default": "/opt/duplicati/backups",
@@ -1947,21 +1946,22 @@
       },
       "type": 3,
       "network": "bridge",
-      "note": "Browse to <a href='http://{host-ip}:<8200'>http://{host-ip}:8200</a> to access the web interface."
+      "note": "Browse to <a href='http://{host-ip}:<8200'>http://{host-ip}:8200</a> to access the web interface. For more information, refere to the official documentation at <a href='https://hub.docker.com/r/linuxserver/duplicati'>https://hub.docker.com/r/linuxserver/duplicati</a>.",
+      "post_up_info": "Browse to http://{host-ip}:8200 to access the web interface.<br>For more information, refer to the official documentation available at https://hub.docker.com/r/linuxserver/duplicati."
     },
     {
       "categories": [
         "Database"
       ],
       "description": "MongoDB is a document-oriented NoSQL database used for high volume data storage.",
-      "post_up_info": "Browse to http://{host-ip}:8081 to access the mongo-express web interface.",
-      "note": "Browse to <a href='http://{host-ip}:<8081'>http://{host-ip}:8081</a> to access the mongo-express web interface.<ulstyle='padding-left:20px'>",
+      "post_up_info": "Browse to http://{host-ip}:8081 to access the mongo-express web interface.\nFor more information, refere to the official documentation at https://hub.docker.com/_/mongo",
+      "note": "Browse to <a href='http://{host-ip}:<8081'>http://{host-ip}:8081</a> to access the mongo-express web interface.<br>For more information, refere to the official documentation at <a href='https://hub.docker.com/_/mongo'>https://hub.docker.com/_/mongo</a>",
       "env": [
         {
           "default": "root",
           "label": "MONGO_INITDB_ROOT_USERNAME",
           "name": "MONGO_INITDB_ROOT_USERNAME",
-          "description":"specify the root username of mongo init database"
+          "description": "specify the root username of mongo init database"
         },
         {
           "default": "changeme",
@@ -1978,6 +1978,7 @@
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "MongoDB",
+      "restart_policy": "unless-stopped",
       "type": 3
     },
     {
@@ -1985,11 +1986,12 @@
         "Other"
       ],
       "description": "an OPC UA server instance based on a XML nodeset schema file uploaded to it online",
-      "post_up_info": "Browse to http://{host-ip}:8080 to access the web based GUI",
-      "note": "Browse to <a href='http://{host-ip}:<8080'>http://{host-ip}:8080</a> to access the web based GUI.<ulstyle='padding-left:20px'>",
+      "post_up_info": "Browse to http://{host-ip}:8080 to access the web based GUI. For more information, refere to the official documentation at https://hub.docker.com/r/hilschernetpi/netpi-opcua-server.",
+      "note": "Browse to <a href='http://{host-ip}:<8080'>http://{host-ip}:8080</a> to access the web based GUI. <br>For more information, refere to the official documentation at <a href='https://hub.docker.com/r/hilschernetpi/netpi-opcua-server'>https://hub.docker.com/r/hilschernetpi/netpi-opcua-server</a>",
       "logo": "https://github.com/RAKWireless/portainer-templates/raw/master/logo/opc_logo.png",
       "name": "opcua-server",
       "platform": "linux",
+      "restart_policy": "unless-stopped",
       "repository": {
         "stackfile": "Stack/OPCUA-Server/opcua-server.yml",
         "url": "https://github.com/RAKWireless/portainer-templates"
@@ -2002,14 +2004,14 @@
         "Broker"
       ],
       "description": "RabbitMQ is open source message broker software that implements the Advanced Message Queuing Protocol (AMQP). ",
-      "post_up_info": "Browse to http://{host-ip}:15672 to access the rabbitmq-management web interface.\nDeafault username: admin\nDefault password: changeme",
-      "note": "Browse to <a href='http://{host-ip}:<15672'>http://{host-ip}:15672</a> to access the rabbitmq-management web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: changeme</li>",
+      "post_up_info": "Browse to http://{host-ip}:15672 to access the rabbitmq-management web interface. For more information, refere to the official documentation at https://hub.docker.com/_/rabbitmq \nDeafault username: admin\nDefault password: changeme",
+      "note": "Browse to <a href='http://{host-ip}:<15672'>http://{host-ip}:15672</a> to access the rabbitmq-management web interface.<br>For more information, refere to the official documentation at <a href='https://hub.docker.com/_/rabbitmq'>https://hub.docker.com/_/rabbitmq</a><ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: changeme</li>",
       "env": [
         {
           "default": "admin",
           "label": "RABBITMQ_DEFAULT_USER",
           "name": "RABBITMQ_DEFAULT_USER",
-          "description":"specify the default username of rabbitmq"
+          "description": "specify the default username of rabbitmq"
         },
         {
           "default": "changeme",
@@ -2021,6 +2023,7 @@
       "logo": "https://github.com/RAKWireless/portainer-templates/raw/master/logo/RabbitMQ_logo.png",
       "name": "rabbitmq",
       "platform": "linux",
+      "restart_policy": "unless-stopped",
       "repository": {
         "stackfile": "Stack/RabbitMQ/rabbitmq.yml",
         "url": "https://github.com/RAKWireless/portainer-templates"
@@ -2033,8 +2036,8 @@
         "Industrial Automation"
       ],
       "description": "Rapid SCADA is an open source industrial automation platform. The out of the box software provides tools for rapid creation of monitoring and control systems.",
-      "post_up_info": "Browse to http://{host-ip}/scada to access the RapidScada web interface.\nDefault uasername: admin\nDefault password: 123456",
-      "note": "Browse to <a href='http://{host-ip}/scada'>http://{host-ip}/scada</a> to access the RapidScada web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: 12345</li>",
+      "post_up_info": "Browse to http://{host-ip}/scada to access the RapidScada web interface.\nDefault uasername: admin\nDefault password: 123456\nFor more information, refere to the official documentation at https://www.codeguru.com/dotnet/asp-net-docker/",
+      "note": "Browse to <a href='http://{host-ip}/scada'>http://{host-ip}/scada</a> to access the RapidScada web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: 12345</li>For more information, refere to the official documentation at <a href='https://www.codeguru.com/dotnet/asp-net-docker/'>https://www.codeguru.com/dotnet/asp-net-docker/</a>",
       "env": [
         {
           "default": "1000",
@@ -2060,7 +2063,58 @@
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "RapidScada",
+      "restart_policy": "unless-stopped",
       "type": 3
+    },
+    {
+      "categories": [
+        "Other"
+      ],
+      "description": "MotionEye is a web-based frontend for Motion, which monitors video signals from various cameras.",
+      "post_up_info": "Browse to http://{host-ip}:8765/ to access the fronted.\nDefault uasername: admin\nNo password by default.\nCheck https://github.com/motioneye-project/motioneye/wiki for more information",
+      "note": "Browse to <a href='http://{host-ip}:8765'>http://{host-ip}:8765</a> to access the fronted.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>No default password</li>Check <a href='https://github.com/motioneye-project/motioneye/wiki'>motioneye wiki</a> for more information",
+      "name": "MotionEye",
+      "title": "MotionEye",
+      "image": "ccrisan/motioneye:master-armhf",
+      "logo": "https://raw.githubusercontent.com/motioneye-project/motioneye/python2/motioneye/static/img/motioneye-icon.svg",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        }
+      ],
+      "type": 1,
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "bind": "/etc/localtime",
+          "container": "/etc/localtime:ro"
+        },
+        {
+          "bind": "/var/lib/motioneye",
+          "container": "/var/lib/motioneye"
+        },
+        {
+          "bind": "/etc/motioneye",
+          "container": "/etc/motioneye"
+        }
+      ],
+      "ports": [
+        "8765:8765/tcp",
+        "8781:8781/tcp"
+      ]
     }
   ]
 }
