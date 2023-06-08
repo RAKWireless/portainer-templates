@@ -140,7 +140,7 @@
       "description": "This app dockerize the rak_common_for_gateway project, which aim to help users to use the RAK Raspberry Pi Developer Gateway more easily.",
       "post_up_info": "Please check the Github repository https://github.com/RAKWireless/udp-packet-forwarder for more information.",
       "note": "Check <a href='https://github.com/RAKWireless/udp-packet-forwarder'>LoRaWAN UDP Packet Forwarder Protocol for Docker Github repository</a> for more details.",
-      "image": "rakwireless/udp-packet-forwarder:latest",
+      "image": "rakwireless/udp-packet-forwarder:v2.0.0",
       "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_logo.png",
       "name": "UDPPacketForwarder",
       "title": "UDP Packet Forwarder",
@@ -168,14 +168,22 @@
         },
         {
           "name": "MODEL",
-          "label": "RAK gateway model/RAK WisLink LPWAN module",
+          "label": "RAK gateway model/LoRaWAN concentrator model number/Semtech LoRa chip model",
           "select": [
             {
-              "text": "RAK7243/RAK7244(no LTE)",
+              "text": "RAK7243(no LTE)",
+              "value": "RAK7243"
+            },
+            {
+              "text": "RAK7243C(with LTE)",
+              "value": "RAK7243C"
+            },
+            {
+              "text": "RAK7244(no LTE)",
               "value": "RAK7244"
             },
             {
-              "text": "RAK7243C/RAK7244C(with LTE)",
+              "text": "RAK7244(with LTE)",
               "value": "RAK7244C"
             },
             {
@@ -207,44 +215,57 @@
               "value": "RAK831"
             },
             {
-              "text": "RAK2245(SPI only)",
+              "text": "RAK833",
+              "value": "RAK833"
+            },
+            {
+              "text": "RAK2245",
               "value": "RAK2245"
             },
             {
-              "text": "RAK2247(USB)",
-              "value": "RAK2247_USB"
-            },
-            {
-              "text": "RAK2247(SPI)",
-              "value": "RAK2247_SPI"
-            },
-            {
-              "text": "RAK833(USB)",
-              "value": "RAK833_USB"
-            },
-            {
-              "text": "RAK833(SPI)",
-              "value": "RAK833_SPI"
-            },
-            {
-              "text": "RAK2246(SPI only)",
+              "text": "RAK2246",
               "value": "RAK2246"
             },
             {
-              "text": "RAK2287(SPI/USB)",
+              "text": "RAK2247",
+              "value": "RAK2247"
+            },
+            {
+              "text": "RAK2287",
               "value": "RAK2287"
             },
             {
-              "text": "RAK5146(SPI/USB)",
+              "text": "RAK5146",
               "value": "RAK5146"
-            }
-          ],
-          "description": "RAKwireless Developer gateway model or RAKwireless WisLink LPWAN module. Once defined, we take care of all the concentrator configurations and you can skip to option <Interface for gateway EUI>"
-        },
-        {
-          "name": "CONCENTRATOR",
-          "label": "Semtech concentrator",
-          "select": [
+            },
+            {
+              "text": "RAK5148",
+              "value": "RAK5148"
+            },
+            {
+              "text": "IC880A",
+              "value": "IC880A"
+            },
+            {
+              "text": "WM1302",
+              "value": "WM1302"
+            },
+            {
+              "text": "R11E-LR8",
+              "value": "R11E-LR8"
+            },
+            {
+              "text": "R11E-LR9",
+              "value": "R11E-LR9"
+            },
+            {
+              "text": "R11E-LR2",
+              "value": "R11E-LR2"
+            },
+            {
+              "text": "SX1280ZXXXXGW1",
+              "value": "SX1280ZXXXXGW1"
+            },
             {
               "text": "SX1301",
               "value": "SX1301"
@@ -256,13 +277,12 @@
             {
               "text": "SX1303",
               "value": "SX1303"
-            },
-            {
+            },            {
               "text": "SX1308",
               "value": "SX1308"
             }
           ],
-          "description": "If RAK gateway model is not defined, you can define <Semtech concentrator> instead. Once defined this env variable, also need to specify other features of the module, for example, <Concentrator interface>,<HAS GPS>,<HAS LTE>."
+          "description": "Set RAKwireless Developer gateway model or LoRaWAN concentrator model number or Semtech LoRa chip model. When using concentrator model number or Semtech LoRa chip model, you will probably have to specify other features of the module."
         },
         {
           "name": "INTERFACE",
@@ -327,23 +347,33 @@
         {
           "name": "RADIO_DEV",
           "label": "Where the concentrator is connected to",
-          "description": "Don't set it if you don't know what this means, /dev/spidev0.0 for SPI concentrators, /dev/ttyACM0 for USB concentrators."
+          "description": "Don't set it if you don't know what this means, by default /dev/spidev0.0 for SPI concentrators, /dev/ttyACM0 or /dev/ttyUSB0 for USB concentrators."
         },
         {
           "name": "GPS_DEV",
           "label": "Where the GPS is connected to",
-          "description": "Don't set it if you don't know what this means, /dev/ttyAMA0 except when HAS_LTE is 1, in this case it will default to /dev/i2c-1. "
+          "description": "Don't set it if you don't know what this means, by default /dev/ttyAMA0 except when HAS_LTE is 1, in this case it will default to /dev/i2c-1. "
         },
         {
-          "name": "GATEWAY_EUI_NIC",
-          "label": "Interface for gateway EUI",
-          "default": "eth0",
-          "description": "Interface to use when generating the EUI, default to eth0"
+          "name": "GATEWAY_EUI_SOURCE",
+          "label": "Source of the Gateway EUI",
+          "default": "chip",
+          "select": [
+            {
+              "text": "Use Semtech LoRa chip ID",
+              "value": "chip"
+            },
+            {
+              "text": "Generate gateway EUI based on following network interfaces: eth0, wlan0, usb0, eth1, or most used NIC. If you need to use a custom gateway EUI, see option below",
+              "value": ""
+            }
+          ],
+          "description": "Source of the gateway EUI, default to use the Semtech Chip ID"
         },
         {
           "name": "GATEWAY_EUI",
           "label": "Gateway EUI",
-          "description": "Autogenerated from GATEWAY_EUI_NIC if defined, otherwise in order from: eth0, wlan0, usb0"
+          "description": "Set a custom Gateway EUI (8 bytes in hex format),this takes precedence over the previous gateway EUI setting."
         },
         {
           "name": "TTN_REGION",
@@ -353,8 +383,8 @@
         },
         {
           "name": "SERVER_HOST",
-          "label": "Host Server URL",
-          "description": "If TTN_REGION is defined it will build the right address for the TTN server"
+          "label": "LNS URL",
+          "description": "Use a completely difference LNS server. By default it will use the official TTN server address based on the TTN region choosen"
         },
         {
           "name": "SERVER_PORT",
@@ -368,19 +398,19 @@
           "default": "eu_863_870",
           "select": [
             {
-              "text": "as_915_921",
+              "text": "as_915_921(as_923_3)",
               "value": "as_915_921"
             },
             {
-              "text": "as_915_928",
+              "text": "as_915_928(as_923_1)",
               "value": "as_915_928"
             },
             {
-              "text": "as_917_920",
+              "text": "as_917_920(as_923_4)",
               "value": "as_917_920"
             },
             {
-              "text": "as_920_923",
+              "text": "as_920_923(as_923_2)",
               "value": "as_920_923"
             },
             {
