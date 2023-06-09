@@ -237,10 +237,10 @@
       "categories": [
         "LoRaWAN"
       ],
-      "description": "This app dockerize the rak_common_for_gateway project, which aim to help users to use the RAK Raspberry Pi Developer Gateway more easily.",
+      "description": "This project deploys a LoRaWAN gateway with UDP Packet Forwarder protocol using Docker.",
       "post_up_info": "Please check the Github repository https://github.com/RAKWireless/udp-packet-forwarder for more information.",
       "note": "Check <a href='https://github.com/RAKWireless/udp-packet-forwarder'>LoRaWAN UDP Packet Forwarder Protocol for Docker Github repository</a> for more details.",
-      "image": "rakwireless/udp-packet-forwarder:v2.0.0",
+      "image": "rakwireless/udp-packet-forwarder:v2",
       "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_logo.png",
       "name": "UDPPacketForwarder",
       "title": "UDP Packet Forwarder",
