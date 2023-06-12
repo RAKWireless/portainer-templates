@@ -59,10 +59,10 @@ RAK7391 is a flexible IoT platform powered with Raspberry Pi Compute Module 4 wh
 - [Registry](https://hub.docker.com/_/registry)
 - [Azure SQL Edge](https://learn.microsoft.com/en-us/azure/azure-sql-edge/disconnected-deployment)
 - [AWS IoTG Greengrass](https://docs.aws.amazon.com/greengrass/v2/developerguide/run-greengrass-docker-automatic-provisioning.html#configure-aws-credentials-for-docker)
-- [Duplicati]([Docker](https://hub.docker.com/r/linuxserver/duplicati)
-- [MongoDB]([Docker](https://hub.docker.com/_/mongo)
+- [Duplicati](https://hub.docker.com/r/linuxserver/duplicati)
+- [MongoDB](https://hub.docker.com/_/mongo)
 - [OPC-UA Server](https://hub.docker.com/r/hilschernetpi/netpi-opcua-server)
-- [RabbitMQ]([Docker](https://hub.docker.com/_/rabbitmq)
+- [RabbitMQ](https://hub.docker.com/_/rabbitmq)
 - [RapidScada](https://www.codeguru.com/dotnet/asp-net-docker/)
 - [MotionEye](https://github.com/motioneye-project/motioneye/wiki)
 
