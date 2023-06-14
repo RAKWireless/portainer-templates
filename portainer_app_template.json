@@ -2245,6 +2245,44 @@
         "8765:8765/tcp",
         "8781:8781/tcp"
       ]
+    },
+    {
+      "categories": [
+        "VPN"
+      ],
+      "description": "ZeroTier lets you build modern, secure multi-point virtualized networks of almost any type.",
+      "env": [
+        {
+          "label": "JOIN_NETWORKS",
+          "name": "ZEROTIER_JOIN_NETWORKS",
+          "description":"the network id that you want to join(required)"
+        },
+        {
+          "label": "API_SECRET",
+          "name": "ZEROTIER_API_SECRET",
+          "description":"authtoken used to interact with the control socket(optional)"
+        },
+        {
+          "label": "IDENTITY_PUBLIC",
+          "name": "ZEROTIER_IDENTITY_PUBLIC",
+          "description":"zero identity public(optional)"
+        },
+        {
+          "label": "IDENTITY_SECRET",
+          "name": "ZEROTIER_IDENTITY_SECRET",
+          "description":"zero identity sercret(optional)"
+        }
+      ],
+      "image": "zerotier/zerotier:1.10.6",
+      "logo": "https://github.com/RAKWireless/portainer-templates/raw/master/logo/ZeroTierIcon.png",
+      "name": "ZeroTier",
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "title": "ZeroTier One",
+      "type": 1,
+      "network": "host",
+      "privileged": true,
+      "note":"Check <a href='https://hub.docker.com/r/zerotier/zerotier'>ZeroIter in Docker Hub </a> for more details."
     }
   ]
 }
