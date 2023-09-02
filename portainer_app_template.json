@@ -271,19 +271,19 @@
           "label": "RAK gateway model/LoRaWAN concentrator model number/Semtech LoRa chip model",
           "select": [
             {
-              "text": "RAK7243(no LTE)",
+              "text": "RAK7243 (no LTE)",
               "value": "RAK7243"
             },
             {
-              "text": "RAK7243C(with LTE)",
+              "text": "RAK7243C (with LTE)",
               "value": "RAK7243C"
             },
             {
-              "text": "RAK7244(no LTE)",
+              "text": "RAK7244 (no LTE)",
               "value": "RAK7244"
             },
             {
-              "text": "RAK7244(with LTE)",
+              "text": "RAK7244 (with LTE)",
               "value": "RAK7244C"
             },
             {
@@ -295,11 +295,11 @@
               "value": "RAK7246G"
             },
             {
-              "text": "RAK7248(no LTE)",
+              "text": "RAK7248 (no LTE)",
               "value": "RAK7248"
             },
             {
-              "text": "RAK7248C(with LTE)",
+              "text": "RAK7248C (with LTE)",
               "value": "RAK7248C"
             },
             {
@@ -311,7 +311,7 @@
               "value": "RAK7371"
             },
             {
-              "text": "RAK831(SPI only)",
+              "text": "RAK831 (SPI only)",
               "value": "RAK831"
             },
             {
@@ -377,7 +377,8 @@
             {
               "text": "SX1303",
               "value": "SX1303"
-            },            {
+            },            
+            {
               "text": "SX1308",
               "value": "SX1308"
             }
@@ -396,6 +397,10 @@
             {
               "text": "USB",
               "value": "USB"
+            },
+            {
+              "text": "AUTO (only if RADIO_DEV=AUTO)",
+              "value": "AUTO"
             }
           ],
           "description": "If MODEL is defined it will get the interface type from it, otherwise defaults to SPI"
@@ -447,7 +452,7 @@
         {
           "name": "RADIO_DEV",
           "label": "Where the concentrator is connected to",
-          "description": "Don't set it if you don't know what this means, by default /dev/spidev0.0 for SPI concentrators, /dev/ttyACM0 or /dev/ttyUSB0 for USB concentrators."
+          "description": "Don't set it if you don't know what this means, by default /dev/spidev0.0 for SPI concentrators, /dev/ttyACM0 or /dev/ttyUSB0 for USB concentrators. Set to AUTO to auto-discover."
         },
         {
           "name": "GPS_DEV",
@@ -569,7 +574,7 @@
       "categories": [
         "LoRaWAN"
       ],
-      "description": "This project deploys UDP Packet Forwarder protocol for LoRa 2.4GHz Gateways using Docker. It runs on any amd64/x86_64 PC, or a SBC like a Raspberry Pi 3/4, Compute Module 3/4 or balenaFin.",
+      "description": "This project deploys UDP Packet Forwarder protocol for LoRa 2.4GHz Gateways using Docker. It runs on any amd64/x86_64 PC, or a SBC like a Raspberry Pi 3/4, Compute Module 3/4 or balenaFin. DEPRECATED: use UDP Packet Forwarder instead.",
       "post_up_info": "Please check the Github repository https://github.com/RAKWireless/udp-packet-forwarder for more details.",
       "note": "Check <a href='https://github.com/RAKWireless/udp-packet-forwarder'>LoRaWAN UDP Packet Forwarder Protocol for Docker Github repository</a> for more details.",
       "image": "xoseperez/2g4-packet-forwarder:latest",
