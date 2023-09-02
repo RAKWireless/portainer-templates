@@ -2,7 +2,7 @@
 
 ## Introduction
 
-RAK7391 is a flexible IoT platform powered with Raspberry Pi Compute Module 4 which you will be able to tailor to your specific needs. To leverage the potential of RAK7391, we provide a curated list of open source services ready to deploy as containers. These services are host in this repository as a [Portainer](https://www.portainer.io/) app template. With Portainer and the app template provided, users can easily deploy the curated containers in minutes.  
+RAK7391 is a flexible IoT platform powered with Raspberry Pi Compute Module 4 which you will be able to tailor to your specific needs. To leverage the potential of RAK7391, we provide a curated list of open source services ready to deploy as containers. These services are host in this repository as a [Portainer](https://www.portainer.io/) app template. With Portainer and the app template provided, users can easily deploy the curated containers in minutes.
 
 *Any questions or just want something we don't have? Make an issue and we are here to help.*
 
@@ -14,16 +14,20 @@ RAK7391 is a flexible IoT platform powered with Raspberry Pi Compute Module 4 wh
 ### Installing
 
 1. Browse to Portaine’s setting page, and then go to ”App Template" section
+  
 2. Add the url: `https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/portainer_app_template.json` , then save settings.
+  
 3. Go to the App Templates in the sidebar, you will see a list of services (as shown in the figure below), choose the service you are interested in, follow the notes and descriptions for each service and option, customize the service to match your own needs, and then hit the button **Deploy the container**, wait for a few seconds for docker to pull the images and then create services.
-   
-   ![](https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/portainer-application-templates-list.png)
+  
+  ![](https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/portainer-application-templates-list.png)
+  
 
 ### Information
 
 1. Portainer CE didn't add the `group-add` functionality from docker-compose to container creation until [Portainer CE 2.14.0](https://hub.docker.com/layers/portainer-ce/portainer/portainer-ce/2.14.0/images/sha256-c418af6e9c087952318189c8fcb4b32326d5be39eabafff4fb49e81a24a56bca?context=explore). The curated Node-RED image provided by RAKwireless in the Portainer app template has [some issues](https://github.com/portainer/portainer/issues/6970) with usergroup of GPIO, I2C, and USB. To get rid of this issue, please upgrade Portainer-CE's version to at least 2.14.0.
-
-2. We use Portainer stacks to deploy some of the services. The stacks, [as Portainer calls them](https://www.portainer.io/blog/stacks-docker-compose-the-portainer-way), are "sets of features that will allow users to start and run your container(s) using a well-structured docker-compose.yml file". For example, a [Chirpstack stack](https://github.com/chirpstack/chirpstack-docker) definition includes the network server container, the application server container, the gateway bridge container, the MQTT(mosquitto) container, and databases containers (such as posgresql and redis). These stack files share the same syntax with docker-compose YAML file, but with some minor differences. They are stored under the `Stack` directory. 
+  
+2. We use Portainer stacks to deploy some of the services. The stacks, [as Portainer calls them](https://www.portainer.io/blog/stacks-docker-compose-the-portainer-way), are "sets of features that will allow users to start and run your container(s) using a well-structured docker-compose.yml file". For example, a [Chirpstack stack](https://github.com/chirpstack/chirpstack-docker) definition includes the network server container, the application server container, the gateway bridge container, the MQTT(mosquitto) container, and databases containers (such as posgresql and redis). These stack files share the same syntax with docker-compose YAML file, but with some minor differences. They are stored under the `Stack` directory.
+  
 
 ### App List
 
@@ -46,6 +50,21 @@ RAK7391 is a flexible IoT platform powered with Raspberry Pi Compute Module 4 wh
 - [NATS Server](https://hub.docker.com/_/nats)
 - [iperf3-server](https://hub.docker.com/r/taoyou/iperf3-alpine)
 - [TagoCore](https://tagocore.com/docs)
+- [AdGuard Home](https://hub.docker.com/r/adguard/adguardhome)
+- [Homeassistant](https://www.home-assistant.io/installation/linux#install-home-assistant-container)
+- [Pi-Hole](https://github.com/pi-hole/docker-pi-hole)
+- [Open-PLC](https://openplcproject.com/docs/openplc-overview/)
+- [File Browser](https://github.com/filebrowser/filebrowser)
+- [Gitea](https://docs.gitea.io/en-us/install-with-docker/)
+- [Registry](https://hub.docker.com/_/registry)
+- [Azure SQL Edge](https://learn.microsoft.com/en-us/azure/azure-sql-edge/disconnected-deployment)
+- [AWS IoTG Greengrass](https://docs.aws.amazon.com/greengrass/v2/developerguide/run-greengrass-docker-automatic-provisioning.html#configure-aws-credentials-for-docker)
+- [Duplicati](https://hub.docker.com/r/linuxserver/duplicati)
+- [MongoDB](https://hub.docker.com/_/mongo)
+- [OPC-UA Server](https://hub.docker.com/r/hilschernetpi/netpi-opcua-server)
+- [RabbitMQ](https://hub.docker.com/_/rabbitmq)
+- [RapidScada](https://www.codeguru.com/dotnet/asp-net-docker/)
+- [MotionEye](https://github.com/motioneye-project/motioneye/wiki)
 
 ### Copyright and license
 

@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+    rapidscada:
+        container_name: rapidscada
+        build:
+          context: ./
+          dockerfile: Dockerfile
+        ports:
+          - 80:80
+        restart: unless-stopped
+        environment:
+          - PUID=${PUID}
+          - PGID=${PGID}
+          - TZ=${TZ}

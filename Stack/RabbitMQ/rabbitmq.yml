@@ -1,0 +1,26 @@
+services:
+
+  rabbitmq:
+    image: rabbitmq:3
+    restart: unless-stopped
+    hostname: my-rabbit
+    ports:
+      - 5672:5672
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 30s
+      retries: 3
+      
+  rabbitmq-management:
+    image: rabbitmq:3-management
+    restart: unless-stopped
+    hostname: my-rabbit
+    ports:
+      - 15672:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER:-admin}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS:-changeme}
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
