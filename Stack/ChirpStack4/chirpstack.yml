@@ -7,6 +7,8 @@ services:
     image: chirpstack/chirpstack:4.1.1
     command: -c /etc/chirpstack
     restart: unless-stopped
+    ports:
+      - 8080:8080
     volumes:
       - ./configuration/chirpstack:/etc/chirpstack
       - chirpstack-certificates:/etc/chirpstack/certs
@@ -15,33 +17,62 @@ services:
       - mosquitto
       - redis
     environment:
-      - API_SECRET=$API_SECRET:-you_must_change_this}
-    ports:
-      - 8080:8080
+      - TZ=${TZ:-Europe/London}
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - BAND=${BAND:-eu868}
+      - API_SECRET=${API_SECRET:-you_must_change_this}
 
-  chirpstack-gateway-bridge-udp-eu868:
-    container_name: chirpstack-bridge-udp-eu868
+  chirpstack-gateway-bridge-udp-sub:
+    container_name: chirpstack-bridge-udp-sub
     image: chirpstack/chirpstack-gateway-bridge:4.0.3
     restart: unless-stopped
     ports:
       - 1700:1700/udp
     volumes:
-      - ./configuration/chirpstack-gateway-bridge/chirpstack-gateway-bridge.udp-eu868.toml:/etc/chirpstack-gateway-bridge/chirpstack-gateway-bridge.toml
+      - ./configuration/chirpstack-gateway-bridge/chirpstack-gateway-bridge.udp.toml:/etc/chirpstack-gateway-bridge/chirpstack-gateway-bridge.toml
       - chirpstack-certificates:/etc/chirpstack-gateway-bridge/certs
     depends_on: 
       - mosquitto
+    environment:
+      - TZ=${TZ:-Europe/London}
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - BAND=${BAND:-eu868}
 
-  chirpstack-gateway-bridge-basicstation-eu868:
-    container_name: chirpstack-bridge-basicstation-eu868
-    image: chirpstack/chirpstack-gateway-bridge:4.0.3
-    restart: unless-stopped
-    ports:
-      - 3001:3001/tcp
-    volumes:
-      - ./configuration/chirpstack-gateway-bridge/chirpstack-gateway-bridge.basicstation-eu868.toml:/etc/chirpstack-gateway-bridge/chirpstack-gateway-bridge.toml
-      - chirpstack-certificates:/etc/chirpstack-gateway-bridge/certs
-    depends_on: 
-      - mosquitto
+  #chirpstack-gateway-bridge-udp-ism2400:
+  #  container_name: chirpstack-bridge-udp-ism2400
+  #  image: chirpstack/chirpstack-gateway-bridge:4.0.3
+  #  restart: unless-stopped
+  #  ports:
+  #    - 1701:1700/udp
+  #  volumes:
+  #    - ./configuration/chirpstack-gateway-bridge/chirpstack-gateway-bridge.udp.toml:/etc/chirpstack-gateway-bridge/chirpstack-gateway-bridge.toml
+  #    - chirpstack-certificates:/etc/chirpstack-gateway-bridge/certs
+  #  depends_on: 
+  #    - mosquitto
+  #  environment:
+  #    - TZ=${TZ:-Europe/London}
+  #    - PUID=${PUID:-1000}
+  #    - PGID=${PGID:-1000}
+  #    - BAND=${BAND:-ism2400}
+
+  #chirpstack-gateway-bridge-basicstation:
+  #  container_name: chirpstack-bridge-basicstation
+  #  image: chirpstack/chirpstack-gateway-bridge:4.0.3
+  #  restart: unless-stopped
+  #  ports:
+  #    - 3001:3001/tcp
+  #  volumes:
+  #    - ./configuration/chirpstack-gateway-bridge/chirpstack-gateway-bridge.basicstation.toml:/etc/chirpstack-gateway-bridge/chirpstack-gateway-bridge.toml
+  #    - chirpstack-certificates:/etc/chirpstack-gateway-bridge/certs
+  #  depends_on: 
+  #    - mosquitto
+  #  environment:
+  #    - TZ=${TZ:-Europe/London}
+  #    - PUID=${PUID:-1000}
+  #    - PGID=${PGID:-1000}
+  #    - BAND=${BAND:-eu868}
 
   chirpstack-rest-api:
     container_name: chirpstack-api
@@ -52,6 +83,10 @@ services:
       - 8090:8090
     depends_on:
       - chirpstack
+    environment:
+      - TZ=${TZ:-Europe/London}
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
 
   postgres:
     container_name: chirpstack-postgres
@@ -61,7 +96,10 @@ services:
       - ./configuration/postgresql/initdb:/docker-entrypoint-initdb.d
       - chirpstack-postgresql:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-root}
+      - TZ=${TZ:-Europe/London}
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-root}
 
   redis:
     container_name: chirpstack-redis
@@ -69,6 +107,10 @@ services:
     restart: unless-stopped
     volumes:
       - chirpstack-redis:/data
+    environment:
+      - TZ=${TZ:-Europe/London}
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
 
   mosquitto:
     container_name: chirpstack-mosquitto
@@ -79,17 +121,24 @@ services:
     volumes: 
       - ./configuration/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
       - chirpstack-certificates:/mosquitto/config/certs
+    environment:
+      - TZ=${TZ:-Europe/London}
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
 
   chirpstack-certificates:
     container_name: chirpstack-certificates
     build: 
       context: ./chirpstack-certificates
       dockerfile: Dockerfile
-    environment:
-      CHIRPSTACK_GATEWAY_BRIDGE_HOSTS: ${CHIRPSTACK_GATEWAY_BRIDGE_HOSTS:-127.0.0.1,localhost}
-      MQTT_BROKER_HOSTS: ${MQTT_BROKER_HOSTS:-127.0.0.1,localhost}
     volumes:
       - chirpstack-certificates:/chirpstack-certificates/certs/
+    environment:
+      - TZ=${TZ:-Europe/London}
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - CHIRPSTACK_GATEWAY_BRIDGE_HOSTS=${CHIRPSTACK_GATEWAY_BRIDGE_HOSTS:-127.0.0.1,localhost}
+      - MQTT_BROKER_HOSTS=${MQTT_BROKER_HOSTS:-127.0.0.1,localhost}
     command: make
 
 volumes:

@@ -1,7 +1,4 @@
 import-lorawan-devices:
-	docker compose run --rm --entrypoint bash --user root -v "./lorawan-devices:/opt/lorawan-devices" chirpstack -c '\
-		apt-get update && \
-		apt-get install -y make git && \
-		rm -rf /opt/lorawan-devices/* && \
-		git clone https://github.com/TheThingsNetwork/lorawan-devices /opt/lorawan-devices && \
-		chirpstack -c /etc/chirpstack import-legacy-lorawan-devices-repository -d /opt/lorawan-devices'
+	rm -rf lorawan-devices
+	git clone https://github.com/TheThingsNetwork/lorawan-devices
+	docker-compose run --rm chirpstack -c /etc/chirpstack import-ttn-lorawan-devices -d /opt/lorawan-devices
