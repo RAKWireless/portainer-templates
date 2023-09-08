@@ -9,12 +9,12 @@
       "description": "Portainer Community Edition (CE) is a powerful, open source toolset that allows you to easily build and manage containers in Docker, Docker Swarm, Kubernetes and Azure ACI.",
       "post_up_info": "Visit https://{host-ip}:9443 to access the web interface.\nDeafault username: admin\nDefault password: changeme",
       "note": "Visit <a href='https://{host-ip}:<9443'>https://{host-ip}:9443 to access the web interface.</a> <ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: changeme</li>",
-      "logo": "https://github.com/RAKWireless/portainer-templates/raw/master/logo/portainer_logo.png",
+      "logo": "https://github.com/xoseperez/portainer-templates/raw/master/logo/portainer_logo.png",
       "name": "Portainer",
       "platform": "linux",
       "repository": {
         "stackfile": "Stack/Portainer/portainer.yml",
-        "url": "https://github.com/RAKWireless/portainer-templates"
+        "url": "https://github.com/xoseperez/portainer-templates"
       },
       "title": "Portainer",
       "type": "3-hidden",
@@ -44,7 +44,7 @@
       "post_up_info": "Please check the Github repository https://github.com/xoseperez/basicstation for more information.",
       "note": "Check <a href='https://github.com/xoseperez/basicstation'>LoRa Basics™ Station for Docker Github repository</a> for more details.",
       "image": "xoseperez/basicstation:v2",
-      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_logo.png",
+      "logo": "https://raw.githubusercontent.com/xoseperez/portainer-templates/master/logo/gateway_logo.png",
       "name": "BasicsStation",
       "title": "LoRa Basics™ Station for Docker",
       "hostname": "basicstation",
@@ -241,7 +241,7 @@
       "post_up_info": "Please check the Github repository https://github.com/RAKWireless/udp-packet-forwarder for more information.",
       "note": "Check <a href='https://github.com/RAKWireless/udp-packet-forwarder'>LoRaWAN UDP Packet Forwarder Protocol for Docker Github repository</a> for more details.",
       "image": "rakwireless/udp-packet-forwarder:v2",
-      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_logo.png",
+      "logo": "https://raw.githubusercontent.com/xoseperez/portainer-templates/master/logo/gateway_logo.png",
       "name": "UDPPacketForwarder",
       "title": "UDP Packet Forwarder",
       "hostname": "UDP",
@@ -578,7 +578,7 @@
       "post_up_info": "Please check the Github repository https://github.com/RAKWireless/udp-packet-forwarder for more details.",
       "note": "Check <a href='https://github.com/RAKWireless/udp-packet-forwarder'>LoRaWAN UDP Packet Forwarder Protocol for Docker Github repository</a> for more details.",
       "image": "xoseperez/2g4-packet-forwarder:latest",
-      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_logo.png",
+      "logo": "https://raw.githubusercontent.com/xoseperez/portainer-templates/master/logo/gateway_logo.png",
       "name": "2g4PacketForwarder",
       "title": "2.4GHz Gateway UDP Packet Forwarder",
       "hostname": "2g4-packet-forwarder",
@@ -649,7 +649,7 @@
       "post_up_info": "The image comes with helium/gateway-rs & helium-wallet packages installed.\nStart a UDP packet forwarder service first, make sure to set the packet forwarder to forward to the (default) configured helium-gateway on 127.0.0.1 at udp port 1680.\nThe gateway_key.bin file is stored under /etc/helium_gateway on your host by default.\nTo get the public key address and animal name on your host, please use this command: docker exec {container name} helium_gateway key info.\nPlease check https://github.com/helium/gateway-rs for more details. ",
       "note": "The image comes with helium/gateway-rs & helium-wallet packages.<br>Start a UDP packet forwarder service first, make sure to set the packet forwarder to forward to the (default) configured helium-gateway on 127.0.0.1 at udp port 1680.<br>The <strong>gateway_key.bin</strong> file is stored under <strong>/etc/helium_gateway</strong> on your host by default.<br>Use the command <strong>docker exec {container name} helium_gateway key info </strong>on your host to get the public key address and animal name.<br>Check <a href='https://github.com/helium/gateway-rs'>Helium gateway-rs Github Repository</a> for more details.",
       "image": "sheng2216/helium:latest",
-      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/helium_logo.png",
+      "logo": "https://raw.githubusercontent.com/xoseperez/portainer-templates/master/logo/helium_logo.png",
       "name": "HeliumGatewayRS",
       "title": "Helium gateway-rs",
       "platform": "linux",
@@ -765,7 +765,7 @@
       "type": 3,
       "repository": {
         "stackfile": "Stack/NodeRed/nodered.yml",
-        "url": "https://github.com/RAKWireless/portainer-templates"
+        "url": "https://github.com/xoseperez/portainer-templates"
       },
       "env": [
         {
@@ -883,7 +883,7 @@
       "platform": "linux",
       "repository": {
         "stackfile": "Stack/Zigbee2MQTT/zigbee2mqtt.yml",
-        "url": "https://github.com/RAKWireless/portainer-templates"
+        "url": "https://github.com/xoseperez/portainer-templates"
       },
       "title": "Zigbee2MQTT",
       "network": "bridge",
@@ -964,7 +964,7 @@
       "platform": "linux",
       "repository": {
         "stackfile": "Stack/Seafile/seafile.yml",
-        "url": "https://github.com/RAKWireless/portainer-templates"
+        "url": "https://github.com/xoseperez/portainer-templates"
       },
       "title": "Seafile",
       "type": 3
@@ -998,11 +998,11 @@
           "description": "Pre-authentication keys (“auth keys” for short) let you register new nodes without needing to sign in via a web browser, check https://tailscale.com/kb/1085/auth-keys/ for more details."
         }
       ],
-      "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/tailscale_logo.png?raw=true",
+      "logo": "https://github.com/xoseperez/portainer-templates/blob/master/logo/tailscale_logo.png?raw=true",
       "platform": "linux",
       "repository": {
         "stackfile": "Stack/TimeScaledb/tailscale.yml",
-        "url": "https://github.com/RAKWireless/portainer-templates"
+        "url": "https://github.com/xoseperez/portainer-templates"
       },
       "title": "Tailscale",
       "name": "Tailscale",
@@ -1038,12 +1038,12 @@
           "description": "Frequency channels used by Chirpstack for uplink transmissions, valid values are AU915, EU868, US915 ... "
         }
       ],
-      "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/chirpstack_logo.png?raw=true",
+      "logo": "https://github.com/xoseperez/portainer-templates/blob/master/logo/chirpstack_logo.png?raw=true",
       "name": "ChirpStackNetworkServer",
       "platform": "linux",
       "repository": {
         "stackfile": "Stack/ChirpStackNetworkServer/chirpstack.yml",
-        "url": "https://github.com/RAKWireless/portainer-templates"
+        "url": "https://github.com/xoseperez/portainer-templates"
       },
       "title": "ChirpStack Network Server",
       "network": "bridge",
@@ -1078,12 +1078,12 @@
           "description": "set this to the IP or domain name of the host you will be using to access the stack "
         }
       ],
-      "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/the_things_stack_logo.jpg?raw=true",
+      "logo": "https://github.com/xoseperez/portainer-templates/blob/master/logo/the_things_stack_logo.jpg?raw=true",
       "name": "TheThingsStackLNS",
       "platform": "linux",
       "repository": {
         "stackfile": "Stack/TheThingsStackLNS/thethingsstack.yml",
-        "url": "https://github.com/RAKWireless/portainer-templates"
+        "url": "https://github.com/xoseperez/portainer-templates"
       },
       "title": "The Things Stack LNS",
       "network": "bridge",
@@ -1114,7 +1114,7 @@
         }
       ],
       "image": "eclipse-mosquitto:2",
-      "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/mosquitto_logo.png?raw=true",
+      "logo": "https://github.com/xoseperez/portainer-templates/blob/master/logo/mosquitto_logo.png?raw=true",
       "name": "Mosquitto",
       "platform": "linux",
       "ports": [
@@ -1167,7 +1167,7 @@
         }
       ],
       "image": "grafana/grafana-enterprise:8.4.4",
-      "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/grafana_logo.png?raw=true",
+      "logo": "https://github.com/xoseperez/portainer-templates/blob/master/logo/grafana_logo.png?raw=true",
       "name": "Grafana",
       "platform": "linux",
       "ports": [
@@ -1314,7 +1314,7 @@
           "name": "HOST_SYS"
         }
       ],
-      "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/telegraf_logo.png?raw=true",
+      "logo": "https://github.com/xoseperez/portainer-templates/blob/master/logo/telegraf_logo.png?raw=true",
       "name": "Telegraf",
       "platform": "linux",
       "restart_policy": "unless-stopped",
@@ -1322,7 +1322,7 @@
       "type": 3,
       "repository": {
         "stackfile": "Stack/Telegraf/telegraf.yml",
-        "url": "https://github.com/RAKWireless/portainer-templates"
+        "url": "https://github.com/xoseperez/portainer-templates"
       },
       "network": "bridge"
     },
@@ -1357,7 +1357,7 @@
         }
       ],
       "image": "thingsboard/tb-postgres:3.3.4",
-      "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/thingsboard_logo.jpg?raw=true",
+      "logo": "https://github.com/xoseperez/portainer-templates/blob/master/logo/thingsboard_logo.jpg?raw=true",
       "name": "ThingsBoard",
       "platform": "linux",
       "title": "ThingsBoard",
@@ -1459,7 +1459,7 @@
         }
       ],
       "image": "timescale/timescaledb:2.6.0-pg12",
-      "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/timescale_logo.png?raw=true",
+      "logo": "https://github.com/xoseperez/portainer-templates/blob/master/logo/timescale_logo.png?raw=true",
       "name": "TimeScaledb",
       "platform": "linux",
       "ports": [
@@ -1486,7 +1486,7 @@
       "image": "nats",
       "interactive": true,
       "command": "--http_port 8222",
-      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/nats_logo.jpg",
+      "logo": "https://raw.githubusercontent.com/xoseperez/portainer-templates/master/logo/nats_logo.jpg",
       "name": "NATS",
       "platform": "linux",
       "ports": [
@@ -1551,12 +1551,12 @@
           "description": "Server port that the container exposed for the server to listen on."
         }
       ],
-      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/iperf3_logo.png",
+      "logo": "https://raw.githubusercontent.com/xoseperez/portainer-templates/master/logo/iperf3_logo.png",
       "name": "Iperf3-Server",
       "platform": "linux",
       "repository": {
         "stackfile": "Stack/Iperf3-Server/iperf3.yml",
-        "url": "https://github.com/RAKWireless/portainer-templates"
+        "url": "https://github.com/xoseperez/portainer-templates"
       },
       "title": "iperf3-server",
       "type": 3
@@ -1568,7 +1568,7 @@
       "description": "TagoCore is a free, fast, and open-source IoT platform for edge computing.",
       "post_up_info": "Browse to http://{host-ip}:8080 to access the web interface.\nPlease check https://tagocore.com/docs/ for more details about TagoCore.",
       "note": "Browse to <a href='http://{host-ip}:<8080'>http://{host-ip}:8080</a> to access the web interface.<br>Please check <a href='https://tagocore.com/docs/'>TagoCore introduction page</a> for more information.",
-      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/tagocore_logo.png",
+      "logo": "https://raw.githubusercontent.com/xoseperez/portainer-templates/master/logo/tagocore_logo.png",
       "name": "TagoCore",
       "platform": "linux",
       "restart_policy": "unless-stopped",
@@ -1576,7 +1576,7 @@
       "type": 3,
       "repository": {
         "stackfile": "Stack/TagoCore/tagocore.yml",
-        "url": "https://github.com/RAKWireless/portainer-templates"
+        "url": "https://github.com/xoseperez/portainer-templates"
       },
       "network": "bridge",
       "env": [
@@ -1605,7 +1605,7 @@
       "post_up_info": "Browse to http://{host-ip}:3000 to access the web interface.\nPlease check https://hub.docker.com/r/adguard/adguardhome for AdGuard Home Docker introduction page.",
       "note": "Browse to <a herf='http://{host-ip}:3000'>http://{host-ip}:3000</a> to access the web interface.<br>Please check <a href='https://hub.docker.com/r/adguard/adguardhome'>AdGuard Home Docker introduction page</a> for more information.",
       "image": "adguard/adguardhome",
-      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/adguardhome_logo.png",
+      "logo": "https://raw.githubusercontent.com/xoseperez/portainer-templates/master/logo/adguardhome_logo.png",
       "name": "AdguardHome",
       "platform": "linux",
       "ports": [
@@ -1751,7 +1751,7 @@
       "post_up_info": "Browse to http://{host-ip}/:8080 to access the web interface.\nCheck https://openplcproject.com/docs/openplc-overview/ for Open PLC official documentations.\nDefault username: openplc\nDefault password: openplc",
       "note": "Browse to <a herf='http://{host-ip}/:8080'>http://{host-ip}:8080</a> to access the web interface.<br>Check <a href='https://openplcproject.com/docs/openplc-overview/'>Open PLC official documentations</a> for more details.<ulstyle='padding-left:20px'><li>Default username: openplc</li><li>Default password: openplc</li>",
       "image": "sheng2216/open_plc:tiny",
-      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/open_plc_logo.png",
+      "logo": "https://raw.githubusercontent.com/xoseperez/portainer-templates/master/logo/open_plc_logo.png",
       "name": "OpenPLC",
       "network": "bridge",
       "platform": "linux",
@@ -1816,12 +1816,12 @@
           "description": "Specifies your databse path."
         }
       ],
-      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/filebrowser_logo.png",
+      "logo": "https://raw.githubusercontent.com/xoseperez/portainer-templates/master/logo/filebrowser_logo.png",
       "name": "filebrowser",
       "platform": "linux",
       "repository": {
         "stackfile": "Stack/FileBrowser/filebrowser.yml",
-        "url": "https://github.com/RAKWireless/portainer-templates"
+        "url": "https://github.com/xoseperez/portainer-templates"
       },
       "title": "File Browser",
       "type": 3
@@ -1857,12 +1857,12 @@
           "description": "Specifies your postgres data path."
         }
       ],
-      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gitea_logo.png",
+      "logo": "https://raw.githubusercontent.com/xoseperez/portainer-templates/master/logo/gitea_logo.png",
       "name": "gitea",
       "platform": "linux",
       "repository": {
         "stackfile": "Stack/Gitea/gitea.yml",
-        "url": "https://github.com/RAKWireless/portainer-templates"
+        "url": "https://github.com/xoseperez/portainer-templates"
       },
       "title": "Gitea",
       "type": 3
@@ -1941,12 +1941,12 @@
           "description": "Strong password that is at least 8 characters and meets the Azure SQL Edge password requirements, you need to change it manually after deployment."
         }
       ],
-      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/azuresqledge_logo.png",
+      "logo": "https://raw.githubusercontent.com/xoseperez/portainer-templates/master/logo/azuresqledge_logo.png",
       "name": "AzureSqlEdge",
       "platform": "linux",
       "repository": {
         "stackfile": "Stack/AzureSQLEdge/azuresqledge.yml",
-        "url": "https://github.com/RAKWireless/portainer-templates"
+        "url": "https://github.com/xoseperez/portainer-templates"
       },
       "title": "Azure SQL Edge",
       "type": 3
@@ -2070,14 +2070,14 @@
           "description": "Path to store local backups."
         }
       ],
-      "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/duplicati_logo.png",
+      "logo": "https://raw.githubusercontent.com/xoseperez/portainer-templates/master/logo/duplicati_logo.png",
       "name": "Duplicati",
       "platform": "linux",
       "restart_policy": "unless-stopped",
       "title": "Duplicati",
       "repository": {
         "stackfile": "Stack/Duplicati/duplicati.yml",
-        "url": "https://github.com/RAKWireless/portainer-templates"
+        "url": "https://github.com/xoseperez/portainer-templates"
       },
       "type": 3,
       "network": "bridge",
@@ -2105,12 +2105,12 @@
           "description": "specify the root password of mongo init database"
         }
       ],
-      "logo": "https://github.com/RAKWireless/portainer-templates/raw/master/logo/MongoDB_logo.png",
+      "logo": "https://github.com/xoseperez/portainer-templates/raw/master/logo/MongoDB_logo.png",
       "name": "mongodb",
       "platform": "linux",
       "repository": {
         "stackfile": "Stack/MongoDB/mongodb.yml",
-        "url": "https://github.com/RAKWireless/portainer-templates"
+        "url": "https://github.com/xoseperez/portainer-templates"
       },
       "title": "MongoDB",
       "restart_policy": "unless-stopped",
@@ -2123,13 +2123,13 @@
       "description": "an OPC UA server instance based on a XML nodeset schema file uploaded to it online",
       "post_up_info": "Browse to http://{host-ip}:8080 to access the web based GUI. For more information, refere to the official documentation at https://hub.docker.com/r/hilschernetpi/netpi-opcua-server.",
       "note": "Browse to <a href='http://{host-ip}:<8080'>http://{host-ip}:8080</a> to access the web based GUI. <br>For more information, refere to the official documentation at <a href='https://hub.docker.com/r/hilschernetpi/netpi-opcua-server'>https://hub.docker.com/r/hilschernetpi/netpi-opcua-server</a>",
-      "logo": "https://github.com/RAKWireless/portainer-templates/raw/master/logo/opc_logo.png",
+      "logo": "https://github.com/xoseperez/portainer-templates/raw/master/logo/opc_logo.png",
       "name": "opcua-server",
       "platform": "linux",
       "restart_policy": "unless-stopped",
       "repository": {
         "stackfile": "Stack/OPCUA-Server/opcua-server.yml",
-        "url": "https://github.com/RAKWireless/portainer-templates"
+        "url": "https://github.com/xoseperez/portainer-templates"
       },
       "title": "OPC-UA Server",
       "type": 3
@@ -2155,13 +2155,13 @@
           "description": "specify the default password of rabbitmq"
         }
       ],
-      "logo": "https://github.com/RAKWireless/portainer-templates/raw/master/logo/RabbitMQ_logo.png",
+      "logo": "https://github.com/xoseperez/portainer-templates/raw/master/logo/RabbitMQ_logo.png",
       "name": "rabbitmq",
       "platform": "linux",
       "restart_policy": "unless-stopped",
       "repository": {
         "stackfile": "Stack/RabbitMQ/rabbitmq.yml",
-        "url": "https://github.com/RAKWireless/portainer-templates"
+        "url": "https://github.com/xoseperez/portainer-templates"
       },
       "title": "RabbitMQ",
       "type": 3
@@ -2190,12 +2190,12 @@
           "name": "TZ"
         }
       ],
-      "logo": "https://github.com/RAKWireless/portainer-templates/raw/master/logo/RapidScada_logo.png",
+      "logo": "https://github.com/xoseperez/portainer-templates/raw/master/logo/RapidScada_logo.png",
       "name": "rapidscada",
       "platform": "linux",
       "repository": {
         "stackfile": "Stack/RapidScada/rapidscada.yml",
-        "url": "https://github.com/RAKWireless/portainer-templates"
+        "url": "https://github.com/xoseperez/portainer-templates"
       },
       "title": "RapidScada",
       "restart_policy": "unless-stopped",
@@ -2279,7 +2279,7 @@
         }
       ],
       "image": "zerotier/zerotier:1.10.6",
-      "logo": "https://github.com/RAKWireless/portainer-templates/raw/master/logo/ZeroTierIcon.png",
+      "logo": "https://github.com/xoseperez/portainer-templates/raw/master/logo/ZeroTierIcon.png",
       "name": "ZeroTier",
       "platform": "linux",
       "restart_policy": "unless-stopped",
@@ -2288,6 +2288,40 @@
       "network": "host",
       "privileged": true,
       "note":"Check <a href='https://hub.docker.com/r/zerotier/zerotier'>ZeroIter in Docker Hub </a> for more details."
+    },
+    {
+      "categories": [
+        "VPN"
+      ],
+      "description": "SSHNoPorts lets you SSH into your machine without having any open port",
+      "env": [
+        {
+          "label": "DEVICE_ATSIGN",
+          "name": "DEVICE_ATSIGN",
+          "description":"the network id that you want to join(required)"
+        },
+        {
+          "label": "CLIENT_ATSIGN",
+          "name": "CLIENT_ATSIGN",
+          "description":"authtoken used to interact with the control socket(optional)"
+        },
+        {
+          "label": "DEVICE_NAME",
+          "name": "DEVICE_NAME",
+          "description":"zero identity public(optional)"
+        }
+      ],
+      "repository": {
+        "stackfile": "Stack/SSHNoPorts/docker-compose.yml",
+        "url": "https://github.com/xoseperez/portainer-templates"
+      },
+      "logo": "https://github.com/xoseperez/portainer-templates/raw/master/logo/atsign.png",
+      "name": "sshnoports",
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "title": "SSH No Ports",
+      "type": 3,
+      "note":"Check <a href='https://www.noports.com/'>SSH No Ports guide</a> for more details."
     }
   ]
 }
