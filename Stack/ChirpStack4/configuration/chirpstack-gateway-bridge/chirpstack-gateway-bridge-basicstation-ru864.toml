@@ -16,9 +16,9 @@ type="basic_station"
 
   [backend.basic_station]
   bind=":3001"
-  tls_cert="/etc/chirpstack-gateway-bridge/certs/chirpstack-gateway-bridge/basicstation/basicstation.pem"
-  tls_key="/etc/chirpstack-gateway-bridge/certs/chirpstack-gateway-bridge/basicstation/basicstation-key.pem"
-  ca_cert="/etc/chirpstack-gateway-bridge/certs/ca/ca.pem"
+  tls_cert=""
+  tls_key=""
+  ca_cert=""
 
   region="RU864"
   frequency_min=863000000

@@ -19,7 +19,7 @@
   #  * require - Always SSL (skip verification)
   #  * verify-ca - Always SSL (verify that the certificate presented by the server was signed by a trusted CA)
   #  * verify-full - Always SSL (verify that the certification presented by the server was signed by a trusted CA and the server host name matches the one in the certificate)
-  dsn="postgres://chirpstack:chirpstack@postgres/chirpstack?sslmode=disable"
+  dsn="postgres://chirpstack:chirpstack@$POSTGRESQL_HOST/chirpstack?sslmode=disable"
 
   # Max open connections.
   #
@@ -39,14 +39,9 @@
 
   # Server address or addresses.
   #
-  # Example formats:
-  #   redis://127.0.0.1:6379
-  #   redis://:password@127.0.0.1:6379
-  #   redis://username:password@127.0.0.1:6379
-  #
   # Set multiple addresses when connecting to a cluster.
   servers=[
-    "redis://redis/",
+    "redis://$REDIS_HOST/",
   ]
 
   # TLS enabled.
@@ -77,47 +72,6 @@
   # This sets the min. number of idle connections in the Redis connection
   # pool (0 = equal to max_open_connections).
   min_idle_connections=0
-
-# API interface configuration.
-[api]
-
-  # interface:port to bind the API interface to.
-  bind="0.0.0.0:8080"
-
-  # Secret.
-  #
-  # This secret is used for generating login and API tokens, make sure this
-  # is never exposed. Changing this secret will invalidate all login and API
-  # tokens. The following command can be used to generate a random secret:
-  #   openssl rand -base64 32
-  secret="$API_SECRET"
-
-
-# Global gateway configuration.
-# Please note that backend configuration can be found in the per-region
-# configuration.
-[gateway]
-
-  # CA certificate and key file (optional).
-  #
-  # If setting the CA certificate and key file options, ChirpStack 
-  # will generate client certificates which can be used by the gateway for
-  # authentication and authorization. The Common Name of the certificate will
-  # be set to the Gateway ID.
-  ca_key="/etc/chirpstack/certs/ca/ca-key.pem"
-  ca_cert="/etc/chirpstack/certs/ca/ca.pem"
-
-  # Certificate lifetime.
-  #
-  # This defines how long (after generating) the certificate remains valid.
-  client_cert_lifetime="11months 30days 3h 50m 24s"
-
-  # Allow unknown gateways.
-  #
-  # If set to true, then uplinks received from gateways not configured in
-  # ChirpStack will be allowed.
-  allow_unknown_gateways=false
-
 
 # Network related configuration.
 [network]
@@ -152,6 +106,7 @@
     "as923_3",
     "as923_4",
     "au915_0",
+    "cn470_10",
     "cn779",
     "eu433",
     "eu868",
@@ -227,6 +182,47 @@
     # (within the same multicast-group). This value must be equal or greater than the
     # scheduler interval.
     multicast_class_b_margin="5s"
+
+
+# API interface configuration.
+[api]
+
+  # interface:port to bind the API interface to.
+  bind="0.0.0.0:8080"
+
+  # Secret.
+  #
+  # This secret is used for generating login and API tokens, make sure this
+  # is never exposed. Changing this secret will invalidate all login and API
+  # tokens. The following command can be used to generate a random secret:
+  #   openssl rand -base64 32
+  secret="$API_SECRET"
+
+
+# Global gateway configuration.
+# Please note that backend configuration can be found in the per-region
+# configuration.
+[gateway]
+
+  # CA certificate and key file (optional).
+  #
+  # If setting the CA certificate and key file options, ChirpStack 
+  # will generate client certificates which can be used by the gateway for
+  # authentication and authorization. The Common Name of the certificate will
+  # be set to the Gateway ID.
+  ca_key="/etc/chirpstack/certs/ca/ca-key.pem"
+  ca_cert="/etc/chirpstack/certs/ca/ca.pem"
+
+  # Certificate lifetime.
+  #
+  # This defines how long (after generating) the certificate remains valid.
+  client_cert_lifetime="11months 30days 3h 50m 24s"
+
+  # Allow unknown gateways.
+  #
+  # If set to true, then uplinks received from gateways not configured in
+  # ChirpStack will be allowed.
+  allow_unknown_gateways=false
 
 
 # Monitoring related configuration.
@@ -309,9 +305,7 @@
 [integration]
 
   # Enabled integrations (global).
-  enabled = [
-    "mqtt",
-  ]
+  enabled=["mqtt"]
 
   # MQTT integration configuration.
   [integration.mqtt]

@@ -1,14 +1,11 @@
 version: "3"
 
 services:
-  
   chirpstack:
     container_name: chirpstack
     image: chirpstack/chirpstack:4
     command: -c /etc/chirpstack
     restart: unless-stopped
-    ports:
-      - 8080:8080
     volumes:
       - ./configuration/chirpstack:/etc/chirpstack
       - ./lorawan-devices:/opt/lorawan-devices
@@ -18,10 +15,12 @@ services:
       - mosquitto
       - redis
     environment:
-      - TZ=${TZ:-Europe/London}
-      - PUID=${PUID:-1000}
-      - PGID=${PGID:-1000}
-      - API_SECRET=${API_SECRET:-you_must_change_this}
+      - MQTT_BROKER_HOST=mosquitto
+      - REDIS_HOST=redis
+      - POSTGRESQL_HOST=postgres
+      - API_SECRET=${API_SECRET:-you_must_change_this} # use the output of `openssl rand -base64 32`
+    ports:
+      - 8080:8080
 
   chirpstack-gateway-bridge-udp:
     container_name: chirpstack-bridge-udp
@@ -30,18 +29,14 @@ services:
     ports:
       - 1700:1700/udp
     volumes:
-      - ./configuration/chirpstack-gateway-bridge/:/etc/chirpstack-gateway-bridge/
+      - ./configuration/chirpstack-gateway-bridge:/etc/chirpstack-gateway-bridge
       - chirpstack-certificates:/etc/chirpstack-gateway-bridge/certs
-    depends_on: 
-      - mosquitto
     environment:
-      - TZ=${TZ:-Europe/London}
-      - PUID=${PUID:-1000}
-      - PGID=${PGID:-1000}
       - INTEGRATION__MQTT__EVENT_TOPIC_TEMPLATE=${BAND:-eu868}/gateway/{{ .GatewayID }}/event/{{ .EventType }}
       - INTEGRATION__MQTT__STATE_TOPIC_TEMPLATE=${BAND:-eu868}/gateway/{{ .GatewayID }}/state/{{ .StateType }}
       - INTEGRATION__MQTT__COMMAND_TOPIC_TEMPLATE=${BAND:-eu868}/gateway/{{ .GatewayID }}/command/#
-    command: -c /etc/chirpstack-gateway-bridge/chirpstack-gateway-bridge-udp.toml
+    depends_on: 
+      - mosquitto
 
   chirpstack-gateway-bridge-udp-ism2400:
     container_name: chirpstack-bridge-udp-ism2400
@@ -50,35 +45,31 @@ services:
     ports:
       - 1701:1700/udp
     volumes:
-      - ./configuration/chirpstack-gateway-bridge/:/etc/chirpstack-gateway-bridge/
+      - ./configuration/chirpstack-gateway-bridge:/etc/chirpstack-gateway-bridge
       - chirpstack-certificates:/etc/chirpstack-gateway-bridge/certs
     depends_on: 
       - mosquitto
     environment:
-      - TZ=${TZ:-Europe/London}
-      - PUID=${PUID:-1000}
-      - PGID=${PGID:-1000}
       - INTEGRATION__MQTT__EVENT_TOPIC_TEMPLATE=ism2400/gateway/{{ .GatewayID }}/event/{{ .EventType }}
       - INTEGRATION__MQTT__STATE_TOPIC_TEMPLATE=ism2400/gateway/{{ .GatewayID }}/state/{{ .StateType }}
       - INTEGRATION__MQTT__COMMAND_TOPIC_TEMPLATE=ism2400/gateway/{{ .GatewayID }}/command/#
-    command: -c /etc/chirpstack-gateway-bridge/chirpstack-gateway-bridge-udp.toml
 
   chirpstack-gateway-bridge-basicstation:
     container_name: chirpstack-bridge-basicstation
     image: chirpstack/chirpstack-gateway-bridge:4
     restart: unless-stopped
+    command: -c /etc/chirpstack-gateway-bridge/chirpstack-gateway-bridge-basicstation-${BAND:-eu868}.toml
     ports:
-      - 3001:3001/tcp
+      - 3001:3001
     volumes:
-      - ./configuration/chirpstack-gateway-bridge/:/etc/chirpstack-gateway-bridge/
+      - ./configuration/chirpstack-gateway-bridge:/etc/chirpstack-gateway-bridge
       - chirpstack-certificates:/etc/chirpstack-gateway-bridge/certs
     depends_on: 
       - mosquitto
     environment:
-      - TZ=${TZ:-Europe/London}
-      - PUID=${PUID:-1000}
-      - PGID=${PGID:-1000}
-    command: -c /etc/chirpstack-gateway-bridge/chirpstack-gateway-bridge-basicstation-${BAND:-eu868}.toml
+      - BACKEND__BASIC_STATION__TLS_CERT=/etc/chirpstack-gateway-bridge/certs/chirpstack-gateway-bridge/basicstation/basicstation.pem
+      - BACKEND__BASIC_STATION__TLS_KEY=/etc/chirpstack-gateway-bridge/certs/chirpstack-gateway-bridge/basicstation/basicstation-key.pem
+      - BACKEND__BASIC_STATION__CA_CERT=/etc/chirpstack-gateway-bridge/certs/ca/ca.pem
 
   chirpstack-rest-api:
     container_name: chirpstack-api
@@ -89,10 +80,6 @@ services:
       - 8090:8090
     depends_on:
       - chirpstack
-    environment:
-      - TZ=${TZ:-Europe/London}
-      - PUID=${PUID:-1000}
-      - PGID=${PGID:-1000}
 
   postgres:
     container_name: chirpstack-postgres
@@ -102,10 +89,7 @@ services:
       - ./configuration/postgresql/initdb:/docker-entrypoint-initdb.d
       - chirpstack-postgresql:/var/lib/postgresql/data
     environment:
-      - TZ=${TZ:-Europe/London}
-      - PUID=${PUID:-1000}
-      - PGID=${PGID:-1000}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-root}
+      - POSTGRES_PASSWORD=root
 
   redis:
     container_name: chirpstack-redis
@@ -113,39 +97,29 @@ services:
     restart: unless-stopped
     volumes:
       - chirpstack-redis:/data
-    environment:
-      - TZ=${TZ:-Europe/London}
-      - PUID=${PUID:-1000}
-      - PGID=${PGID:-1000}
 
   mosquitto:
     container_name: chirpstack-mosquitto
     image: eclipse-mosquitto:2
     restart: unless-stopped
     ports:
+      - 1883:1883
       - 8883:8883
     volumes: 
       - ./configuration/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
       - chirpstack-certificates:/mosquitto/config/certs
-    environment:
-      - TZ=${TZ:-Europe/London}
-      - PUID=${PUID:-1000}
-      - PGID=${PGID:-1000}
 
   chirpstack-certificates:
     container_name: chirpstack-certificates
     build: 
       context: ./chirpstack-certificates
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-devel
     volumes:
-      - chirpstack-certificates:/chirpstack-certificates/certs/
+      - chirpstack-certificates:/chirpstack-certificates/certs
     environment:
-      - TZ=${TZ:-Europe/London}
-      - PUID=${PUID:-1000}
-      - PGID=${PGID:-1000}
-      - CHIRPSTACK_GATEWAY_BRIDGE_HOSTS=${CHIRPSTACK_GATEWAY_BRIDGE_HOSTS:-127.0.0.1,localhost}
-      - MQTT_BROKER_HOSTS=${MQTT_BROKER_HOSTS:-127.0.0.1,localhost}
-    command: make
+      - CHIRPSTACK_GATEWAY_BRIDGE_HOSTS=${CHIRPSTACK_GATEWAY_BRIDGE_HOSTS:-127.0.0.1,localhost,lns.xoseperez.com}
+      - MQTT_BROKER_HOSTS=${MQTT_BROKER_HOSTS:-127.0.0.1,localhost,lns.xoseperez.com}
+    command: make 
 
 volumes:
   chirpstack-postgresql:
