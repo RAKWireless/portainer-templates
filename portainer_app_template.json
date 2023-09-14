@@ -1036,7 +1036,7 @@
       "name": "ChirpStack",
       "platform": "linux",
       "repository": {
-        "stackfile": "Stack/ChirpStack3/chirpstack.yml",
+        "stackfile": "Stack/ChirpStack3/chirpstack3.yml",
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "ChirpStack v3",
@@ -1127,7 +1127,7 @@
       "name": "ChirpStack",
       "platform": "linux",
       "repository": {
-        "stackfile": "Stack/ChirpStack4/docker-compose.yml",
+        "stackfile": "Stack/ChirpStack4/chirpstack4.yml",
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "ChirpStack v4",
