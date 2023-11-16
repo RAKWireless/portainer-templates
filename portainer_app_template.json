@@ -1209,6 +1209,7 @@
         {
           "name": "INTERFACE",
           "label": "Concentrator interface",
+          "default": "SPI",
           "select": [
             {
               "text": "SPI",
