@@ -200,13 +200,13 @@
           "default": "17",
           "label": "Gateway RESET GPIO",
           "name": "GW_RESET_GPIO",
-          "description": "GPIO number that resets (Broadcom pin number)"
+          "description": "GPIO number that resets"
         },
         {
           "default": "0",
           "label": "Gateway ENABLE GPIO",
           "name": "GW_ENABLE_GPIO",
-          "description": "GPIO number that enables power (by pulling HIGH) to the concentrator (Broadcom pin number)"
+          "description": "GPIO number that enables power (by pulling HIGH) to the concentrator"
         },
         {
           "default": "eth0",
@@ -441,13 +441,13 @@
           "name": "RESET_GPIO",
           "default": "17",
           "label": "GATEWAY RESET GPIO",
-          "description": "GPIO number that resets (Broadcom pin number)"
+          "description": "GPIO number that resets"
         },
         {
           "name": "POWER_EN_GPIO",
           "default": "0",
           "label": "the GPIO enables power",
-          "description": "GPIO number that enables power (by pulling HIGH) to the concentrator (Broadcom pin number). 0 means not required"
+          "description": "GPIO number that enables power (by pulling HIGH) to the concentrator. 0 means not required"
         },
         {
           "name": "RADIO_DEV",
@@ -1205,6 +1205,33 @@
           "name": "MODEL",
           "default": "RAK5146",
           "description": "Concentrator model"
+        },
+        {
+          "name": "INTERFACE",
+          "label": "Concentrator interface",
+          "select": [
+            {
+              "text": "SPI",
+              "value": "SPI"
+            },
+            {
+              "text": "USB",
+              "value": "USB"
+            }
+          ],
+          "description": "The interface used by the concentrator, can be guessed from Device"
+        },
+        {
+          "default": "17",
+          "label": "Gateway RESET GPIO",
+          "name": "RESET_GPIO",
+          "description": "GPIO number that resets"
+        },
+        {
+          "default": "0",
+          "label": "Gateway ENABLE GPIO",
+          "name": "ENABLE_GPIO",
+          "description": "GPIO number that enables power (by pulling HIGH) to the concentrator"
         },
         {
           "default": "localhost:1883",
