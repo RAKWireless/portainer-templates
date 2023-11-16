@@ -28,8 +28,6 @@ services:
     environment:
       - MODEL=${MODEL:-RAK5146}
       - REGION=${BAND:-eu868}
-      - SOCKET_PREFIX=${BAND:-eu868} # so IPC URLs will be ipc:///tmp/concentratord_<band>_*
-      - MQTT_BROKER=${MQTT_BROKER:-mosquitto:1883}
 
   chirpstack-gateway-bridge-concentratord:
     container_name: chirpstack-bridge-concentratord-${BAND:-eu868}
@@ -41,11 +39,10 @@ services:
       - ipc_folder:/tmp
     user: "${PUID:-1000}:${PGID:-1000}"
     environment:
-      - BACKEND__CONCENTRATORD__EVENT_URL=ipc:///tmp/concentratord_${BAND:-eu868}_event # See SOCKET_PREFIX in chirpstack-concentratord service
-      - BACKEND__CONCENTRATORD__COMMAND_URL=ipc:///tmp/concentratord_${BAND:-eu868}_command # See SOCKET_PREFIX in chirpstack-concentratord service
       - INTEGRATION__MQTT__EVENT_TOPIC_TEMPLATE=${BAND:-eu868}/gateway/{{ .GatewayID }}/event/{{ .EventType }}
       - INTEGRATION__MQTT__STATE_TOPIC_TEMPLATE=${BAND:-eu868}/gateway/{{ .GatewayID }}/state/{{ .StateType }}
       - INTEGRATION__MQTT__COMMAND_TOPIC_TEMPLATE=${BAND:-eu868}/gateway/{{ .GatewayID }}/command/#
+      - INTEGRATION__MQTT__AUTH__GENERIC__SERVERS=tcp://${MQTT_BROKER:-mosquitto:1883}
 
 volumes:
   ipc_folder:
