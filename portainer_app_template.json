@@ -1,6 +1,6 @@
 {
   "version": "2",
-  "version_for_rakpios_cli": "v0.3",
+  "version_for_rakpios_cli": "v0.4",
   "templates": [
     {
       "categories": [
@@ -1013,8 +1013,8 @@
         "LoRaWAN"
       ],
       "description": "The ChirpStack open-source LoRaWAN Network Server stack provides open-source components for LoRaWAN networks.",
-      "post_up_info": "Browse to http://{host-ip}:8080 to access the web interface. \nDefault username: admin\nDefault password: admin\nCheck https://github.com/brocaar/chirpstack-docker for for more details.",
-      "note": "Browse to <a href='http://{host-ip}:8080'>http://{host-ip}:8080</a> to access the web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: admin</li>Check <a href='https://github.com/brocaar/chirpstack-docker'>ChirpStack Docker Github reposotory</a> for more details.",
+      "post_up_info": "Browse to http://{host-ip}:8080 to access the web interface. \nDefault username: admin\nDefault password: admin\nCheck https://github.com/chirpstack/chirpstack-docker for for more details.",
+      "note": "Browse to <a href='http://{host-ip}:8080'>http://{host-ip}:8080</a> to access the web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: admin</li>Check <a href='https://github.com/chirpstack/chirpstack-docker'>ChirpStack Docker Github reposotory</a> for more details.",
       "env": [
         {
           "default": "1000",
@@ -1030,22 +1030,120 @@
           "default": "Europe/London",
           "label": "Time Zone",
           "name": "TZ"
-        },
-        {
-          "default": "EU868",
-          "label": "Network Server Band",
-          "name": "NETWORK_SERVER__BAND__NAME",
-          "description": "Frequency channels used by Chirpstack for uplink transmissions, valid values are AU915, EU868, US915 ... "
         }
       ],
       "logo": "https://github.com/xoseperez/portainer-templates/blob/master/logo/chirpstack_logo.png?raw=true",
-      "name": "ChirpStackNetworkServer",
+      "name": "ChirpStack",
       "platform": "linux",
       "repository": {
-        "stackfile": "Stack/ChirpStackNetworkServer/chirpstack.yml",
+        "stackfile": "Stack/ChirpStack3/chirpstack.yml",
         "url": "https://github.com/xoseperez/portainer-templates"
       },
-      "title": "ChirpStack Network Server",
+      "title": "ChirpStack v3",
+      "network": "bridge",
+      "type": 3
+    },
+    {
+      "categories": [
+        "LoRaWAN"
+      ],
+      "description": "The ChirpStack open-source LoRaWAN Network Server stack provides open-source components for LoRaWAN networks.",
+      "post_up_info": "Browse to http://{host-ip}:8080 to access the web interface. \nDefault username: admin\nDefault password: admin\nCheck https://github.com/chirpstack/chirpstack-docker for for more details.",
+      "note": "Browse to <a href='http://{host-ip}:8080'>http://{host-ip}:8080</a> to access the web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: admin</li>Check <a href='https://github.com/chirpstack/chirpstack-docker'>ChirpStack Docker Github reposotory</a> for more details.",
+      "env": [
+        {
+          "default": "eu868",
+          "label": "BAND",
+          "name": "BAND",
+          "select": [
+            {"text":"AS923_2", "value": "as923_2"},
+            {"text":"AS923_3", "value": "as923_3"},
+            {"text":"AS923_4", "value": "as923_4"},
+            {"text":"AS923", "value": "as923"},
+            {"text":"AU915_0", "value": "au915_0"},
+            {"text":"AU915_1", "value": "au915_1"},
+            {"text":"AU915_2", "value": "au915_2"},
+            {"text":"AU915_3", "value": "au915_3"},
+            {"text":"AU915_4", "value": "au915_4"},
+            {"text":"AU915_5", "value": "au915_5"},
+            {"text":"AU915_6", "value": "au915_6"},
+            {"text":"AU915_7", "value": "au915_7"},
+            {"text":"CN470_0", "value": "cn470_0"},
+            {"text":"CN470_10", "value": "cn470_10"},
+            {"text":"CN470_11", "value": "cn470_11"},
+            {"text":"CN470_1", "value": "cn470_1"},
+            {"text":"CN470_2", "value": "cn470_2"},
+            {"text":"CN470_3", "value": "cn470_3"},
+            {"text":"CN470_4", "value": "cn470_4"},
+            {"text":"CN470_5", "value": "cn470_5"},
+            {"text":"CN470_6", "value": "cn470_6"},
+            {"text":"CN470_7", "value": "cn470_7"},
+            {"text":"CN470_8", "value": "cn470_8"},
+            {"text":"CN470_9", "value": "cn470_9"},
+            {"text":"EU433", "value": "eu433"},
+            {"text":"EU868", "value": "eu868"},
+            {"text":"IN865", "value": "in865"},
+            {"text":"ISM2400", "value": "ism2400"},
+            {"text":"KR920", "value": "kr920"},
+            {"text":"RU864", "value": "ru864"},
+            {"text":"US915_0", "value": "us915_0"},
+            {"text":"US915_1", "value": "us915_1"},
+            {"text":"US915_2", "value": "us915_2"},
+            {"text":"US915_3", "value": "us915_3"},
+            {"text":"US915_4", "value": "us915_4"},
+            {"text":"US915_5", "value": "us915_5"},
+            {"text":"US915_6", "value": "us915_6"},
+            {"text":"US915_7", "value": "us915_7"}
+          ]
+        },
+        {
+          "default": "127.0.0.1,localhost",
+          "label": "CHIRPSTACK_GATEWAY_BRIDGE_HOSTS",
+          "name": "CHIRPSTACK_GATEWAY_BRIDGE_HOSTS",
+          "description": "Define hostnames, domain names and IPs for the gateway bridge servers (comma separated)"
+        },
+        {
+          "default": "127.0.0.1,localhost",
+          "label": "MQTT_BROKER_HOSTS",
+          "name": "MQTT_BROKER_HOSTS",
+          "description": "Define hostnames, domain names and IPs for the MQTT brokers (comma separated)"
+        },
+        {
+          "default": "you_must_change_this",
+          "label": "API_SECRET",
+          "name": "API_SECRET",
+          "description": "This should be some random unique string"
+        },
+        {
+          "default": "000000",
+          "label": "NET_ID",
+          "name": "NET_ID",
+          "description": "NetID of your instance, if you have none stick to the default 000000 or 000001"
+        },
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        }
+      ],
+      "logo": "https://github.com/xoseperez/portainer-templates/blob/master/logo/chirpstack_logo.png?raw=true",
+      "name": "ChirpStack",
+      "platform": "linux",
+      "repository": {
+        "stackfile": "Stack/ChirpStack4/docker-compose.yml",
+        "url": "https://github.com/xoseperez/portainer-templates"
+      },
+      "title": "ChirpStack v4",
       "network": "bridge",
       "type": 3
     },
@@ -1967,7 +2065,7 @@
       "restart_policy": "unless-stopped",
       "repository": {
         "stackfile": "Stack/AWSIoTGreengrass/awsiotgreengrass.yml",
-        "url": "https://github.com/RAKwireless/portainer-templates"
+        "url": "https://github.com/xoseperez/portainer-templates"
       },
       "env": [
         {
