@@ -173,13 +173,13 @@ marshaler="protobuf"
     # Use this when setting up a secure connection (when server uses ssl://...)
     # but the certificate used by the server is not trusted by any CA certificate
     # on the server (e.g. when self generated).
-    ca_cert="/etc/chirpstack-gateway-bridge/certs/ca/ca.pem"
+    ca_cert=""
 
     # mqtt TLS certificate file (optional)
-    tls_cert="/etc/chirpstack-gateway-bridge/certs/chirpstack-gateway-bridge/basicstation/basicstation.pem"
+    tls_cert=""
 
     # mqtt TLS key file (optional)
-    tls_key="/etc/chirpstack-gateway-bridge/certs/chirpstack-gateway-bridge/basicstation/basicstation-key.pem"
+    tls_key=""
 
 
     # Google Cloud Platform Cloud IoT Core authentication.
@@ -253,8 +253,8 @@ marshaler="protobuf"
     #
     # Configure the tls_cert (certificate file) and tls_key (private-key file)
     # when the device is configured with X.509 authentication.
-    tls_cert="/etc/chirpstack-gateway-bridge/certs/chirpstack-gateway-bridge/basicstation/basicstation.pem"
-    tls_key="/etc/chirpstack-gateway-bridge/certs/chirpstack-gateway-bridge/basicstation/basicstation-key.pem"
+    tls_cert=""
+    tls_key=""
 
 
 # Metrics configuration.

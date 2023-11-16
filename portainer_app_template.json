@@ -1052,21 +1052,6 @@
       "note": "Browse to <a href='http://{host-ip}:8080'>http://{host-ip}:8080</a> to access the web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: admin</li>Check <a href='https://github.com/chirpstack/chirpstack-docker'>ChirpStack Docker Github reposotory</a> for more details.",
       "env": [
         {
-          "default": "1000",
-          "label": "PUID",
-          "name": "PUID"
-        },
-        {
-          "default": "100",
-          "label": "PGID",
-          "name": "PGID"
-        },
-        {
-          "default": "Europe/London",
-          "label": "Time Zone",
-          "name": "TZ"
-        },
-        {
           "default": "eu868",
           "label": "BAND",
           "name": "BAND",
@@ -1098,6 +1083,7 @@
             {"text":"EU433", "value": "eu433"},
             {"text":"EU868", "value": "eu868"},
             {"text":"IN865", "value": "in865"},
+            {"text":"ISM2400", "value": "ism2400"},
             {"text":"KR920", "value": "kr920"},
             {"text":"RU864", "value": "ru864"},
             {"text":"US915_0", "value": "us915_0"},
@@ -1121,6 +1107,33 @@
           "label": "MQTT_BROKER_HOSTS",
           "name": "MQTT_BROKER_HOSTS",
           "description": "Define hostnames, domain names and IPs for the MQTT brokers (comma separated)"
+        },
+        {
+          "default": "you_must_change_this",
+          "label": "API_SECRET",
+          "name": "API_SECRET",
+          "description": "This should be some random unique string"
+        },
+        {
+          "default": "000000",
+          "label": "NET_ID",
+          "name": "NET_ID",
+          "description": "NetID of your instance, if you have none stick to the default 000000 or 000001"
+        },
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
         }
       ],
       "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/chirpstack_logo.png?raw=true",

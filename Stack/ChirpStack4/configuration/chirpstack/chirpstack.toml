@@ -39,6 +39,11 @@
 
   # Server address or addresses.
   #
+  # Example formats:
+  #   redis://127.0.0.1:6379
+  #   redis://:password@127.0.0.1:6379
+  #   redis://username:password@127.0.0.1:6379
+  #
   # Set multiple addresses when connecting to a cluster.
   servers=[
     "redis://$REDIS_HOST/",
@@ -77,7 +82,7 @@
 [network]
 
   # Network identifier (NetID, 3 bytes) encoded as HEX (e.g. 010203).
-  net_id="000000"
+  net_id="$NET_ID"
 
   # DevAddr prefix(es).
   #
@@ -101,22 +106,25 @@
   # Multiple regions can be enabled simultaneously. Each region must match
   # the 'name' parameter of the region configuration in '[[regions]]'.
   enabled_regions=[
-    "as923",
-    "as923_2",
-    "as923_3",
-    "as923_4",
-    "au915_0",
-    "cn470_10",
-    "cn779",
-    "eu433",
-    "eu868",
-    "in865",
-    "ism2400",
-    "kr920",
-    "ru864",
-    "us915_0",
-    "us915_1",
+    "$ENABLED_REGION",
   ]
+  #enabled_regions=[
+  #  "as923",
+  #  "as923_2",
+  #  "as923_3",
+  #  "as923_4",
+  #  "au915_0",
+  #  "cn470_10",
+  #  "cn779",
+  #  "eu433",
+  #  "eu868",
+  #  "in865",
+  #  "ism2400",
+  #  "kr920",
+  #  "ru864",
+  #  "us915_0",
+  #  "us915_1",
+  #]
 
   # Device session expiration.
   #
