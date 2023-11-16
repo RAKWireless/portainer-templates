@@ -17,7 +17,6 @@ services:
     restart: unless-stopped
     volumes:
       - ./configuration/chirpstack:/etc/chirpstack
-      - ./lorawan-devices:/opt/lorawan-devices
       - chirpstack-certificates:/etc/chirpstack/certs
     depends_on:
       - postgres
@@ -29,7 +28,7 @@ services:
       - POSTGRESQL_HOST=postgres
       - API_SECRET=${API_SECRET:-you_must_change_this} # use the output of `openssl rand -base64 32`
       - ENABLED_REGION=${BAND:-eu868}
-      - NET_ID=000000
+      - NET_ID=${NET_ID:-000000}
     ports:
       - 8080:8080
 
@@ -106,22 +105,6 @@ services:
       - INTEGRATION__MQTT__EVENT_TOPIC_TEMPLATE=${BAND:-eu868}/gateway/{{ .GatewayID }}/event/{{ .EventType }}
       - INTEGRATION__MQTT__STATE_TOPIC_TEMPLATE=${BAND:-eu868}/gateway/{{ .GatewayID }}/state/{{ .StateType }}
       - INTEGRATION__MQTT__COMMAND_TOPIC_TEMPLATE=${BAND:-eu868}/gateway/{{ .GatewayID }}/command/#
-
-  #chirpstack-gateway-bridge-udp-ism2400:
-  #  container_name: chirpstack-bridge-udp-ism2400
-  #  image: chirpstack/chirpstack-gateway-bridge:4
-  #  restart: unless-stopped
-  #  ports:
-  #    - 1701:1700/udp
-  #  volumes:
-  #    - ./configuration/chirpstack-gateway-bridge:/etc/chirpstack-gateway-bridge
-  #    - chirpstack-certificates:/etc/chirpstack-gateway-bridge/certs
-  #  depends_on: 
-  #    - mosquitto
-  #  environment:
-  #    - INTEGRATION__MQTT__EVENT_TOPIC_TEMPLATE=ism2400/gateway/{{ .GatewayID }}/event/{{ .EventType }}
-  #    - INTEGRATION__MQTT__STATE_TOPIC_TEMPLATE=ism2400/gateway/{{ .GatewayID }}/state/{{ .StateType }}
-  #    - INTEGRATION__MQTT__COMMAND_TOPIC_TEMPLATE=ism2400/gateway/{{ .GatewayID }}/command/#
 
   chirpstack-gateway-bridge-basicstation:
     container_name: chirpstack-bridge-basicstation-${BAND:-eu868}

@@ -1,0 +1,53 @@
+version: "3"
+
+# ---------------------------------------------------------------------------
+# SERVICES
+# ---------------------------------------------------------------------------
+
+services:
+
+  chirpstack-concentratord:
+    container_name: chirpstack-concentratord-${BAND:-eu868}
+    image: chirpstack-concentratord:latest
+    build:
+      context: chirpstack-concentratord-docker
+      args:
+        ARCH: ${ARCH:-arm64}
+    restart: unless-stopped
+    volumes:
+      - ipc_folder:/tmp
+    devices:
+      - /dev/spidev0.0
+      - /dev/gpiochip0
+      - /dev/gpiomem
+    user: "${PUID:-1000}:${PGID:-1000}"
+    group_add: 
+      - ${PGID_GPIO:-997}
+      - ${PGID_I2C:-998}
+      - ${PGID_SPI:-999}
+    environment:
+      - MODEL=${MODEL:-RAK5146}
+      - REGION=${BAND:-eu868}
+      - SOCKET_PREFIX=${BAND:-eu868} # so IPC URLs will be ipc:///tmp/concentratord_<band>_*
+
+  chirpstack-gateway-bridge-concentratord:
+    container_name: chirpstack-bridge-concentratord-${BAND:-eu868}
+    image: chirpstack/chirpstack-gateway-bridge:4
+    restart: unless-stopped
+    command: -c /etc/chirpstack-gateway-bridge/chirpstack-gateway-bridge-concentratord.toml
+    volumes:
+      - ./configuration/chirpstack-gateway-bridge:/etc/chirpstack-gateway-bridge
+      - chirpstack-certificates:/etc/chirpstack-gateway-bridge/certs
+      - ipc_folder:/tmp
+    user: "${PUID:-1000}:${PGID:-1000}"
+    depends_on:
+      - chirpstack-concentratord
+    environment:
+      - BACKEND__CONCENTRATORD__EVENT_URL=ipc:///tmp/concentratord_${BAND:-eu868}_event # See SOCKET_PREFIX in chirpstack-concentratord service
+      - BACKEND__CONCENTRATORD__COMMAND_URL=ipc:///tmp/concentratord_${BAND:-eu868}_command # See SOCKET_PREFIX in chirpstack-concentratord service
+      - INTEGRATION__MQTT__EVENT_TOPIC_TEMPLATE=${BAND:-eu868}/gateway/{{ .GatewayID }}/event/{{ .EventType }}
+      - INTEGRATION__MQTT__STATE_TOPIC_TEMPLATE=${BAND:-eu868}/gateway/{{ .GatewayID }}/state/{{ .StateType }}
+      - INTEGRATION__MQTT__COMMAND_TOPIC_TEMPLATE=${BAND:-eu868}/gateway/{{ .GatewayID }}/command/#
+
+volumes:
+  ipc_folder:
