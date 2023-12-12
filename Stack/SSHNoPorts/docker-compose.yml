@@ -1,0 +1,34 @@
+
+version: '3.7'
+
+services:
+
+  sshnpd:
+    
+    image: rakwireless/sshnpd
+    build:
+      context: build
+      dockerfile: Dockerfile
+    container_name: sshnpd
+    restart: unless-stopped
+
+    # Mount the folder to persist keys across reboots
+    #volumes:
+    #  - ./.keys/:/atsign/.atsign/keys
+
+    environment:
+      DEVICE_ATSIGN: '@scorpiovisiting'
+      CLIENT_ATSIGN: '@interested21'
+      DEVICE_NAME: 'contabo01'
+      #DEVICE_KEY: /run/secrets/device_key
+      #CLIENT_KEY: /run/secrets/client_key
+
+    #secrets:
+    #  - device_key
+    #  - client_key
+
+#secrets:
+#  device_key:
+#    file: ./.keys/@scorpiovisiting_key.atKeys
+#  client_key:
+#    file: ./.keys/@interested21_key.atKeys

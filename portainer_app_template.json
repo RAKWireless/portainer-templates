@@ -1,6 +1,6 @@
 {
   "version": "2",
-  "version_for_rakpios_cli": "v0.3",
+  "version_for_rakpios_cli": "v0.5",
   "templates": [
     {
       "categories": [
@@ -200,13 +200,13 @@
           "default": "17",
           "label": "Gateway RESET GPIO",
           "name": "GW_RESET_GPIO",
-          "description": "GPIO number that resets (Broadcom pin number)"
+          "description": "GPIO number that resets"
         },
         {
           "default": "0",
           "label": "Gateway ENABLE GPIO",
           "name": "GW_ENABLE_GPIO",
-          "description": "GPIO number that enables power (by pulling HIGH) to the concentrator (Broadcom pin number)"
+          "description": "GPIO number that enables power (by pulling HIGH) to the concentrator"
         },
         {
           "default": "eth0",
@@ -271,19 +271,19 @@
           "label": "RAK gateway model/LoRaWAN concentrator model number/Semtech LoRa chip model",
           "select": [
             {
-              "text": "RAK7243(no LTE)",
+              "text": "RAK7243 (no LTE)",
               "value": "RAK7243"
             },
             {
-              "text": "RAK7243C(with LTE)",
+              "text": "RAK7243C (with LTE)",
               "value": "RAK7243C"
             },
             {
-              "text": "RAK7244(no LTE)",
+              "text": "RAK7244 (no LTE)",
               "value": "RAK7244"
             },
             {
-              "text": "RAK7244(with LTE)",
+              "text": "RAK7244 (with LTE)",
               "value": "RAK7244C"
             },
             {
@@ -295,11 +295,11 @@
               "value": "RAK7246G"
             },
             {
-              "text": "RAK7248(no LTE)",
+              "text": "RAK7248 (no LTE)",
               "value": "RAK7248"
             },
             {
-              "text": "RAK7248C(with LTE)",
+              "text": "RAK7248C (with LTE)",
               "value": "RAK7248C"
             },
             {
@@ -311,7 +311,7 @@
               "value": "RAK7371"
             },
             {
-              "text": "RAK831(SPI only)",
+              "text": "RAK831 (SPI only)",
               "value": "RAK831"
             },
             {
@@ -377,7 +377,8 @@
             {
               "text": "SX1303",
               "value": "SX1303"
-            },            {
+            },            
+            {
               "text": "SX1308",
               "value": "SX1308"
             }
@@ -396,6 +397,10 @@
             {
               "text": "USB",
               "value": "USB"
+            },
+            {
+              "text": "AUTO (only if RADIO_DEV=AUTO)",
+              "value": "AUTO"
             }
           ],
           "description": "If MODEL is defined it will get the interface type from it, otherwise defaults to SPI"
@@ -436,18 +441,18 @@
           "name": "RESET_GPIO",
           "default": "17",
           "label": "GATEWAY RESET GPIO",
-          "description": "GPIO number that resets (Broadcom pin number)"
+          "description": "GPIO number that resets"
         },
         {
           "name": "POWER_EN_GPIO",
           "default": "0",
           "label": "the GPIO enables power",
-          "description": "GPIO number that enables power (by pulling HIGH) to the concentrator (Broadcom pin number). 0 means not required"
+          "description": "GPIO number that enables power (by pulling HIGH) to the concentrator. 0 means not required"
         },
         {
           "name": "RADIO_DEV",
           "label": "Where the concentrator is connected to",
-          "description": "Don't set it if you don't know what this means, by default /dev/spidev0.0 for SPI concentrators, /dev/ttyACM0 or /dev/ttyUSB0 for USB concentrators."
+          "description": "Don't set it if you don't know what this means, by default /dev/spidev0.0 for SPI concentrators, /dev/ttyACM0 or /dev/ttyUSB0 for USB concentrators. Set to AUTO to auto-discover."
         },
         {
           "name": "GPS_DEV",
@@ -569,7 +574,7 @@
       "categories": [
         "LoRaWAN"
       ],
-      "description": "This project deploys UDP Packet Forwarder protocol for LoRa 2.4GHz Gateways using Docker. It runs on any amd64/x86_64 PC, or a SBC like a Raspberry Pi 3/4, Compute Module 3/4 or balenaFin.",
+      "description": "This project deploys UDP Packet Forwarder protocol for LoRa 2.4GHz Gateways using Docker. It runs on any amd64/x86_64 PC, or a SBC like a Raspberry Pi 3/4, Compute Module 3/4 or balenaFin. DEPRECATED: use UDP Packet Forwarder instead.",
       "post_up_info": "Please check the Github repository https://github.com/RAKWireless/udp-packet-forwarder for more details.",
       "note": "Check <a href='https://github.com/RAKWireless/udp-packet-forwarder'>LoRaWAN UDP Packet Forwarder Protocol for Docker Github repository</a> for more details.",
       "image": "xoseperez/2g4-packet-forwarder:latest",
@@ -1008,8 +1013,8 @@
         "LoRaWAN"
       ],
       "description": "The ChirpStack open-source LoRaWAN Network Server stack provides open-source components for LoRaWAN networks.",
-      "post_up_info": "Browse to http://{host-ip}:8080 to access the web interface. \nDefault username: admin\nDefault password: admin\nCheck https://github.com/brocaar/chirpstack-docker for for more details.",
-      "note": "Browse to <a href='http://{host-ip}:8080'>http://{host-ip}:8080</a> to access the web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: admin</li>Check <a href='https://github.com/brocaar/chirpstack-docker'>ChirpStack Docker Github reposotory</a> for more details.",
+      "post_up_info": "Browse to http://{host-ip}:8080 to access the web interface. \nDefault username: admin\nDefault password: admin\nCheck https://github.com/chirpstack/chirpstack-docker for for more details.",
+      "note": "Browse to <a href='http://{host-ip}:8080'>http://{host-ip}:8080</a> to access the web interface.<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: admin</li>Check <a href='https://github.com/chirpstack/chirpstack-docker'>ChirpStack Docker Github reposotory</a> for more details.",
       "env": [
         {
           "default": "1000",
@@ -1025,22 +1030,246 @@
           "default": "Europe/London",
           "label": "Time Zone",
           "name": "TZ"
-        },
-        {
-          "default": "EU868",
-          "label": "Network Server Band",
-          "name": "NETWORK_SERVER__BAND__NAME",
-          "description": "Frequency channels used by Chirpstack for uplink transmissions, valid values are AU915, EU868, US915 ... "
         }
       ],
       "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/chirpstack_logo.png?raw=true",
-      "name": "ChirpStackNetworkServer",
+      "name": "ChirpStack",
       "platform": "linux",
       "repository": {
-        "stackfile": "Stack/ChirpStackNetworkServer/chirpstack.yml",
+        "stackfile": "Stack/ChirpStack3/chirpstack.yml",
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
-      "title": "ChirpStack Network Server",
+      "title": "ChirpStack v3",
+      "network": "bridge",
+      "type": 3
+    },
+    {
+      "categories": [
+        "LoRaWAN"
+      ],
+      "description": "The ChirpStack open-source LoRaWAN Network Server stack provides open-source components for LoRaWAN networks.",
+      "post_up_info": "Browse to http://{host-ip}:8080 to access the web interface (might take a few seconds to boot). \nDefault username: admin\nDefault password: admin\nCheck https://www.chirpstack.io/docs/ for for more details.",
+      "note": "Browse to <a href='http://{host-ip}:8080'>http://{host-ip}:8080</a> to access the web interface (might take a few seconds to boot).<ulstyle='padding-left:20px'><li>Default username: admin</li><li>Default password: admin</li>Check <a href='https://www.chirpstack.io/docs/'>ChirpStack documentation</a> for more details.",
+      "env": [
+        {
+          "default": "eu868",
+          "label": "BAND",
+          "name": "BAND",
+          "select": [
+            {"text":"AS923_2", "value": "as923_2"},
+            {"text":"AS923_3", "value": "as923_3"},
+            {"text":"AS923_4", "value": "as923_4"},
+            {"text":"AS923", "value": "as923"},
+            {"text":"AU915_0", "value": "au915_0"},
+            {"text":"AU915_1", "value": "au915_1"},
+            {"text":"AU915_2", "value": "au915_2"},
+            {"text":"AU915_3", "value": "au915_3"},
+            {"text":"AU915_4", "value": "au915_4"},
+            {"text":"AU915_5", "value": "au915_5"},
+            {"text":"AU915_6", "value": "au915_6"},
+            {"text":"AU915_7", "value": "au915_7"},
+            {"text":"CN470_0", "value": "cn470_0"},
+            {"text":"CN470_10", "value": "cn470_10"},
+            {"text":"CN470_11", "value": "cn470_11"},
+            {"text":"CN470_1", "value": "cn470_1"},
+            {"text":"CN470_2", "value": "cn470_2"},
+            {"text":"CN470_3", "value": "cn470_3"},
+            {"text":"CN470_4", "value": "cn470_4"},
+            {"text":"CN470_5", "value": "cn470_5"},
+            {"text":"CN470_6", "value": "cn470_6"},
+            {"text":"CN470_7", "value": "cn470_7"},
+            {"text":"CN470_8", "value": "cn470_8"},
+            {"text":"CN470_9", "value": "cn470_9"},
+            {"text":"EU433", "value": "eu433"},
+            {"text":"EU868", "value": "eu868"},
+            {"text":"IN865", "value": "in865"},
+            {"text":"ISM2400", "value": "ism2400"},
+            {"text":"KR920", "value": "kr920"},
+            {"text":"RU864", "value": "ru864"},
+            {"text":"US915_0", "value": "us915_0"},
+            {"text":"US915_1", "value": "us915_1"},
+            {"text":"US915_2", "value": "us915_2"},
+            {"text":"US915_3", "value": "us915_3"},
+            {"text":"US915_4", "value": "us915_4"},
+            {"text":"US915_5", "value": "us915_5"},
+            {"text":"US915_6", "value": "us915_6"},
+            {"text":"US915_7", "value": "us915_7"}
+          ]
+        },
+        {
+          "default": "127.0.0.1,localhost",
+          "label": "CHIRPSTACK_GATEWAY_BRIDGE_HOSTS",
+          "name": "CHIRPSTACK_GATEWAY_BRIDGE_HOSTS",
+          "description": "Define hostnames, domain names and IPs for the gateway bridge servers (comma separated)"
+        },
+        {
+          "default": "127.0.0.1,localhost",
+          "label": "MQTT_BROKER_HOSTS",
+          "name": "MQTT_BROKER_HOSTS",
+          "description": "Define hostnames, domain names and IPs for the MQTT brokers (comma separated)"
+        },
+        {
+          "default": "you_must_change_this",
+          "label": "API_SECRET",
+          "name": "API_SECRET",
+          "description": "This should be some random unique string"
+        },
+        {
+          "default": "000000",
+          "label": "NET_ID",
+          "name": "NET_ID",
+          "description": "NetID of your instance, if you have none stick to the default 000000 or 000001"
+        },
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        }
+      ],
+      "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/chirpstack_logo.png?raw=true",
+      "name": "ChirpStack",
+      "platform": "linux",
+      "repository": {
+        "stackfile": "Stack/ChirpStack4/docker-compose.yml",
+        "url": "https://github.com/RAKWireless/portainer-templates"
+      },
+      "title": "ChirpStack v4",
+      "network": "bridge",
+      "type": 3
+    },
+    {
+      "categories": [
+        "LoRaWAN"
+      ],
+      "description": "ChirpStack Concentratord is an open-source Concentrator HAL daemon for LoRa gateways.",
+      "post_up_info": "Check https://www.chirpstack.io/docs/ for for more details.",
+      "note": "Check <a href='https://www.chirpstack.io/docs/'>ChirpStack documentation</a> for more details.",
+      "env": [
+        {
+          "default": "eu868",
+          "label": "BAND",
+          "name": "BAND",
+          "select": [
+            {"text":"AS923_2", "value": "as923_2"},
+            {"text":"AS923_3", "value": "as923_3"},
+            {"text":"AS923_4", "value": "as923_4"},
+            {"text":"AS923", "value": "as923"},
+            {"text":"AU915_0", "value": "au915_0"},
+            {"text":"AU915_1", "value": "au915_1"},
+            {"text":"AU915_2", "value": "au915_2"},
+            {"text":"AU915_3", "value": "au915_3"},
+            {"text":"AU915_4", "value": "au915_4"},
+            {"text":"AU915_5", "value": "au915_5"},
+            {"text":"AU915_6", "value": "au915_6"},
+            {"text":"AU915_7", "value": "au915_7"},
+            {"text":"CN470_0", "value": "cn470_0"},
+            {"text":"CN470_10", "value": "cn470_10"},
+            {"text":"CN470_11", "value": "cn470_11"},
+            {"text":"CN470_1", "value": "cn470_1"},
+            {"text":"CN470_2", "value": "cn470_2"},
+            {"text":"CN470_3", "value": "cn470_3"},
+            {"text":"CN470_4", "value": "cn470_4"},
+            {"text":"CN470_5", "value": "cn470_5"},
+            {"text":"CN470_6", "value": "cn470_6"},
+            {"text":"CN470_7", "value": "cn470_7"},
+            {"text":"CN470_8", "value": "cn470_8"},
+            {"text":"CN470_9", "value": "cn470_9"},
+            {"text":"EU433", "value": "eu433"},
+            {"text":"EU868", "value": "eu868"},
+            {"text":"IN865", "value": "in865"},
+            {"text":"ISM2400", "value": "ism2400"},
+            {"text":"KR920", "value": "kr920"},
+            {"text":"RU864", "value": "ru864"},
+            {"text":"US915_0", "value": "us915_0"},
+            {"text":"US915_1", "value": "us915_1"},
+            {"text":"US915_2", "value": "us915_2"},
+            {"text":"US915_3", "value": "us915_3"},
+            {"text":"US915_4", "value": "us915_4"},
+            {"text":"US915_5", "value": "us915_5"},
+            {"text":"US915_6", "value": "us915_6"},
+            {"text":"US915_7", "value": "us915_7"}
+          ]
+        },
+        {
+          "label": "LoRaWAN concentrator model number/Semtech LoRa chip model",
+          "name": "MODEL",
+          "default": "RAK5146",
+          "description": "Concentrator model"
+        },
+        {
+          "name": "INTERFACE",
+          "label": "Concentrator interface",
+          "default": "SPI",
+          "select": [
+            {
+              "text": "SPI",
+              "value": "SPI"
+            },
+            {
+              "text": "USB",
+              "value": "USB"
+            }
+          ],
+          "description": "The interface used by the concentrator, can be guessed from Device"
+        },
+        {
+          "default": "17",
+          "label": "Gateway RESET GPIO",
+          "name": "RESET_GPIO",
+          "description": "GPIO number that resets"
+        },
+        {
+          "default": "0",
+          "label": "Gateway ENABLE GPIO",
+          "name": "ENABLE_GPIO",
+          "description": "GPIO number that enables power (by pulling HIGH) to the concentrator"
+        },
+        {
+          "default": "localhost:1883",
+          "label": "MQTT_BROKER",
+          "name": "MQTT_BROKER",
+          "description": "Define the MQTT broker where ChirpStack LNS is listening to (<domain|ip>:<port>)"
+        },
+        {
+          "default": "arm64",
+          "label": "ARCH",
+          "name": "ARCH",
+          "description": "Gateway architecture"
+        },
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        }
+      ],
+      "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/chirpstack_logo.png?raw=true",
+      "name": "ChirpStack Concentratord",
+      "platform": "linux",
+      "repository": {
+        "stackfile": "Stack/Concentratord/docker-compose.yml",
+        "url": "https://github.com/RAKWireless/portainer-templates"
+      },
+      "title": "ChirpStack Concentratord",
       "network": "bridge",
       "type": 3
     },
@@ -1962,7 +2191,7 @@
       "restart_policy": "unless-stopped",
       "repository": {
         "stackfile": "Stack/AWSIoTGreengrass/awsiotgreengrass.yml",
-        "url": "https://github.com/RAKwireless/portainer-templates"
+        "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "env": [
         {
@@ -2283,6 +2512,40 @@
       "network": "host",
       "privileged": true,
       "note":"Check <a href='https://hub.docker.com/r/zerotier/zerotier'>ZeroIter in Docker Hub </a> for more details."
+    },
+    {
+      "categories": [
+        "VPN"
+      ],
+      "description": "SSHNoPorts lets you SSH into your machine without having any open port",
+      "env": [
+        {
+          "label": "DEVICE_ATSIGN",
+          "name": "DEVICE_ATSIGN",
+          "description":"the network id that you want to join(required)"
+        },
+        {
+          "label": "CLIENT_ATSIGN",
+          "name": "CLIENT_ATSIGN",
+          "description":"authtoken used to interact with the control socket(optional)"
+        },
+        {
+          "label": "DEVICE_NAME",
+          "name": "DEVICE_NAME",
+          "description":"zero identity public(optional)"
+        }
+      ],
+      "repository": {
+        "stackfile": "Stack/SSHNoPorts/docker-compose.yml",
+        "url": "https://github.com/RAKWireless/portainer-templates"
+      },
+      "logo": "https://github.com/RAKWireless/portainer-templates/raw/master/logo/atsign.png",
+      "name": "sshnoports",
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "title": "SSH No Ports",
+      "type": 3,
+      "note":"Check <a href='https://www.noports.com/'>SSH No Ports guide</a> for more details."
     }
   ]
 }

@@ -1,0 +1,56 @@
+version: '3'
+
+services:
+
+  chirpstack-concentratord:
+    
+    # use pre-defined image
+    image: chirpstack-concentratord:latest
+
+    # or comment out image: and build it yourself / with balena services
+    build:
+      context: .
+      args:
+        ARCH: amd64
+
+    container_name: chirpstack-concentratord
+    restart: unless-stopped
+    ipc: host
+    network_mode: host      # required to read main interface MAC instead of virtual one, only for sx1301 based concentrators
+                            # you don't need this if you set the GATEWAY_EUI manually
+    volumes:
+      - /tmp:/tmp
+    
+    devices:
+      - /dev/ttyACM0
+      #- /dev/spidev0.0
+      - /dev/gpiochip0 
+
+    group_add:
+      - "dialout"           # provides permissions to access USB concentrators
+
+    environment:
+
+      # Select the concentrator model (required, either RAK or chirpstack-concentratord naming)
+      MODEL: "RAK7271"
+
+      # Select the interface the concentrator uses (defaults to "SPI", "USB" only supported for SX1302/3 devices)
+      #INTERFACE: "SPI"
+
+      # Reset GPIO for SPI SX1301/2/3 devices
+      #RESET_GPIO: 17
+
+      # Power enable GPIO for SPI SX1302 devices
+      #POWER_EN_GPIO: 0
+
+      # Set to 1 if concentrator has built-in GPS (set by default for some known concentrators)
+      #HAS_GPS: 0
+
+      # Select the region (not needed for 2G4 concentrators, defaults to EU868 for the rest)
+      #REGION: "EU868"
+
+      # Select the channels (some regions have more than one channel set)
+      #CHANNELS: "US915_0"
+
+      # Set concentratord debug level (TRACE, DEBUG, INFO*, WARN, ERROR, OFF)
+      #DEBUG: "INFO"
