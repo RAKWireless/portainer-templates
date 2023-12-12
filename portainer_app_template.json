@@ -1001,7 +1001,7 @@
       "logo": "https://github.com/RAKWireless/portainer-templates/blob/master/logo/tailscale_logo.png?raw=true",
       "platform": "linux",
       "repository": {
-        "stackfile": "Stack/TimeScaledb/tailscale.yml",
+        "stackfile": "Stack/Tilescale/tailscale.yml",
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "Tailscale",
