@@ -1,6 +1,6 @@
 {
   "version": "2",
-  "version_for_rakpios_cli": "v0.5",
+  "version_for_rakpios_cli": "v0.6",
   "templates": [
     {
       "categories": [
@@ -552,6 +552,16 @@
             }
           ],
           "description": "Regional parameters identifier"
+        },
+        {
+          "name": "WHITELIST_NETIDS",
+          "label": "WHITELIST_NETIDS",
+          "description": "Allow only messages from devices in this NetIDs, leave empty to disable filtering."
+        },
+        {
+          "name": "WHITELIST_OUIS",
+          "label": "WHITELIST_OUIS",
+          "description": "Allow only join requests from devices from these OUIs, leave empty to disable filtering."
         },
         {
           "name": "GPS_LATITUDE",
