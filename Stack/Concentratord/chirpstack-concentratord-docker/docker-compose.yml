@@ -11,21 +11,18 @@ services:
     build:
       context: .
       args:
-        ARCH: amd64
+        ARCH: ${ARCH:-arm64}
+        VERSION: 4.3.6
 
     container_name: chirpstack-concentratord
     restart: unless-stopped
     ipc: host
+    privileged: true
     network_mode: host      # required to read main interface MAC instead of virtual one, only for sx1301 based concentrators
                             # you don't need this if you set the GATEWAY_EUI manually
     volumes:
       - /tmp:/tmp
     
-    devices:
-      - /dev/ttyACM0
-      #- /dev/spidev0.0
-      - /dev/gpiochip0 
-
     group_add:
       - "dialout"           # provides permissions to access USB concentrators
 

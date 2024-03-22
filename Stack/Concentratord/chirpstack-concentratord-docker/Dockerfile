@@ -1,9 +1,12 @@
 ARG ARCH
+ARG VERSION
+ARG BUILD_DATE
 
 # Base image
 FROM debian:bullseye-slim
 ARG ARCH
-ARG VERSION=4.3.4
+ARG VERSION
+ARG BUILD_DATE
 
 # Dependencies
 RUN export DEBIAN_FRONTEND=noninteractive
@@ -16,19 +19,21 @@ RUN apt update && \
 WORKDIR /opt/chirpstack
 
 # Checkout and compile remote code
-RUN mkdir -p artifacts/binaries
-COPY ./artifacts/binaries/chirpstack-concentratord-sx1301_${VERSION}_${ARCH}.tar.gz ./artifacts/binaries/chirpstack-concentratord-sx1301.tar.gz
-COPY ./artifacts/binaries/chirpstack-concentratord-sx1302_${VERSION}_${ARCH}.tar.gz ./artifacts/binaries/chirpstack-concentratord-sx1302.tar.gz
-COPY ./artifacts/binaries/chirpstack-concentratord-2g4_${VERSION}_${ARCH}.tar.gz ./artifacts/binaries/chirpstack-concentratord-2g4.tar.gz
-COPY ./artifacts/configs ./artifacts/configs
+RUN mkdir -p binaries
+COPY ./binaries/chirpstack-concentratord-sx1301_${VERSION}_${ARCH}.tar.gz ./binaries/chirpstack-concentratord-sx1301.tar.gz
+COPY ./binaries/chirpstack-concentratord-sx1302_${VERSION}_${ARCH}.tar.gz ./binaries/chirpstack-concentratord-sx1302.tar.gz
+COPY ./binaries/chirpstack-concentratord-2g4_${VERSION}_${ARCH}.tar.gz ./binaries/chirpstack-concentratord-2g4.tar.gz
 
 # Copy fles from builder and repo
-COPY ./start.sh ./
+COPY ./runner/ ./
+RUN chmod +x start
 RUN chmod 777 .
-RUN chmod 755 start.sh
 
 # Run as nobody
 USER nobody:nogroup
 
+# Add application folder to path
+ENV PATH="${PATH}:/opt/chirpstack"
+
 # Launch our binary on container startup.
-CMD ["bash", "start.sh"]
+CMD ["bash", "start"]

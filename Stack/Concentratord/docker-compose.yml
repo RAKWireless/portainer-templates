@@ -7,19 +7,17 @@ version: "3"
 services:
 
   chirpstack-concentratord:
-    container_name: chirpstack-concentratord-${BAND:-eu868}
-    image: chirpstack-concentratord:latest
+    container_name: chirpstack-concentratord-${REGION:-eu868}
+    #image: chirpstack-concentratord:latest
     build:
       context: chirpstack-concentratord-docker
       args:
         ARCH: ${ARCH:-arm64}
+        VERSION: 4.3.6
+    privileged: true
     restart: unless-stopped
     volumes:
       - ipc_folder:/tmp
-    devices:
-      - /dev/spidev0.0
-      - /dev/gpiochip0
-      - /dev/gpiomem
     user: "${PUID:-1000}:${PGID:-1000}"
     group_add: 
       - ${PGID_GPIO:-997}
@@ -27,10 +25,13 @@ services:
       - ${PGID_SPI:-999}
     environment:
       - MODEL=${MODEL:-RAK5146}
-      - REGION=${BAND:-eu868}
+      - REGION=${REGION:-eu868}
+      - CHANNELS=${CHANNELS:-eu868}
+      - INTERFACE=${INTERFACE:-SPI}
+      - RESET_GPIO=${RESET_GPIO:-17}
 
   chirpstack-gateway-bridge-concentratord:
-    container_name: chirpstack-bridge-concentratord-${BAND:-eu868}
+    container_name: chirpstack-bridge-concentratord-${REGION:-eu868}
     image: chirpstack/chirpstack-gateway-bridge:4
     restart: unless-stopped
     command: -c /etc/chirpstack-gateway-bridge/chirpstack-gateway-bridge-concentratord.toml
@@ -39,9 +40,9 @@ services:
       - ipc_folder:/tmp
     user: "${PUID:-1000}:${PGID:-1000}"
     environment:
-      - INTEGRATION__MQTT__EVENT_TOPIC_TEMPLATE=${BAND:-eu868}/gateway/{{ .GatewayID }}/event/{{ .EventType }}
-      - INTEGRATION__MQTT__STATE_TOPIC_TEMPLATE=${BAND:-eu868}/gateway/{{ .GatewayID }}/state/{{ .StateType }}
-      - INTEGRATION__MQTT__COMMAND_TOPIC_TEMPLATE=${BAND:-eu868}/gateway/{{ .GatewayID }}/command/#
+      - INTEGRATION__MQTT__EVENT_TOPIC_TEMPLATE=${REGION:-eu868}/gateway/{{ .GatewayID }}/event/{{ .EventType }}
+      - INTEGRATION__MQTT__STATE_TOPIC_TEMPLATE=${REGION:-eu868}/gateway/{{ .GatewayID }}/state/{{ .StateType }}
+      - INTEGRATION__MQTT__COMMAND_TOPIC_TEMPLATE=${REGION:-eu868}/gateway/{{ .GatewayID }}/command/#
       - INTEGRATION__MQTT__AUTH__GENERIC__SERVERS=tcp://${MQTT_BROKER:-mosquitto:1883}
 
 volumes:
