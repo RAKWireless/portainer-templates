@@ -1,6 +1,6 @@
 {
   "version": "2",
-  "version_for_rakpios_cli": "v0.7",
+  "version_for_rakpios_cli": "v0.8",
   "templates": [
     {
       "categories": [
@@ -562,6 +562,18 @@
           "name": "WHITELIST_OUIS",
           "label": "WHITELIST_OUIS",
           "description": "Allow only join requests from devices from these OUIs, leave empty to disable filtering."
+        },
+        {
+          "name": "STAT_INTERVAL",
+          "label": "STAT_INTERVAL",
+          "default": "30",
+          "description": "Interval between heartbeat messages. Defaults to 30s."
+        },
+        {
+          "name": "PUSH_TIMEOUT",
+          "label": "PUSH_TIMEOUT",
+          "default": "100",
+          "description": "Timeout when pushing messages to LNS. Defaults to 100ms. Increase if missing packets on LNS side."
         },
         {
           "name": "GPS_LATITUDE",
