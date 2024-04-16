@@ -1,6 +1,6 @@
 {
   "version": "2",
-  "version_for_rakpios_cli": "v0.8",
+  "version_for_rakpios_cli": "v0.9",
   "templates": [
     {
       "categories": [
@@ -142,8 +142,24 @@
               "value": "RAK5146"
             },
             {
+              "text": "RAK5166",
+              "value": "RAK5166"
+            },
+            {
+              "text": "RAK5167",
+              "value": "RAK5167"
+            },
+            {
               "text": "IC880A",
               "value": "IC880A"
+            },
+            {
+              "text": "PG1301",
+              "value": "PG1301"
+            },
+            {
+              "text": "PG1302",
+              "value": "PG1302"
             },
             {
               "text": "WM1302",
@@ -168,7 +184,8 @@
             {
               "text": "SX1303",
               "value": "SX1303"
-            },            {
+            },            
+            {
               "text": "SX1308",
               "value": "SX1308"
             }
@@ -337,6 +354,14 @@
             {
               "text": "RAK5146",
               "value": "RAK5146"
+            },
+            {
+              "text": "RAK5166",
+              "value": "RAK5166"
+            },
+            {
+              "text": "RAK5167",
+              "value": "RAK5167"
             },
             {
               "text": "RAK5148",
