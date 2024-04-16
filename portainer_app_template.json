@@ -17,7 +17,7 @@
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "Portainer",
-      "type": "3",
+      "type": 3,
       "env": [
         {
           "default": "1000",
