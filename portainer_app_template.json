@@ -1,6 +1,6 @@
 {
   "version": "2",
-  "version_for_rakpios_cli": "v0.9",
+  "version_for_rakpios_cli": "v0.10",
   "templates": [
     {
       "categories": [
@@ -17,7 +17,7 @@
         "url": "https://github.com/RAKWireless/portainer-templates"
       },
       "title": "Portainer",
-      "type": "3-hidden",
+      "type": "3",
       "env": [
         {
           "default": "1000",

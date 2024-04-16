@@ -4,7 +4,7 @@ services:
   portainer:
     container_name: portainer
     restart: unless-stopped
-    image: portainer/portainer-ce:2.16.2
+    image: portainer/portainer-ce:2.20.1
     ports:
       - 8000:8000
       - 9443:9443
