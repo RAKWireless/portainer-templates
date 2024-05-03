@@ -4,7 +4,7 @@ services:
     image: eclipse-mosquitto:2.0
     restart: unless-stopped
     volumes:
-      - "./mosquitto-data:/mosquitto"
+      - mosquitto-data:/mosquitto
     ports:
       - "1883:1883"
       - "9001:9001"
@@ -19,7 +19,7 @@ services:
     restart: unless-stopped
     image: koenkk/zigbee2mqtt
     volumes:
-      - ./data:/app/data
+      - zigbee2mqtt-data:/app/data
     ports:
       - ${external_port:-8002}:8080
     environment:
@@ -35,3 +35,7 @@ services:
       
     devices:
       - ${ZIGBEE2MQTT_CONFIG_SERIAL_PORT:-/dev/ttyUSB0}:${ZIGBEE2MQTT_CONFIG_SERIAL_PORT:-/dev/ttyUSB0}
+
+volumes:
+  mosquitto-data:
+  zigbee2mqtt-data:

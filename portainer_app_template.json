@@ -1,6 +1,6 @@
 {
   "version": "2",
-  "version_for_rakpios_cli": "v0.10",
+  "version_for_rakpios_cli": "v0.11",
   "templates": [
     {
       "categories": [

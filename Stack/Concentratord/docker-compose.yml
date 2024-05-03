@@ -1,4 +1,4 @@
-version: "3"
+version: "2"
 
 # ---------------------------------------------------------------------------
 # SERVICES
@@ -6,6 +6,25 @@ version: "3"
 
 services:
 
+  # ---------------------------------------------------------------------------
+  # Hack for Portainer
+  # ---------------------------------------------------------------------------
+  
+  configuration-helper:
+    image: bitnami/git:latest
+    working_dir: /temp
+    command: >
+      bash -c "
+        git clone https://github.com/RAKWireless/portainer-templates &&
+        cp -R ./portainer-templates/Stack/Concentratord/configuration/* /temp/configuration/
+      "
+    volumes:
+      - configuration-chirpstack-gateway-bridge:/temp/configuration/chirpstack-gateway-bridge
+
+  # ---------------------------------------------------------------------------
+  # Main service
+  # ---------------------------------------------------------------------------
+  
   chirpstack-concentratord:
     container_name: chirpstack-concentratord-${REGION:-eu868}
     #image: chirpstack-concentratord:latest
@@ -36,7 +55,7 @@ services:
     restart: unless-stopped
     command: -c /etc/chirpstack-gateway-bridge/chirpstack-gateway-bridge-concentratord.toml
     volumes:
-      - ./configuration/chirpstack-gateway-bridge:/etc/chirpstack-gateway-bridge
+      - configuration-chirpstack-gateway-bridge:/etc/chirpstack-gateway-bridge
       - ipc_folder:/tmp
     user: "${PUID:-1000}:${PGID:-1000}"
     environment:
@@ -44,6 +63,11 @@ services:
       - INTEGRATION__MQTT__STATE_TOPIC_TEMPLATE=${REGION:-eu868}/gateway/{{ .GatewayID }}/state/{{ .StateType }}
       - INTEGRATION__MQTT__COMMAND_TOPIC_TEMPLATE=${REGION:-eu868}/gateway/{{ .GatewayID }}/command/#
       - INTEGRATION__MQTT__AUTH__GENERIC__SERVERS=tcp://${MQTT_BROKER:-mosquitto:1883}
+    depends_on:
+      configuration-helper:
+        condition: service_completed_successfully
+
 
 volumes:
   ipc_folder:
+  configuration-chirpstack-gateway-bridge:

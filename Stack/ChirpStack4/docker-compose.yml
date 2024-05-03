@@ -1,10 +1,28 @@
-version: "3"
+version: "2"
 
 # ---------------------------------------------------------------------------
 # SERVICES
 # ---------------------------------------------------------------------------
 
 services:
+
+  # ---------------------------------------------------------------------------
+  # Hack for Portainer
+  # ---------------------------------------------------------------------------
+  
+  configuration-helper:
+    image: bitnami/git:latest
+    working_dir: /temp
+    command: >
+      bash -c "
+        git clone https://github.com/RAKWireless/portainer-templates &&
+        cp -R ./portainer-templates/Stack/ChirpStack4/configuration/* /temp/configuration/
+      "
+    volumes:
+      - configuration-chirpstack:/temp/configuration/chirpstack
+      - configuration-chirpstack-gateway-bridge:/temp/configuration/chirpstack-gateway-bridge
+      - configuration-mosquitto:/temp/configuration/mosquitto
+      - configuration-postgresql-initdb:/temp/configuration/postgresql/initdb
 
   # ---------------------------------------------------------------------------
   # Main application
@@ -16,7 +34,7 @@ services:
     command: -c /etc/chirpstack
     restart: unless-stopped
     volumes:
-      - ./configuration/chirpstack:/etc/chirpstack
+      - configuration-chirpstack:/etc/chirpstack
       - chirpstack-certificates:/etc/chirpstack/certs
     depends_on:
       - postgres
@@ -47,10 +65,13 @@ services:
     image: postgres:14-alpine
     restart: unless-stopped
     volumes:
-      - ./configuration/postgresql/initdb:/docker-entrypoint-initdb.d
+      - configuration-postgresql-initdb:/docker-entrypoint-initdb.d
       - chirpstack-postgresql:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=root
+    depends_on:
+      configuration-helper:
+        condition: service_completed_successfully
 
   redis:
     container_name: chirpstack-redis
@@ -67,8 +88,11 @@ services:
       - 1883:1883
       - 8883:8883
     volumes: 
-      - ./configuration/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - configuration-mosquitto:/mosquitto/config
       - chirpstack-certificates:/mosquitto/config/certs
+    depends_on:
+      configuration-helper:
+        condition: service_completed_successfully
 
   # ---------------------------------------------------------------------------
   # Certificate generator
@@ -97,9 +121,9 @@ services:
     ports:
       - 1700:1700/udp
     volumes:
-      - ./configuration/chirpstack-gateway-bridge:/etc/chirpstack-gateway-bridge
+      - configuration-chirpstack-gateway-bridge:/etc/chirpstack-gateway-bridge
       - chirpstack-certificates:/etc/chirpstack-gateway-bridge/certs
-    depends_on: 
+    depends_on:
       - mosquitto
     environment:
       - INTEGRATION__MQTT__EVENT_TOPIC_TEMPLATE=${BAND:-eu868}/gateway/{{ .GatewayID }}/event/{{ .EventType }}
@@ -114,9 +138,9 @@ services:
     ports:
       - 3001:3001
     volumes:
-      - ./configuration/chirpstack-gateway-bridge:/etc/chirpstack-gateway-bridge
+      - configuration-chirpstack-gateway-bridge:/etc/chirpstack-gateway-bridge
       - chirpstack-certificates:/etc/chirpstack-gateway-bridge/certs
-    depends_on: 
+    depends_on:
       - mosquitto
     environment:
       - BACKEND__BASIC_STATION__TLS_CERT=/etc/chirpstack-gateway-bridge/certs/chirpstack-gateway-bridge/basicstation/basicstation.pem
@@ -131,3 +155,7 @@ volumes:
   chirpstack-postgresql:
   chirpstack-redis:
   chirpstack-certificates:
+  configuration-chirpstack:
+  configuration-chirpstack-gateway-bridge:
+  configuration-mosquitto:
+  configuration-postgresql-initdb:
