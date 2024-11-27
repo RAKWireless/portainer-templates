@@ -1,6 +1,6 @@
 {
   "version": "2",
-  "version_for_rakpios_cli": "v0.11",
+  "version_for_rakpios_cli": "v0.12",
   "templates": [
     {
       "categories": [
@@ -72,6 +72,7 @@
         {
           "label": "RAK gateway model/LoRaWAN concentrator model number/Semtech LoRa chip model",
           "name": "MODEL",
+          "default": "RAK5146",
           "select": [
             {
               "text": "RAK7243(no LTE)",
@@ -214,6 +215,22 @@
           "description": "The interface used by the concentrator, can be guessed from Device"
         },
         {
+          "name": "USE_LIBGPIOD",
+          "label": "Use libgpiod",
+          "default": "1",
+          "select": [
+            {
+              "text": "True",
+              "value": "1"
+            },
+            {
+              "text": "False",
+              "value": "0"
+            }
+          ],
+          "description": "Use new libgpiod to access the GPIO to reset/enable the concentrator"
+        },
+        {
           "default": "17",
           "label": "Gateway RESET GPIO",
           "name": "GW_RESET_GPIO",
@@ -285,6 +302,7 @@
         },
         {
           "name": "MODEL",
+          "default": "RAK5146",
           "label": "RAK gateway model/LoRaWAN concentrator model number/Semtech LoRa chip model",
           "select": [
             {
@@ -461,6 +479,22 @@
             }
           ],
           "description": "If MODEL id defined it will get this from it, otherwise defaults to 0 (without LTE)"
+        },
+        {
+          "name": "USE_LIBGPIOD",
+          "label": "Use libgpiod",
+          "default": "1",
+          "select": [
+            {
+              "text": "True",
+              "value": "1"
+            },
+            {
+              "text": "False",
+              "value": "0"
+            }
+          ],
+          "description": "Use new libgpiod to access the GPIO to reset/enable the concentrator"
         },
         {
           "name": "RESET_GPIO",
