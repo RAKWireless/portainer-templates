@@ -1,0 +1,51 @@
+services:
+
+  mioty-bssci:
+    build: 
+      context: https://github.com/plasmonized/containerized-mioty-Service-Center.git
+    container_name: mioty-bssci
+    #user: "${UID:-1000}:${GID:-1000}"
+    init: true
+    ports:
+      - "${TLS_PORT:-8000}:8000"  # TLS Server port
+      - "${WEB_PORT:-5000}:5000"  # Web UI port
+    volumes:
+      - mioty-bssci-certs:/app/certs:rw
+      - mioty-bssci-logs:/app/logs:rw
+      - mioty-bssci-data:/app/data:rw
+      - ./.env:/app/.env:rw
+    restart: unless-stopped
+    command: bash docker-entrypoint.sh python web_main.py
+    environment:
+      - PYTHONUNBUFFERED=1
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; s1 = socket.create_connection(('localhost', 16018), timeout=5); s2 = socket.create_connection(('localhost', 5000), timeout=5); s1.close(); s2.close()"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+  
+  mosquitto:
+    container_name: mosquitto
+    image: eclipse-mosquitto
+    ports:
+      - ${MQTT_PORT:-1883}:1883
+    volumes:
+      - mosquitto-certs:/mosquitto/certs
+      - mosquitto-data:/mosquitto/data
+      - mosquitto-logs:/mosquitto/log
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+    restart: unless-stopped
+  
+volumes:
+  mioty-bssci-data:
+  mioty-bssci-certs:
+  mioty-bssci-logs:
+  mosquitto-data:
+  mosquitto-certs:
+  mosquitto-logs:

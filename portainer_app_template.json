@@ -1,6 +1,6 @@
 {
   "version": "2",
-  "version_for_rakpios_cli": "v0.12",
+  "version_for_rakpios_cli": "v0.13",
   "templates": [
     {
       "categories": [
@@ -38,15 +38,50 @@
     },
     {
       "categories": [
+        "Mioty"
+      ],
+      "description": "Development Mioty BSSCI by Plasmonized.",
+      "post_up_info": "This is a development Service Center, not meant for production!!!\nBrowse to http://{host-ip}:5000 to access the web interface. TLS service is available on port 8000.",
+      "note": "This is a development Service Center, not meant for production!!!</ br>Browse to <a herf='http://{host-ip}:5000'>http://{host-ip}:5000</a> to access the web interface. TLS service is available on port 8000.",
+      "logo": "https://mioty-alliance.com/wp-content/uploads/2020/11/mioty-alliance-logo_orange_h100.png",
+      "title": "Mioty BSSCI by Plasmonized",
+      "name": "Mioty BSSCI",
+      "platform": "linux",
+      "network": "bridge",
+      "type": 3,
+      "repository": {
+        "stackfile": "Stack/Mioty-BSSCI/mioty-bssci.yml",
+        "url": "https://github.com/RAKWireless/portainer-templates"
+      },
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "Europe/London",
+          "label": "Time Zone",
+          "name": "TZ"
+        }
+      ]
+    },
+    {
+      "categories": [
         "LoRaWAN"
       ],
-      "description": "This app deploys a LoRaWAN gateway with Basics™ Station Packet Forward protocol using Docker.",
+      "description": "This app deploys a LoRaWAN gateway with Basics Station Packet Forward protocol using Docker.",
       "post_up_info": "Please check the Github repository https://github.com/xoseperez/basicstation for more information.",
       "note": "Check <a href='https://github.com/xoseperez/basicstation'>LoRa Basics™ Station for Docker Github repository</a> for more details.",
       "image": "xoseperez/basicstation:v2",
       "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_logo.png",
       "name": "BasicsStation",
-      "title": "LoRa Basics™ Station for Docker",
+      "title": "LoRa Basics Station for Docker",
       "hostname": "basicstation",
       "platform": "linux",
       "restart_policy": "unless-stopped",
