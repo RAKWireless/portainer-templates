@@ -1,5 +1,3 @@
-version: "2"
-
 services:
  opcuaserver:
    image: xikai3344/netpi-opcua-server

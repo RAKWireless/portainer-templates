@@ -1,5 +1,3 @@
-version: "2"
-
 services:
   chirpstack-network-server:
     image: chirpstack/chirpstack-network-server:3
