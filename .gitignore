@@ -1,0 +1,10 @@
+# Ignore all dotfiles except for .gitignore
+.*
+!.gitignore
+
+# AI assistants
+AGENTS.md
+CLAUDE.md
+
+# Tools
+sync.sh

@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [14] - 2026-08-07
+### Changed
+- Deploy Basics Station as a stack instead of a single container
+### Fixed
+- Basics Station gateway EUI could not be set, the template declared GATEWAYEUI instead of GATEWAY_EUI
+- Basics Station power enable GPIO could not be set, the template declared GW_ENABLE_GPIO instead of POWER_EN_GPIO
+- Replace the Basics Station variables deprecated upstream: TTN_REGION, GATEWAY_EUI_NIC and GW_RESET_GPIO
+- Stop forcing the Basics Station reset and power enable GPIOs, so the per-model defaults apply again
+
 ## [0.0.6] - 2023-06-08
 ### Changed
 - Update UDP packet forwarder's base image version to V2.0.0

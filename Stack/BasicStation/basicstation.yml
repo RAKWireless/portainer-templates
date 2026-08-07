@@ -1,0 +1,105 @@
+services:
+
+  basicstation:
+
+    image: xoseperez/basicstation:v2
+    container_name: basicstation
+    restart: unless-stopped
+
+    # Privileged mode grants access to the SPI or USB port the concentrator sits on and to
+    # the GPIOs used to reset it. Host networking lets the service read the MAC of a physical
+    # NIC to derive the gateway EUI: inside a bridged network it would read the virtual MAC,
+    # which is recreated on every start, so the gateway would come back with a different EUI
+    # after each restart and drop off the network server.
+    privileged: true
+    network_mode: host
+
+    # Persisting /app/config keeps station.conf, tc.uri, tc.key and the certificates between
+    # restarts. That is only needed to hand-edit them (multi-radio setups, custom radio
+    # configuration) or to hold the key issued by The Things Stack autoprovisioning, which is
+    # otherwise reissued on every start. Leave it commented out in any other case: once those
+    # files exist they take precedence over the variables below, so later changes to MODEL,
+    # DEVICE or GATEWAY_EUI would silently have no effect.
+    #volumes:
+    #  - basicstation-config:/app/config
+
+    environment:
+
+      - TZ=${TZ:-Europe/London}
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-100}
+
+      # Concentrator selection. Only MODEL carries a default here on purpose: the service
+      # works out the interface, design, device path, SPI speed and GPIOs from the model, and
+      # any value forced in this file — including a "sensible" one — would override that
+      # deduction for every model. Setting MODEL to AUTO probes for the concentrator instead,
+      # which works for SX1302/SX1303/SX1308 only and adds a few seconds to every boot.
+      - MODEL=${MODEL:-RAK5146}
+      - DESIGN=${DESIGN:-}
+      - INTERFACE=${INTERFACE:-}
+      - DEVICE=${DEVICE:-}
+      - RADIO_NUM=${RADIO_NUM:-}
+      - SPI_SPEED=${SPI_SPEED:-}
+      - CLKSRC=${CLKSRC:-}
+
+      # Reset and power-enable lines. RESET_GPIO and POWER_EN_GPIO are left empty for the
+      # same reason: the service picks GPIO17 for most SPI concentrators but knows about
+      # exceptions, such as the RAK833 in a RAK2247/RAK2287 hat, whose interface selector is
+      # wired to GPIO20 and needs pulling LOW.
+      - USE_LIBGPIOD=${USE_LIBGPIOD:-1}
+      - GPIO_CHIP=${GPIO_CHIP:-}
+      - RESET_GPIO_CHIP=${RESET_GPIO_CHIP:-}
+      - ENABLE_GPIO_CHIP=${ENABLE_GPIO_CHIP:-}
+      - RESET_GPIO=${RESET_GPIO:-}
+      - POWER_EN_GPIO=${POWER_EN_GPIO:-}
+      - POWER_EN_LOGIC=${POWER_EN_LOGIC:-}
+
+      # Gateway identity. Left empty the EUI is built from the MAC of eth0, wlan0 or usb0, in
+      # that order; GATEWAY_EUI_SOURCE names a different interface, or "chip" to read it from
+      # an SX1302/SX1303 concentrator instead.
+      - GATEWAY_EUI=${GATEWAY_EUI:-}
+      - GATEWAY_EUI_SOURCE=${GATEWAY_EUI_SOURCE:-}
+
+      # GPS
+      - HAS_GPS=${HAS_GPS:-}
+      - GPS_DEV=${GPS_DEV:-}
+
+      # Network server. TTS_REGION alone is enough for The Things Stack Community Edition;
+      # TTS_TENANT targets a The Things Industries instance and SERVER an on-premises one.
+      - TTS_REGION=${TTS_REGION:-eu1}
+      - TTS_TENANT=${TTS_TENANT:-}
+      - SERVER=${SERVER:-}
+      - TLS_SNI=${TLS_SNI:-}
+
+      # LNS protocol. TC_KEY on its own covers The Things Stack; ChirpStack also needs
+      # TC_URI plus the CA certificate in TC_TRUST and the client certificate in TC_CRT,
+      # with the TLS key (not an API key) in TC_KEY.
+      - TC_URI=${TC_URI:-}
+      - TC_TRUST=${TC_TRUST:-}
+      - TC_CRT=${TC_CRT:-}
+      - TC_KEY=${TC_KEY:-}
+
+      # CUPS protocol. The LNS settings are fetched from the CUPS server, so the TC_
+      # variables above can be left empty. Actility ThingPark issues no key, hence USE_CUPS.
+      - USE_CUPS=${USE_CUPS:-}
+      - CUPS_URI=${CUPS_URI:-}
+      - CUPS_TRUST=${CUPS_TRUST:-}
+      - CUPS_CRT=${CUPS_CRT:-}
+      - CUPS_KEY=${CUPS_KEY:-}
+
+      # Autoprovisioning on The Things Stack: with a personal API key the service registers
+      # the gateway and issues its own TC_KEY, so no key has to be pasted above.
+      - TTS_USERNAME=${TTS_USERNAME:-}
+      - TTS_PERSONAL_KEY=${TTS_PERSONAL_KEY:-}
+      - TTS_FREQUENCY_PLAN_ID=${TTS_FREQUENCY_PLAN_ID:-}
+      - GATEWAY_PREFIX=${GATEWAY_PREFIX:-}
+      - GATEWAY_ID=${GATEWAY_ID:-}
+      - GATEWAY_NAME=${GATEWAY_NAME:-}
+
+      # Uplink filtering, comma or space separated, decimal or hex with a leading 0x.
+      # NetIDs identify the network (TTN is 0x000013), OUIs the device manufacturer.
+      - WHITELIST_NETIDS=${WHITELIST_NETIDS:-}
+      - WHITELIST_OUIS=${WHITELIST_OUIS:-}
+
+#volumes:
+#  basicstation-config:

@@ -1,6 +1,6 @@
 {
   "version": "2",
-  "version_for_rakpios_cli": "v0.13",
+  "version_for_rakpios_cli": "v0.14",
   "templates": [
     {
       "categories": [
@@ -76,53 +76,56 @@
         "LoRaWAN"
       ],
       "description": "This app deploys a LoRaWAN gateway with Basics™ Station Packet Forward protocol using Docker.",
-      "post_up_info": "Please check the Github repository https://github.com/xoseperez/basicstation for more information.",
-      "note": "Check <a href='https://github.com/xoseperez/basicstation'>LoRa Basics™ Station for Docker Github repository</a> for more details.",
-      "image": "xoseperez/basicstation:v2",
+      "post_up_info": "Check the logs of the basicstation container to find the Gateway EUI, then register it on your network server.\nLeave GATEWAY EUI empty to derive it from the MAC of the host network interface.\nPlease check the Github repository https://github.com/xoseperez/basicstation-docker for more information.",
+      "note": "Check the logs of the <code>basicstation</code> container to find the Gateway EUI, then register it on your network server. Leave <b>GATEWAY EUI</b> empty to derive it from the MAC address of the host network interface. <ul style='padding-left:20px'><li>The Things Stack: paste the gateway API key into <b>TC KEY</b>, or use <b>TTS USERNAME</b> and <b>TTS PERSONAL KEY</b> to register the gateway automatically.</li><li>ChirpStack: set <b>TC URI</b> and paste the generated CA certificate, TLS certificate and TLS key into <b>TC TRUST</b>, <b>TC CRT</b> and <b>TC KEY</b>.</li><li>Leave a setting empty to let the service derive it from the concentrator model.</li></ul>Check the <a href='https://github.com/xoseperez/basicstation-docker'>LoRa Basics™ Station for Docker Github repository</a> for more details.",
       "logo": "https://raw.githubusercontent.com/RAKWireless/portainer-templates/master/logo/gateway_logo.png",
       "name": "BasicsStation",
       "title": "LoRa Basics™ Station for Docker",
-      "hostname": "basicstation",
       "platform": "linux",
-      "restart_policy": "unless-stopped",
-      "type": 1,
-      "network": "host",
-      "privileged": true,
+      "type": 3,
+      "repository": {
+        "stackfile": "Stack/BasicStation/basicstation.yml",
+        "url": "https://github.com/RAKWireless/portainer-templates"
+      },
       "env": [
         {
-          "default": "1000",
+          "name": "PUID",
           "label": "PUID",
-          "name": "PUID"
+          "default": "1000"
         },
         {
-          "default": "100",
+          "name": "PGID",
           "label": "PGID",
-          "name": "PGID"
+          "default": "100"
         },
         {
-          "default": "Europe/London",
+          "name": "TZ",
           "label": "Time Zone",
-          "name": "TZ"
+          "default": "Europe/London"
         },
         {
-          "label": "RAK gateway model/LoRaWAN concentrator model number/Semtech LoRa chip model",
           "name": "MODEL",
+          "label": "Concentrator model",
           "default": "RAK5146",
           "select": [
             {
-              "text": "RAK7243(no LTE)",
+              "text": "Auto-discover",
+              "value": "AUTO"
+            },
+            {
+              "text": "RAK7243 (no LTE)",
               "value": "RAK7243"
             },
             {
-              "text": "RAK7243C(with LTE)",
+              "text": "RAK7243C (with LTE)",
               "value": "RAK7243C"
             },
             {
-              "text": "RAK7244(no LTE)",
+              "text": "RAK7244 (no LTE)",
               "value": "RAK7244"
             },
             {
-              "text": "RAK7244(with LTE)",
+              "text": "RAK7244C (with LTE)",
               "value": "RAK7244C"
             },
             {
@@ -134,11 +137,11 @@
               "value": "RAK7246G"
             },
             {
-              "text": "RAK7248(no LTE)",
+              "text": "RAK7248 (no LTE)",
               "value": "RAK7248"
             },
             {
-              "text": "RAK7248C(with LTE)",
+              "text": "RAK7248C (with LTE)",
               "value": "RAK7248C"
             },
             {
@@ -150,7 +153,7 @@
               "value": "RAK7371"
             },
             {
-              "text": "RAK831(SPI only)",
+              "text": "RAK831 (SPI only)",
               "value": "RAK831"
             },
             {
@@ -220,24 +223,22 @@
             {
               "text": "SX1303",
               "value": "SX1303"
-            },            
+            },
             {
               "text": "SX1308",
               "value": "SX1308"
             }
           ],
-          "description": "Set RAKwireless Developer gateway model or LoRaWAN concentrator model number or Semtech LoRa chip model. When using concentrator model number or Semtech LoRa chip model, you will probably have to specify other features of the module."  
-        },
-        {
-          "default": "/dev/spidev0.0",
-          "label": "Device",
-          "name": "DEVICE",
-          "description": "Where the concentrator is connected to"
+          "description": "RAKwireless developer gateway model, LoRaWAN concentrator model or Semtech LoRa chip model. Set to Auto-discover to probe for the concentrator, which works for SX1302, SX1303 and SX1308 only and delays every boot by a few seconds."
         },
         {
           "name": "INTERFACE",
           "label": "Concentrator interface",
           "select": [
+            {
+              "text": "Guess from model",
+              "value": ""
+            },
             {
               "text": "SPI",
               "value": "SPI"
@@ -245,9 +246,50 @@
             {
               "text": "USB",
               "value": "USB"
+            },
+            {
+              "text": "NET",
+              "value": "NET"
+            },
+            {
+              "text": "Auto-discover",
+              "value": "AUTO"
             }
           ],
-          "description": "The interface used by the concentrator, can be guessed from Device"
+          "description": "Interface the concentrator is connected through. NET reaches a remote concentrator exposed with ser2net."
+        },
+        {
+          "name": "DESIGN",
+          "label": "Concentrator design",
+          "select": [
+            {
+              "text": "Guess from model",
+              "value": ""
+            },
+            {
+              "text": "V2",
+              "value": "V2"
+            },
+            {
+              "text": "PicoCell",
+              "value": "PICOCELL"
+            },
+            {
+              "text": "CoreCell",
+              "value": "CORECELL"
+            }
+          ],
+          "description": "Basics™ Station reference design. V2 for SX1301 and SPI SX1308, PicoCell for USB SX1308, CoreCell for SX1302 and SX1303."
+        },
+        {
+          "name": "DEVICE",
+          "label": "Device",
+          "description": "Port the concentrator is connected to. Empty uses /dev/spidev0.0 for SPI or /dev/ttyACM0 for USB, AUTO searches for it, host:port for a NET interface."
+        },
+        {
+          "name": "SPI_SPEED",
+          "label": "SPI speed",
+          "description": "Speed of the SPI bus in Hz. Empty uses 2000000 for SX1301 and SX1308 concentrators and 8000000 for the rest. Lower it if an SPI concentrator misbehaves."
         },
         {
           "name": "USE_LIBGPIOD",
@@ -263,42 +305,127 @@
               "value": "0"
             }
           ],
-          "description": "Use new libgpiod to access the GPIO to reset/enable the concentrator"
+          "description": "Use libgpiod rather than the legacy sysfs interface to reset and enable the concentrator"
         },
         {
+          "name": "GPIO_CHIP",
+          "label": "GPIO chip",
+          "description": "GPIO chip to use with libgpiod. Empty detects it, which resolves to gpiochip0 on most boards and gpiochip4 on a Raspberry Pi 5."
+        },
+        {
+          "name": "RESET_GPIO",
+          "label": "Reset GPIO",
           "default": "17",
-          "label": "Gateway RESET GPIO",
-          "name": "GW_RESET_GPIO",
-          "description": "GPIO number that resets"
+          "description": "Broadcom GPIO number that resets the concentrator. Ignored by USB concentrators, which need no reset line."
         },
         {
-          "default": "0",
-          "label": "Gateway ENABLE GPIO",
-          "name": "GW_ENABLE_GPIO",
-          "description": "GPIO number that enables power (by pulling HIGH) to the concentrator"
+          "name": "POWER_EN_GPIO",
+          "label": "Power enable GPIO",
+          "description": "Broadcom GPIO number that powers the concentrator, 0 if there is none. Empty uses GPIO20 for a RAK833 on a RAK2247 or RAK2287 hat and none for the rest."
         },
         {
-          "default": "eth0",
-          "label": "GATEWAY EUI NIC",
-          "name": "GATEWAY_EUI_NIC",
-          "description": "Interface to use when generating the EUI"
+          "name": "POWER_EN_LOGIC",
+          "label": "Power enable logic",
+          "select": [
+            {
+              "text": "Guess from model",
+              "value": ""
+            },
+            {
+              "text": "HIGH",
+              "value": "1"
+            },
+            {
+              "text": "LOW",
+              "value": "0"
+            }
+          ],
+          "description": "Level the power enable GPIO is driven to. Empty uses HIGH, except for the RAK833 which needs LOW."
         },
         {
-          "label": "GATEWAY EUI",
-          "name": "GATEWAYEUI",
-          "description": "Gateway EUI to use, autogenerated from GATEWAY EUI NIC if defined, otherwise in order from: eth0, wlan0, usb0"
+          "name": "GATEWAY_EUI",
+          "label": "Gateway EUI",
+          "description": "8 byte gateway EUI in hex format. Empty derives it from the source below."
         },
         {
+          "name": "GATEWAY_EUI_SOURCE",
+          "label": "Gateway EUI source",
+          "description": "Where to derive the gateway EUI from when it is not set above: the name of a network interface, or 'chip' to read it from an SX1302 or SX1303 concentrator. Empty tries eth0, wlan0 and usb0 in that order."
+        },
+        {
+          "name": "GPS_DEV",
+          "label": "GPS device",
+          "description": "Port the GNSS receiver is connected to. Empty uses the one known for the gateway model, if any."
+        },
+        {
+          "name": "HAS_GPS",
+          "label": "Enable GPS",
+          "select": [
+            {
+              "text": "Guess from model",
+              "value": ""
+            },
+            {
+              "text": "True",
+              "value": "1"
+            },
+            {
+              "text": "False",
+              "value": "0"
+            }
+          ],
+          "description": "Set to False to ignore the onboard GNSS receiver on models that have one"
+        },
+        {
+          "name": "TTS_REGION",
+          "label": "TTS region",
           "default": "eu1",
-          "label": "TTN REGION",
-          "name": "TTN_REGION",
-          "description": "Region of the TTN server to use, possible values: eu1, nam1, au1"
+          "select": [
+            {
+              "text": "Europe (eu1)",
+              "value": "eu1"
+            },
+            {
+              "text": "North America (nam1)",
+              "value": "nam1"
+            },
+            {
+              "text": "Australia (au1)",
+              "value": "au1"
+            }
+          ],
+          "description": "Cluster of The Things Stack to connect to. Ignored when a custom server or LNS URI is set below."
         },
         {
-          "default": "change this to your own TC key from TTN",
-          "label": "TC KEY",
+          "name": "TTS_TENANT",
+          "label": "TTS tenant",
+          "default": "ttn",
+          "description": "Tenant name. Leave it as ttn for The Things Stack Community Edition, change it only when connecting to a The Things Industries instance."
+        },
+        {
+          "name": "SERVER",
+          "label": "Server",
+          "description": "Host name of an on-premises The Things Stack instance. Empty builds it from the region and tenant above."
+        },
+        {
+          "name": "TC_URI",
+          "label": "LNS URI",
+          "description": "Network server to connect to, for example wss://lns.example.com:8887. Empty builds it from the region and tenant above."
+        },
+        {
+          "name": "TC_TRUST",
+          "label": "LNS CA certificate",
+          "description": "CA certificate of the network server. Empty uses the precached certificate for The Things Stack."
+        },
+        {
+          "name": "TC_CRT",
+          "label": "LNS client certificate",
+          "description": "Client certificate, only if the network server requires one, as ChirpStack does"
+        },
+        {
           "name": "TC_KEY",
-          "description": "Unique TTN Gateway Key used for TTS Community Edition pasted from TTN console"
+          "label": "LNS key",
+          "description": "Gateway API key from The Things Stack, or the TLS key matching the client certificate above"
         }
       ]
     },

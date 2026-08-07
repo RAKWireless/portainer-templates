@@ -31,7 +31,7 @@ RAK7391 is a flexible IoT platform powered with Raspberry Pi Compute Module 4 wh
 
 ### App List
 
-- [LoRa Basics™ Station for Docker ](https://github.com/xoseperez/basicstation)
+- [LoRa Basics™ Station for Docker ](https://github.com/xoseperez/basicstation-docker)
 - [UDP Packet Forwarder](https://github.com/RAKWireless/udp-packet-forwarder)
 - [2.4GHz Gateway UDP Packet Forwarder](https://github.com/RAKWireless/udp-packet-forwarder)
 - [Helium light hotspot](https://github.com/Sheng2216/helium-gateway-rs-docker)
